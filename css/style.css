@@ -404,6 +404,11 @@ section[id] { scroll-margin-top: 88px; }
   border: 1px solid rgba(29, 191, 115, 0.4);
   color: #4fe0a0;
 }
+.badge-ai {
+  background: rgba(139, 92, 246, 0.14);
+  border: 1px solid rgba(139, 92, 246, 0.45);
+  color: #b69bfa;
+}
 .project-badge .dot { width: 6px; height: 6px; }
 .pv-1 { background: linear-gradient(135deg, #1c3a7a, #142a52); }
 .pv-2 { background: linear-gradient(135deg, #1f5c4a, #123a2e); }
@@ -411,6 +416,7 @@ section[id] { scroll-margin-top: 88px; }
 .pv-4 { background: linear-gradient(135deg, #5c4a1f, #342a12); }
 .pv-5 { background: linear-gradient(135deg, #0e3a52, #0a2438); }
 .pv-6 { background: linear-gradient(135deg, #4a3414, #2a1d0c); }
+.pv-7 { background: linear-gradient(135deg, #3a2160, #1f1238); }
 .project-body { padding: 28px; }
 .project-body h3 { font-size: 19px; font-weight: 500; color: var(--text); margin-bottom: 12px; }
 .project-body p { color: var(--text-muted); font-size: 14.5px; line-height: 1.65; }

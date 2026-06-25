@@ -28,7 +28,7 @@
       <a href="#projects" data-nav>Projects</a>
       <a href="#highlights" data-nav>Highlights</a>
       <a href="#experience" data-nav>Experience</a>
-      <a href="#education" data-nav>Education</a>
+      <a href="#contact" data-nav>Contact Me</a>
     </nav>
 
     <div class="nav-actions">
@@ -62,17 +62,21 @@
         <p class="lead">Hi, I'm James — a backend engineer with 10+ years building large-scale distributed systems and data-intensive platforms. Now expanding into Data Engineering and AI through post-graduate study in Winnipeg, Canada.</p>
         <div class="hero-actions">
           <a href="#experience" class="btn btn-outline btn-pill">See my experience</a>
-          <a href="#contact" class="btn btn-primary btn-pill">
-            Contact Me
+          <a href="https://linkedin.com/in/huzhi" target="_blank" rel="noopener" class="btn btn-pill" style="background-color: rgb(45,101,188); color: #fff; display: inline-flex; align-items: center; gap: 8px;">
+            <span style="display: inline-flex; align-items: center; justify-content: center; width: 20px; height: 20px; background: #fff; border-radius: 4px; flex-shrink: 0;">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="rgb(45,101,188)"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 1 1 0-4.125 2.062 2.062 0 0 1 0 4.125zM7.114 20.452H3.558V9h3.556v11.452z"/></svg>
+            </span>
+            Let's Connect
             <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 11L11 3M11 3H5M11 3V9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </a>
         </div>
         <div class="hero-stack" aria-label="Core stack">
-          <span class="chip-sm">Java</span>
-          <span class="chip-sm">Spring Boot</span>
-          <span class="chip-sm">Kafka</span>
-          <span class="chip-sm">Elasticsearch</span>
-          <span class="chip-sm">GCP</span>
+          <span class="chip-sm">Senior Java</span>
+          <span class="chip-sm">Data Developer</span>
+          <span class="chip-sm">AWS</span>
+          <span class="chip-sm">Databricks</span>
+          <span class="chip-sm">Lakehouse</span>
+          <span class="chip-sm">Model Development</span>
         </div>
       </div>
 
@@ -164,13 +168,45 @@ of Winnipeg
       <article class="project-card">
         <div class="project-visual pv-6">
           <span class="project-badge badge-production"><span class="dot"></span>Production</span>
-          <span>MES</span>
+          <span>Manufacturing Execution System</span>
         </div>
         <div class="project-body">
-          <h3>Tianbao MES &amp; Big Data Visualization Platform</h3>
-          <p>Delivered an end-to-end Manufacturing Execution System for Shanghai ZHONGYOU TIPO Steel Pipe Co., Ltd. as an independent contractor — real-time machine status monitoring, staff attendance &amp; shift tracking, a production big-data dashboard, and a companion Android app for floor workers.</p>
+          <h3>Factory MES Platform & Analytics Platform</h3>
+          <p>Designed and delivered a production-grade MES as the <b>sole developer</b>, enabling end-to-end manufacturing operations including production tracking, quality control, inventory management, workshop data collection, and real-time operational analytics.</p>
           <div class="tag-row"><span class="tag">Golang</span><span class="tag">Vue.js</span><span class="tag">MySQL</span><span class="tag">Android</span></div>
-          <p class="project-note">🔒 Confidential client deployment — source and live access are private.</p>
+          <div class="project-actions">
+            <a class="btn btn-outline btn-pill btn-sm" href="https://mes.huzhi.dev/en/" target="_blank" rel="noopener">
+              Live Demo
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 11L11 3M11 3H5M11 3V9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+            <a class="btn btn-outline btn-pill btn-sm" href="http://www.shtipo.com/en/" target="_blank" rel="noopener">
+              Client Website
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 11L11 3M11 3H5M11 3V9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+          </div>
+          <p class="project-note">🔒 Source code is private — this is a confidential client deployment.</p>
+        </div>
+      </article>
+
+      <article class="project-card">
+        <div class="project-visual pv-7">
+          <span class="project-badge badge-ai">✨ AI Agent</span>
+          <span>AI · Mac Folder Icons</span>
+        </div>
+        <div class="project-body">
+          <h3>AI Agent Icon Curation Pipeline + macOS App</h3>
+          <p>A two-repo personal project built around an <strong>AI agent that orchestrates multiple Gemini API calls</strong> to auto-generate descriptive documentation and classification tags for thousands of folder icons — feeding a macOS app (Electron + Vue 3) that lets anyone customize folder icons for free.</p>
+          <div class="tag-row"><span class="tag">Gemini API</span><span class="tag">AI Agent</span><span class="tag">Python</span><span class="tag">Electron</span><span class="tag">Vue 3</span></div>
+          <div class="project-actions">
+            <a class="btn btn-outline btn-pill btn-sm" href="https://github.com/tigerai-tech/folder-icon-management" target="_blank" rel="noopener">
+              App Repo
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 11L11 3M11 3H5M11 3V9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+            <a class="btn btn-outline btn-pill btn-sm" href="https://github.com/tigerai-tech/folder-icon-annotation" target="_blank" rel="noopener">
+              AI Pipeline Repo
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 11L11 3M11 3H5M11 3V9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+          </div>
         </div>
       </article>
 
@@ -310,59 +346,12 @@ of Winnipeg
     </div>
   </section>
 
-  <!-- EDUCATION & CERTIFICATES -->
-  <section class="section" id="education">
-    <div class="container section-head reveal">
-      <span class="eyebrow">EDUCATION &amp; CERTIFICATES</span>
-      <h2 class="reveal-text" data-text="Continuous Learning.">Continuous Learning.</h2>
-      <p class="muted">Formal education and certifications supporting my move into data and AI engineering.</p>
-    </div>
-
-    <div class="container edu-grid reveal">
-
-      <article class="edu-card">
-        <span class="edu-icon">🎓</span>
-        <h3>University of Winnipeg</h3>
-        <p class="edu-sub">Post-Graduate Diploma in Artificial Intelligence</p>
-        <p class="edu-meta">Jan 2026 — Dec 2026 · Winnipeg, MB, Canada</p>
-        <p class="edu-desc">PACE program — applying backend engineering experience to AI platform development, MLOps, and applied data science.</p>
-      </article>
-
-      <article class="edu-card">
-        <span class="edu-icon">🎓</span>
-        <h3>Henan University of Engineering</h3>
-        <p class="edu-sub">B.Eng. Mechanical Design, Manufacturing &amp; Automation</p>
-        <p class="edu-meta">Sep 2010 — Jun 2014 · Henan, China</p>
-      </article>
-
-      <article class="edu-card">
-        <span class="edu-icon">✔</span>
-        <h3>IBM AI Engineering Professional Certificate</h3>
-        <p class="edu-sub">Coursera</p>
-        <p class="edu-meta">Completed</p>
-      </article>
-
-      <article class="edu-card">
-        <span class="edu-icon">⏳</span>
-        <h3>Databricks Certified Data Engineer Associate</h3>
-        <p class="edu-sub">Databricks</p>
-        <p class="edu-meta">Pending</p>
-      </article>
-
-    </div>
-  </section>
-
   <!-- CONTACT -->
   <section class="section cta-band" id="contact">
     <div class="container cta-inner reveal">
       <span class="eyebrow">CONTACT</span>
       <h2 class="reveal-text" data-text="Let's Connect.">Let's Connect.</h2>
       <p class="muted">Open to backend, data engineering, and AI platform roles in Canada.</p>
-
-      <a href="mailto:James.Huzhi.Zhao@gmail.com" class="btn btn-primary btn-pill btn-lg">
-        Email Me
-        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 11L11 3M11 3H5M11 3V9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      </a>
 
       <div class="contact-cards">
         <a class="contact-card" href="mailto:James.Huzhi.Zhao@gmail.com">
@@ -415,7 +404,6 @@ of Winnipeg
       <a href="#projects" data-nav>Projects</a>
       <a href="#highlights" data-nav>Highlights</a>
       <a href="#experience" data-nav>Experience</a>
-      <a href="#education" data-nav>Education</a>
     </nav>
   </div>
 
