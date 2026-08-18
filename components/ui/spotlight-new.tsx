@@ -13,6 +13,8 @@ type SpotlightProps = {
   smallWidth?: number;
   duration?: number;
   xOffset?: number;
+  /** Which side(s) the beams come from. Defaults to both, like upstream. */
+  side?: "left" | "right" | "both";
 };
 
 /**
@@ -29,8 +31,10 @@ export const SpotlightNew = ({
   smallWidth = 240,
   duration = 7,
   xOffset = 100,
+  side = "both",
 }: SpotlightProps = {}) => (
   <div className="pointer-events-none absolute inset-0 h-full w-full overflow-hidden">
+    {side !== "right" && (
     <motion.div
       animate={{ x: [0, xOffset, 0] }}
       transition={{ duration, repeat: Infinity, repeatType: "reverse", ease: "easeInOut" }}
@@ -64,7 +68,9 @@ export const SpotlightNew = ({
         className="absolute left-0 top-0 origin-top-left"
       />
     </motion.div>
+    )}
 
+    {side !== "left" && (
     <motion.div
       animate={{ x: [0, -xOffset, 0] }}
       transition={{ duration, repeat: Infinity, repeatType: "reverse", ease: "easeInOut" }}
@@ -98,5 +104,6 @@ export const SpotlightNew = ({
         className="absolute right-0 top-0 origin-top-right"
       />
     </motion.div>
+    )}
   </div>
 );

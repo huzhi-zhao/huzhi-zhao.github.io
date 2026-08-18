@@ -18,7 +18,7 @@ export function Hero() {
   return (
     <section id="top" className="relative overflow-hidden pb-24 pt-40 md:pt-44">
       <div className="grid-bg pointer-events-none absolute inset-0 [mask-image:radial-gradient(ellipse_at_center,black_10%,transparent_75%)]" />
-      <SpotlightNew />
+      <SpotlightNew side="left" />
 
       <div className="container-x relative z-10 grid items-center gap-16 lg:grid-cols-[1.05fr_0.95fr]">
         <motion.div
