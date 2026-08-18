@@ -61,11 +61,11 @@ export const NavBody = ({
       boxShadow: visible
         ? "0 0 24px rgba(0,0,0,.28), 0 1px 1px rgba(0,0,0,.12), 0 0 0 1px rgba(255,255,255,.06)"
         : "none",
-      width: visible ? "44%" : "100%",
+      width: visible ? "72%" : "100%",
       y: visible ? 14 : 0,
     }}
     transition={{ type: "spring", stiffness: 200, damping: 50 }}
-    style={{ minWidth: "800px" }}
+    style={{ minWidth: "940px" }}
     className={cn(
       "relative z-[60] mx-auto hidden w-full max-w-container flex-row items-center justify-between self-start rounded-full bg-[rgba(20,20,20,0.72)] px-6 py-2.5 lg:flex",
       visible && "bg-[rgba(24,24,24,0.85)]",
@@ -91,7 +91,7 @@ export const NavItems = ({
     <motion.div
       onMouseLeave={() => setHovered(null)}
       className={cn(
-        "relative hidden flex-1 flex-row items-center justify-center gap-1 text-sm font-medium text-muted transition duration-200 lg:flex",
+        "relative hidden flex-1 shrink-0 flex-row items-center justify-center gap-0.5 text-sm font-medium text-muted transition duration-200 lg:flex",
         className
       )}
     >
@@ -101,7 +101,7 @@ export const NavItems = ({
           href={item.link}
           onMouseEnter={() => setHovered(idx)}
           onClick={onItemClick}
-          className="relative px-4 py-2 text-muted hover:text-white"
+          className="relative shrink-0 whitespace-nowrap px-3.5 py-2 text-muted hover:text-white"
         >
           {hovered === idx && (
             <motion.div
