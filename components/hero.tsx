@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Spotlight } from "@/components/ui/spotlight";
+import { SpotlightNew } from "@/components/ui/spotlight-new";
 import { CardBody, CardContainer, CardItem } from "@/components/ui/3d-card";
 import { LinkedInIcon, ArrowUpRight } from "@/components/icons";
 
@@ -18,9 +18,9 @@ export function Hero() {
   return (
     <section id="top" className="relative overflow-hidden pb-24 pt-40 md:pt-44">
       <div className="grid-bg pointer-events-none absolute inset-0 [mask-image:radial-gradient(ellipse_at_center,black_10%,transparent_75%)]" />
-      <Spotlight className="-top-40 left-0 md:-top-20 md:left-60" fill="#1dbf73" />
+      <SpotlightNew />
 
-      <div className="container-x relative grid items-center gap-16 lg:grid-cols-[1.05fr_0.95fr]">
+      <div className="container-x relative z-10 grid items-center gap-16 lg:grid-cols-[1.05fr_0.95fr]">
         <motion.div
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
