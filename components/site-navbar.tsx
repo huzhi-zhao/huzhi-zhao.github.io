@@ -25,7 +25,10 @@ const Brand = () => (
     <span className="flex h-[34px] w-[34px] items-center justify-center rounded-full bg-gradient-to-br from-[#2b6cff] to-[#1dbf73] font-mono text-[11px] font-bold">
       HZ
     </span>
-    <span className="font-heading text-[15px] font-semibold">Huzhi (James) Zhao</span>
+    <span className="font-heading text-[15px] font-semibold">
+      Huzhi (James)
+      <span className="group-data-[visible=true]/nav:hidden"> Zhao</span>
+    </span>
   </a>
 );
 

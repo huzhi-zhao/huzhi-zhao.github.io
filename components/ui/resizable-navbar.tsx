@@ -66,8 +66,9 @@ export const NavBody = ({
     }}
     transition={{ type: "spring", stiffness: 200, damping: 50 }}
     style={{ minWidth: "800px" }}
+    data-visible={visible ? "true" : "false"}
     className={cn(
-      "relative z-[60] mx-auto hidden w-full max-w-container flex-row items-center justify-between self-start rounded-full bg-[rgba(20,20,20,0.72)] px-6 py-2.5 lg:flex",
+      "group/nav relative z-[60] mx-auto hidden w-full max-w-container flex-row items-center justify-between self-start rounded-full bg-[rgba(20,20,20,0.72)] px-6 py-2.5 lg:flex",
       visible && "bg-[rgba(24,24,24,0.85)]",
       className
     )}
