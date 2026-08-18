@@ -17,26 +17,26 @@ type Project = {
 
 const PROJECTS: Project[] = [
   {
-    title: "NYC Urban Operations Intelligence Platform",
+    title: "Urban Operations Intelligence Platform",
     visual: "linear-gradient(135deg,#0e3a52,#0a2438)",
-    caption: "NYC · 311",
+    caption: "Winnipeg · Winter Ops",
     badge: {
-      text: "Experimental",
+      text: "In Progress",
       className: "bg-[rgba(245,158,11,0.12)] border-[rgba(245,158,11,0.4)] text-[#f5b942]",
     },
     body: (
       <>
-        A hands-on, production-style data engineering project I built solo: a lakehouse
-        pipeline that ingests NYC 311 requests, collisions, and weather data through
-        Bronze/Silver/Gold layers to generate daily Operational Load Scores and
-        resource-allocation recommendations per borough.
+        A self-hosted lakehouse I'm building solo: it ingests City of Winnipeg open data —
+        311 requests, plow shifts, parking bans, weather and zone boundaries — through
+        Bronze/Silver/Gold layers to produce a <b>Winter Operational Load Score</b> per zone,
+        with a demand forecast and ranked resource recommendations after each snowfall.
       </>
     ),
-    tags: ["Airflow", "Spark", "BigQuery", "Lakehouse"],
+    tags: ["Airflow", "Spark", "MinIO", "Trino", "Lakehouse"],
     links: [
       {
         label: "Source Code",
-        href: "https://github.com/huzhi-zhao/NYC-Urban-Operations-Intelligence-Platform",
+        href: "https://github.com/huzhi-zhao/urban-ops-intelligence-platform",
       },
     ],
   },
