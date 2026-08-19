@@ -17,16 +17,19 @@ export const CardContainer = ({
   children,
   className,
   containerClassName,
+  disabled = false,
 }: {
   children?: React.ReactNode;
   className?: string;
   containerClassName?: string;
+  /** Freezes the tilt — used while an intro animation owns the card. */
+  disabled?: boolean;
 }) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const [isMouseEntered, setIsMouseEntered] = useState(false);
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    if (!containerRef.current) return;
+    if (disabled || !containerRef.current) return;
     const { left, top, width, height } =
       containerRef.current.getBoundingClientRect();
     const x = (e.clientX - left - width / 2) / 25;
@@ -34,7 +37,10 @@ export const CardContainer = ({
     containerRef.current.style.transform = `rotateY(${x}deg) rotateX(${-y}deg)`;
   };
 
-  const handleMouseEnter = () => setIsMouseEntered(true);
+  const handleMouseEnter = () => {
+    if (disabled) return;
+    setIsMouseEntered(true);
+  };
 
   const handleMouseLeave = () => {
     if (!containerRef.current) return;

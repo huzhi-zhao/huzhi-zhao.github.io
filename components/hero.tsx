@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import { SpotlightNew } from "@/components/ui/spotlight-new";
-import { CardBody, CardContainer, CardItem } from "@/components/ui/3d-card";
+import { HeroTerminal } from "@/components/hero-terminal";
 import { LinkedInIcon, ArrowUpRight, DownloadIcon } from "@/components/icons";
 import { CV_HREF } from "@/components/site-navbar";
 
@@ -75,34 +75,8 @@ export function Hero() {
           </div>
         </motion.div>
 
-        <CardContainer containerClassName="order-first w-full lg:order-none" className="w-full">
-          <CardBody className="w-full">
-            <CardItem
-              translateZ={40}
-              className="w-full overflow-hidden rounded-2xl border border-white/[0.08] bg-elevated shadow-[0_24px_60px_rgba(0,0,0,0.45)]"
-            >
-              <div className="flex items-center gap-2 border-b border-white/[0.08] px-[18px] py-3.5">
-                <span className="h-2.5 w-2.5 rounded-full bg-[#ff5f56]" />
-                <span className="h-2.5 w-2.5 rounded-full bg-[#ffbd2e]" />
-                <span className="h-2.5 w-2.5 rounded-full bg-[#27c93f]" />
-                <span className="ml-2 font-mono text-xs text-faint">James@winnipeg:~</span>
-              </div>
-              <pre className="overflow-x-auto whitespace-pre-wrap px-6 py-7 font-mono text-[13.5px] leading-[1.9] text-[#d6d6d6]">
-                <code>
-                  <span className="text-faint">$</span> whoami{"\n"}
-                  huzhi.zhao — backend &amp; data engineer{"\n\n"}
-                  <span className="text-faint">$</span> years_experience{"\n"}
-                  9{"\n\n"}
-                  <span className="text-faint">$</span> currently{"\n"}
-                  Post-Grad AI Diploma @ University{"\n"}of Winnipeg{"\n\n"}
-                  <span className="text-faint">$</span> status{"\n"}
-                  <span className="text-accent">Open to new opportunities</span>
-                  <span className="animate-blink text-accent">▌</span>
-                </code>
-              </pre>
-            </CardItem>
-          </CardBody>
-        </CardContainer>
+        <HeroTerminal />
+
       </div>
     </section>
   );
