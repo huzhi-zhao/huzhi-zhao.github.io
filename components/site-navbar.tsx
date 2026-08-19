@@ -10,13 +10,18 @@ import {
   MobileNavMenu,
   MobileNavToggle,
 } from "@/components/ui/resizable-navbar";
-import { GitHubIcon, LinkedInIcon, ArrowUpRight } from "@/components/icons";
+import { GitHubIcon, LinkedInIcon, ArrowUpRight, DownloadIcon } from "@/components/icons";
+
+/**
+ * External resume URL. Leave empty to hide every Resume entry point site-wide;
+ * set it to the hosted PDF link when one is ready.
+ */
+export const CV_HREF = "";
 
 const navItems = [
-  { name: "Skills", link: "#skills" },
-  { name: "Projects", link: "#projects" },
-  { name: "Highlights", link: "#highlights" },
   { name: "Experience", link: "#experience" },
+  { name: "Projects", link: "#projects" },
+  { name: "Skills", link: "#skills" },
   { name: "Contact Me", link: "#contact" },
 ];
 
@@ -61,6 +66,17 @@ export function SiteNavbar() {
         <Brand />
         <NavItems items={navItems} />
         <div className="relative z-20 flex items-center gap-2.5">
+          {CV_HREF && (
+            <a
+              href={CV_HREF}
+              target="_blank"
+              rel="noopener"
+              className="inline-flex items-center gap-1.5 rounded-full border border-white/[0.16] px-3.5 py-[7px] text-[13px] font-bold tracking-[-0.2px] text-white transition hover:bg-white/[0.06]"
+            >
+              <DownloadIcon className="text-muted" />
+              Resume
+            </a>
+          )}
           <IconLink href="https://linkedin.com/in/huzhi" label="LinkedIn">
             <LinkedInIcon />
           </IconLink>
@@ -86,6 +102,18 @@ export function SiteNavbar() {
               {item.name}
             </a>
           ))}
+          {CV_HREF && (
+            <a
+              href={CV_HREF}
+              target="_blank"
+              rel="noopener"
+              onClick={() => setIsOpen(false)}
+              className="group flex w-full items-center justify-between border-b border-white/[0.08] py-3.5 text-[15px] text-white transition"
+            >
+              <span>Resume (PDF)</span>
+              <DownloadIcon className="text-faint transition group-hover:text-white" />
+            </a>
+          )}
           <span className="pb-1 pt-4 font-mono text-[11px] uppercase tracking-[1.5px] text-faint">
             More
           </span>

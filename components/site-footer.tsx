@@ -1,10 +1,9 @@
 import { MailIcon, LinkedInOutlineIcon } from "@/components/icons";
 
 const LINKS = [
-  { name: "Skills", link: "#skills" },
-  { name: "Projects", link: "#projects" },
-  { name: "Highlights", link: "#highlights" },
   { name: "Experience", link: "#experience" },
+  { name: "Projects", link: "#projects" },
+  { name: "Skills", link: "#skills" },
 ];
 
 export function SiteFooter() {

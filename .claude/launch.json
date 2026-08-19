@@ -1,26 +1,6 @@
 {
   "version": "0.0.1",
   "configurations": [
-    {
-      "name": "portfolio",
-      "runtimeExecutable": "npm",
-      "runtimeArgs": [
-        "run",
-        "dev"
-      ],
-      "port": 3000
-    },
-    {
-      "name": "portfolio-static",
-      "runtimeExecutable": "npx",
-      "runtimeArgs": [
-        "--yes",
-        "serve",
-        "-l",
-        "4173",
-        "out"
-      ],
-      "port": 4173
-    }
+    { "name": "portfolio", "runtimeExecutable": "npm", "runtimeArgs": ["run", "dev"], "port": 3000 }
   ]
 }

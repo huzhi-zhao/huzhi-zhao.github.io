@@ -1,11 +1,10 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Meteors } from "@/components/ui/meteors";
 import { Globe } from "@/components/ui/globe";
 import { BackgroundGradient } from "@/components/ui/background-gradient";
 import { TextGenerateEffect } from "@/components/ui/text-generate-effect";
-import { MailIcon, LinkedInOutlineIcon, PinIcon } from "@/components/icons";
+import { MailIcon, LinkedInOutlineIcon, PinIcon, GitHubIcon } from "@/components/icons";
 
 const CARDS = [
   {
@@ -21,6 +20,12 @@ const CARDS = [
     href: "https://linkedin.com/in/huzhi",
   },
   {
+    icon: <GitHubIcon className="shrink-0 text-faint" />,
+    label: "GitHub",
+    value: "github.com/huzhi-zhao",
+    href: "https://github.com/huzhi-zhao",
+  },
+  {
     icon: <PinIcon className="shrink-0 text-faint" />,
     label: "Location",
     value: "Winnipeg, MB, Canada",
@@ -33,17 +38,13 @@ export function Contact() {
       id="contact"
       className="relative overflow-hidden border-t border-white/[0.08] py-24 text-center"
     >
-      <div className="pointer-events-none absolute inset-0">
-        <Meteors number={16} />
-      </div>
-
       <div className="container-x relative flex flex-col items-center">
         <span className="eyebrow mb-[18px]">CONTACT</span>
         <h2 className="mb-3.5 font-heading text-[clamp(28px,4vw,38px)] font-light tracking-[-0.4px]">
           <TextGenerateEffect words="Let's Connect." />
         </h2>
         <p className="mb-8 text-muted">
-          Open to backend, data engineering, and AI platform roles in Canada.
+          Open to backend, data engineering, and AI platform roles in Manitoba.
         </p>
 
         <motion.div
@@ -54,8 +55,8 @@ export function Contact() {
           className="relative mx-auto w-full max-w-[380px]"
         >
           <Globe className="[mask-image:radial-gradient(circle_at_center,black_60%,transparent_72%)]" />
-          <span className="pointer-events-none absolute bottom-2 left-1/2 -translate-x-1/2 font-mono text-[11px] uppercase tracking-[1.5px] text-faint">
-            Based in Winnipeg · Open worldwide
+          <span className="pointer-events-none absolute bottom-2 left-1/2 w-max -translate-x-1/2 whitespace-nowrap font-mono text-[10px] uppercase tracking-[1.2px] text-faint sm:text-[11px] sm:tracking-[1.5px]">
+            Based in Winnipeg · Open across Manitoba
           </span>
         </motion.div>
 

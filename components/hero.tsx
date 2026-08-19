@@ -3,7 +3,8 @@
 import { motion } from "framer-motion";
 import { SpotlightNew } from "@/components/ui/spotlight-new";
 import { CardBody, CardContainer, CardItem } from "@/components/ui/3d-card";
-import { LinkedInIcon, ArrowUpRight } from "@/components/icons";
+import { LinkedInIcon, ArrowUpRight, DownloadIcon } from "@/components/icons";
+import { CV_HREF } from "@/components/site-navbar";
 
 const stack = [
   "Senior Java",
@@ -36,7 +37,7 @@ export function Hero() {
           </h1>
 
           <p className="mb-8 max-w-[540px] text-[17px] tracking-[0.1px] text-muted">
-            Hi, I&apos;m James — a backend engineer with 10+ years building large-scale
+            Hi, I&apos;m James — a backend engineer with 9 years building large-scale
             distributed systems and data-intensive platforms. Now expanding into Data
             Engineering and AI through post-graduate study in Winnipeg, Canada.
           </p>
@@ -45,6 +46,12 @@ export function Hero() {
             <a href="#experience" className="btn-outline">
               See my experience
             </a>
+            {CV_HREF && (
+              <a href={CV_HREF} target="_blank" rel="noopener" className="btn-outline">
+                <DownloadIcon className="text-muted" />
+                Resume
+              </a>
+            )}
             <a
               href="https://linkedin.com/in/huzhi"
               target="_blank"
@@ -85,7 +92,7 @@ export function Hero() {
                   <span className="text-faint">$</span> whoami{"\n"}
                   huzhi.zhao — backend &amp; data engineer{"\n\n"}
                   <span className="text-faint">$</span> years_experience{"\n"}
-                  10+{"\n\n"}
+                  9{"\n\n"}
                   <span className="text-faint">$</span> currently{"\n"}
                   Post-Grad AI Diploma @ University{"\n"}of Winnipeg{"\n\n"}
                   <span className="text-faint">$</span> status{"\n"}

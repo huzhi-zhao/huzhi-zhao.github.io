@@ -51,12 +51,14 @@ const PROJECTS: Project[] = [
     },
     body: (
       <>
-        Designed and delivered a production-grade MES as the <b>sole developer</b>, enabling
-        end-to-end manufacturing operations including production tracking, quality control,
-        inventory management, workshop data collection, and real-time operational analytics.
+        Designed and delivered a production-grade MES as the <b>sole developer</b> — modelling{" "}
+        <b>20+ production stages</b> into Go backend services and relational data models
+        covering production tracking, quality control, inventory, and manufacturing
+        traceability, with RBAC and workshop-based data partitioning, web admin portals,
+        operational dashboards, and Android shop-floor apps.
       </>
     ),
-    tags: ["Golang", "Vue.js", "MySQL", "Android"],
+    tags: ["Golang", "Vue.js", "MySQL", "Android", "RBAC"],
     links: [
       { label: "Live Demo", href: "https://mes.huzhi.dev/en/" },
       { label: "Client Website", href: "http://www.shtipo.com/en/" },

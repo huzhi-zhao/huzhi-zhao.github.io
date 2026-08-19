@@ -67,3 +67,15 @@ export const ChevronDown = (p: P) => (
     />
   </svg>
 );
+
+export const DownloadIcon = (p: P) => (
+  <svg width="15" height="15" viewBox="0 0 16 16" fill="none" {...p}>
+    <path
+      d="M8 2.5v7.5m0 0L5 7m3 3l3-3M3 12.5h10"
+      stroke="currentColor"
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+  </svg>
+);
