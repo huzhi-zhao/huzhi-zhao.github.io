@@ -47,6 +47,24 @@
   .btn-sm {
     @apply px-4 py-[9px] text-[13px];
   }
+  /*
+   * 项目卡的 hover 简介层（FR-3.4 / FR-3.7）。
+   * 整层包在 hover 媒体查询里 —— 触屏设备上永不出现，比宽度断点准确，覆盖触屏笔记本。
+   */
+  .card-caption {
+    display: none;
+  }
+  @media (hover: hover) and (pointer: fine) {
+    .card-caption {
+      @apply flex items-end opacity-0 transition-all duration-200 ease-out;
+      transform: translateY(8px);
+    }
+    .group:hover .card-caption {
+      @apply opacity-100;
+      transform: translateY(0);
+    }
+  }
+
   .grid-bg {
     background-image: linear-gradient(to right, rgba(255, 255, 255, 0.045) 1px, transparent 1px),
       linear-gradient(to bottom, rgba(255, 255, 255, 0.045) 1px, transparent 1px);

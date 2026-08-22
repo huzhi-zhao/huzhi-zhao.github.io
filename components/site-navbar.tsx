@@ -19,9 +19,8 @@ import { GitHubIcon, LinkedInIcon, ArrowUpRight, DownloadIcon } from "@/componen
 export const CV_HREF = "";
 
 const navItems = [
-  { name: "Experience", link: "#experience" },
   { name: "Projects", link: "#projects" },
-  { name: "Skills", link: "#skills" },
+  { name: "Experience", link: "#experience" },
   { name: "Contact Me", link: "#contact" },
 ];
 

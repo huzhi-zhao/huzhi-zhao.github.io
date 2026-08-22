@@ -6,15 +6,6 @@ import { HeroTerminal } from "@/components/hero-terminal";
 import { LinkedInIcon, ArrowUpRight, DownloadIcon } from "@/components/icons";
 import { CV_HREF } from "@/components/site-navbar";
 
-const stack = [
-  "Senior Java",
-  "Data Developer",
-  "AWS",
-  "Databricks",
-  "Lakehouse",
-  "Model Development",
-];
-
 export function Hero() {
   return (
     <section id="top" className="relative overflow-hidden pb-24 pt-40 md:pt-44">
@@ -43,8 +34,8 @@ export function Hero() {
           </p>
 
           <div className="mb-9 flex flex-wrap gap-3.5">
-            <a href="#experience" className="btn-outline">
-              See my experience
+            <a href="#projects" className="btn-outline">
+              See my work
             </a>
             {CV_HREF && (
               <a href={CV_HREF} target="_blank" rel="noopener" className="btn-outline">
@@ -66,13 +57,6 @@ export function Hero() {
             </a>
           </div>
 
-          <div className="flex flex-wrap gap-2.5" aria-label="Core stack">
-            {stack.map((s) => (
-              <span key={s} className="chip-sm">
-                {s}
-              </span>
-            ))}
-          </div>
         </motion.div>
 
         <HeroTerminal />

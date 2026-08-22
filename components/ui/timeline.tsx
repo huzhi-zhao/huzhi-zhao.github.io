@@ -3,7 +3,8 @@
 // Adapted from Aceternity UI <Timeline />.
 // Changes from the registry source: imports framer-motion instead of motion/react,
 // the section heading and page background are lifted out to the caller, and the
-// vertical rhythm is tightened for a portfolio section rather than a landing page.
+// vertical rhythm is tightened for a portfolio section rather than a landing page
+// (tightened again once Experience became a collapsed list — FR-4.1).
 
 import { motion, useScroll, useTransform } from "framer-motion";
 import React, { useEffect, useRef, useState } from "react";
@@ -40,7 +41,7 @@ export const Timeline = ({ data }: { data: TimelineEntry[] }) => {
     <div ref={containerRef} className="w-full">
       <div ref={ref} className="relative mx-auto">
         {data.map((item, index) => (
-          <div key={index} className="flex justify-start pt-10 md:gap-10 md:pt-20">
+          <div key={index} className="flex justify-start pt-6 md:gap-10 md:pt-8">
             <div className="sticky top-28 z-40 flex max-w-xs flex-col items-center self-start md:w-full md:max-w-[220px] md:flex-row">
               <div className="absolute left-3 flex h-10 w-10 items-center justify-center rounded-full bg-[#141414]">
                 <div className="h-4 w-4 rounded-full border border-white/[0.16] bg-elevated" />
