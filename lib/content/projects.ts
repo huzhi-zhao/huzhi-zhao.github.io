@@ -8,6 +8,8 @@ export type Project = {
   /** 疑问句，卡面单行不折行（ADR-0004 约束 1 / FR-3.2）。**未定稿**。 */
   question: string;
   domain: DomainKey;
+  /** 问题域标签同一行、右对齐显示。 */
+  year: string;
   /** 省略即不渲染角标 —— 个人开源项目没有合适的状态词。 */
   status?: "in-progress" | "production" | "archived";
   /** 唯一主点击目标（FR-3.3）。wiki 未就绪时退化为 repo / demo。 */
@@ -24,6 +26,7 @@ export const PROJECTS: Project[] = [
     slug: "urban-ops",
     title: "Urban Operations Intelligence Platform",
     question: "How does a city know where to send its plows after a snowfall?",
+    year: "2026",
     domain: "operational",
     status: "in-progress",
     destination: { href: LINKS.uoipRepo.href, kind: "repo" },
@@ -40,6 +43,7 @@ export const PROJECTS: Project[] = [
     slug: "toucan-shelf",
     title: "ToucanShelf — AI-Native Knowledge Base",
     question: "Where should an AI agent read and write your team's knowledge?",
+    year: "2026",
     domain: "ai",
     status: "in-progress",
     destination: { href: LINKS.toucanShelfRepo.href, kind: "repo" },
@@ -50,12 +54,13 @@ export const PROJECTS: Project[] = [
     },
     teaser:
       "A self-hosted hierarchical knowledge base: folder trees, live gallery views, RAG search, and an MCP server that AI agents read and write directly.",
-    tech: ["Golang", "React", "MCP", "RAG", "SQLite"],
+    tech: ["RAG", "MCP", "Golang", "React", "SQLite"],
   },
   {
     slug: "factory-mes",
     title: "Factory MES & Analytics Platform",
     question: "How do you get 20+ production stages onto one system?",
+    year: "2025",
     domain: "industrial",
     status: "production",
     destination: { href: LINKS.mesDemo.href, kind: "demo" },
@@ -72,6 +77,7 @@ export const PROJECTS: Project[] = [
     slug: "icon-pipeline",
     title: "AI Agent Icon Curation Pipeline",
     question: "How do you describe and tag thousands of folder icons without doing it by hand?",
+    year: "2025",
     domain: "ai",
     // 未决问题 1（设计文档 0001 §5）：primary destination 选 App repo 还是 pipeline repo。
     destination: { href: LINKS.iconApp.href, kind: "repo" },
@@ -83,7 +89,7 @@ export const PROJECTS: Project[] = [
     },
     teaser:
       "An AI agent orchestrating Gemini calls to auto-generate descriptions and classification tags for thousands of folder icons, feeding a free macOS app.",
-    tech: ["Gemini API", "AI Agent", "Python", "Electron", "Vue 3"],
+    tech: ["Gemini API", "BLIP", "CLIP", "AI Agent", "Vue 3"],
   },
 ];
 

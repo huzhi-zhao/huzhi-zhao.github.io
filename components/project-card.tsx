@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { Button as MovingBorderButton } from "@/components/ui/moving-border";
 import { DOMAINS } from "@/lib/content/taxonomy";
 import type { Project } from "@/lib/content/projects";
 
@@ -21,7 +22,12 @@ const STATUS: Record<NonNullable<Project["status"]>, { text: string; className: 
 /**
  * 整卡是唯一的链接元素（FR-3.3）—— 卡内不允许再出现 <a> / <button>。
  * hover 遮罩用 group-hover 纯 CSS 实现，且只在真正支持 hover 的指针设备上渲染样式（FR-3.7）。
+ * 工业 / 准工业项目（UOIP、MES）的问题域标签用 Moving Border 动效强调
+ * （as="span"，同上），其余沿用低调的 eyebrow。
  */
+/** 用动效标签强调的问题域 —— 其余走静态 eyebrow。 */
+const EMPHASISED: ReadonlySet<Project["domain"]> = new Set(["operational", "industrial"]);
+
 export function ProjectCard({ project }: { project: Project }) {
   // status 可省略 —— 省略时不渲染角标（个人开源项目没有合适的状态词）。
   const status = project.status ? STATUS[project.status] : null;
@@ -59,7 +65,22 @@ export function ProjectCard({ project }: { project: Project }) {
       </figure>
 
       <div className="flex flex-1 flex-col p-6">
-        <span className="eyebrow mb-3 self-start">{DOMAINS[project.domain]}</span>
+        <div className={`flex items-center justify-between gap-3 ${EMPHASISED.has(project.domain) ? "mb-5" : "mb-3"}`}>
+          {EMPHASISED.has(project.domain) ? (
+            <MovingBorderButton
+              as="span"
+              borderRadius="1.75rem"
+              duration={3000}
+              containerClassName="shrink-0 text-xs"
+              className="border-white/[0.12] bg-elevated px-4 py-1.5 font-mono text-[11px] uppercase tracking-[1.5px] text-white/[0.9]"
+            >
+              {DOMAINS[project.domain]}
+            </MovingBorderButton>
+          ) : (
+            <span className="eyebrow">{DOMAINS[project.domain]}</span>
+          )}
+          <span className="font-mono text-[12px] text-faint">{project.year}</span>
+        </div>
 
         <h3 className="mb-2 font-heading text-[19px] font-medium leading-snug text-white">
           {project.title}
