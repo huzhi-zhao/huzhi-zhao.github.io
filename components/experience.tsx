@@ -54,6 +54,18 @@ function CompanyLogo({ logo }: { logo: NonNullable<Role["logo"]> }) {
  * 折叠用原生 <details>/<summary>：键盘操作与 aria-expanded 语义免费获得（FR-4.5），
  * 且 JS 未加载时内容依然可展开。默认折叠（Weimob 例外：defaultOpen），可同时展开多条（FR-4.3）。
  */
+function TechTags({ tech, className = "" }: { tech: string[]; className?: string }) {
+  return (
+    <div className={`flex flex-wrap gap-1.5 ${className}`}>
+      {tech.map((t) => (
+        <span key={t} className="tag text-[11.5px]">
+          {t}
+        </span>
+      ))}
+    </div>
+  );
+}
+
 function RoleCard({ role }: { role: Role }) {
   return (
     <details open={role.defaultOpen} className="group mb-3 rounded-2xl border border-white/[0.08] bg-elevated transition-colors duration-300 hover:border-white/[0.16] open:border-white/[0.16]">
@@ -76,6 +88,12 @@ function RoleCard({ role }: { role: Role }) {
           <p className="text-[14px] leading-[1.6] text-muted">
             <Rich text={role.headline} />
           </p>
+
+          {/* 折叠态：技术栈跟在 headline 后面，一眼可扫。展开后交给卡片底部那份。 */}
+          {/* 展开态：技术栈回到卡片最底部。 */}
+        {role.tech && role.tech.length > 0 && (
+            <TechTags tech={role.tech} className="mt-3 group-open:hidden" />
+          )}
         </div>
 
         <span
@@ -169,15 +187,8 @@ function RoleCard({ role }: { role: Role }) {
           </a>
         )}
 
-        {role.tech && role.tech.length > 0 && (
-          <div className="mt-6 flex flex-wrap gap-2">
-            {role.tech.map((t) => (
-              <span key={t} className="tag">
-                {t}
-              </span>
-            ))}
-          </div>
-        )}
+        {/* 展开态：技术栈回到卡片最底部。 */}
+        {role.tech && role.tech.length > 0 && <TechTags tech={role.tech} className="mt-6" />}
       </div>
     </details>
   );
