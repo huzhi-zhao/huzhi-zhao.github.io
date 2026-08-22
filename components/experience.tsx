@@ -14,15 +14,53 @@ const KIND_BADGE: Record<NonNullable<Role["kind"]>, string> = {
 };
 
 /**
+ * 标题行的公司 logo。给了 href 就包一层外链 —— 点它跳官网，
+ * 而不是触发外层 <summary> 的折叠（stopPropagation + preventDefault）。
+ */
+function CompanyLogo({ logo }: { logo: NonNullable<Role["logo"]> }) {
+  const img = (
+    // eslint-disable-next-line @next/next/no-img-element
+    <img
+      src={logo.src}
+      alt={logo.alt}
+      width={logo.width}
+      height={logo.height}
+      /* 统一按 20px 高、宽度等比 —— 所有 logo 视觉高度一致。 */
+      className={`h-5 w-auto shrink-0 object-contain${logo.invert ? " invert" : ""}`}
+    />
+  );
+
+  if (!logo.href) return img;
+
+  return (
+    <a
+      href={logo.href}
+      target="_blank"
+      rel="noopener noreferrer"
+      title={`${logo.alt} — company website`}
+      onClick={(e) => {
+        e.stopPropagation();
+        e.preventDefault();
+        window.open(logo.href, "_blank", "noopener,noreferrer");
+      }}
+      className="shrink-0 opacity-80 transition-opacity hover:opacity-100"
+    >
+      {img}
+    </a>
+  );
+}
+
+/**
  * 折叠用原生 <details>/<summary>：键盘操作与 aria-expanded 语义免费获得（FR-4.5），
- * 且 JS 未加载时内容依然可展开。默认全部折叠，可同时展开多条（FR-4.3）。
+ * 且 JS 未加载时内容依然可展开。默认折叠（Weimob 例外：defaultOpen），可同时展开多条（FR-4.3）。
  */
 function RoleCard({ role }: { role: Role }) {
   return (
-    <details className="group mb-3 rounded-2xl border border-white/[0.08] bg-elevated transition-colors duration-300 hover:border-white/[0.16] open:border-white/[0.16]">
+    <details open={role.defaultOpen} className="group mb-3 rounded-2xl border border-white/[0.08] bg-elevated transition-colors duration-300 hover:border-white/[0.16] open:border-white/[0.16]">
       <summary className="flex cursor-pointer list-none items-start gap-4 p-5 md:p-6 [&::-webkit-details-marker]:hidden">
         <div className="min-w-0 flex-1">
           <div className="mb-1.5 flex flex-wrap items-center gap-x-3 gap-y-1.5">
+            {role.logo && <CompanyLogo logo={role.logo} />}
             <h4 className="font-heading text-[17px] font-medium leading-snug text-white">
               {role.company}
             </h4>

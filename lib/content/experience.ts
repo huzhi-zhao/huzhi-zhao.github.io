@@ -30,6 +30,21 @@ export type Role = {
    */
   points?: string[];
   tech?: string[];
+  /**
+   * 标题行的公司 logo（<img>，不走 next/image：静态导出下没必要为一个小图配 remotePatterns）。
+   * href 给了就把 logo 变成跳官网的外链。
+   */
+  logo?: {
+    src: string;
+    alt: string;
+    width: number;
+    height: number;
+    href?: string;
+    /** 深色卡片上反色显示（给本身是黑色单色标的 logo 用）。 */
+    invert?: boolean;
+  };
+  /** 折叠区默认展开（当前只给 Weimob，见 2026-08-22）。 */
+  defaultOpen?: boolean;
   /** 放 /public 或公开 URL 均可。 */
   images?: { src: string; alt: string }[];
   link?: { label: string; href: string };
@@ -58,6 +73,14 @@ export const EXPERIENCE: RoleGroup[] = [
           "Formalising the shift from backend engineering into data engineering and applied AI, alongside continued hands-on platform work.",
         ],
         tech: ["Machine Learning", "Data Engineering", "Business Analysis"],
+        logo: {
+          src: "https://www.uwinnipeg.ca/_files/images/redesign-2020/uwinnipeg-logo-black-4x.png",
+          alt: "University of Winnipeg",
+          width: 1200,
+          height: 300,
+          href: "https://www.uwinnipeg.ca/",
+          invert: true,
+        },
       },
     ],
   },
@@ -97,6 +120,13 @@ export const EXPERIENCE: RoleGroup[] = [
           "Delivered web admin portals, operational dashboards, reporting, and Android shop-floor apps, with real-time KPI monitoring, defect analysis, and equipment status reporting.",
         ],
         tech: ["Golang", "Vue.js", "MySQL", "Android", "RBAC"],
+        logo: {
+          src: "/logos/tipo.svg",
+          alt: "Shanghai Zhongyou Tipo Steel Pipe",
+          width: 102,
+          height: 41,
+          href: "http://www.shtipo.com/en/",
+        },
         link: { label: "See it in Projects", href: "#projects" },
       },
     ],
@@ -122,6 +152,15 @@ export const EXPERIENCE: RoleGroup[] = [
           "**Search reconciliation platform.** Built a distributed reconciliation system from scratch keeping MySQL and Elasticsearch near real-time consistent — a {{3-level}} diff engine (field, scope, and document count), a pluggable rule engine, non-blocking multi-source loaders over Dubbo, self-healing repair with exponential-backoff retries, and full audit logging with message replay.",
         ],
         tech: ["Java", "Elasticsearch", "Kafka", "Redis", "MySQL", "Dubbo"],
+        // TODO 这是 favicon 尺寸的长方形 logo，先占位；拿到正规 logo 资产后替换。
+        logo: {
+          src: "https://cdn2.weimob.com/saas/@assets/saas-fe-group-web-stc/img/weimobLogo.png?v=100",
+          alt: "Weimob",
+          width: 96,
+          height: 24,
+          href: "https://group.weimob.com/en/",
+        },
+        defaultOpen: true,
       },
     ],
   },
@@ -129,9 +168,10 @@ export const EXPERIENCE: RoleGroup[] = [
     title: "2019 — 21",
     roles: [
       {
-        company: "Souche (Dasouche)",
+        company: "DaSouChe (NASDAQ: DSC)",
         role: "Senior Java Software Engineer",
-        blurb: "Used-car trading SaaS platform for automotive dealers across China.",
+        blurb:
+          "Used-car trading SaaS platform for automotive dealers across China; listed on NASDAQ in 2026.",
         period: "Mar 2019 — May 2021",
         location: "Hangzhou, China",
         kind: "work",
@@ -144,6 +184,13 @@ export const EXPERIENCE: RoleGroup[] = [
           "Built scalable backend services and APIs supporting product lifecycle management and tenant-specific customization.",
         ],
         tech: ["Java", "Rule Engine", "Elasticsearch", "Multi-tenant SaaS"],
+        logo: {
+          src: "/logos/dasouche.svg",
+          alt: "DaSouChe",
+          width: 90,
+          height: 24,
+          href: "https://www.dasouche.com/en",
+        },
       },
     ],
   },
