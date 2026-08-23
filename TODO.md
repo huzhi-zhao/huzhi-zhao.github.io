@@ -26,9 +26,6 @@
 
 ## 站点待办
 
-- [ ] **Resume 下载入口已建好但未启用**：`components/site-navbar.tsx` 里的 `CV_HREF` 目前是
-      空字符串，导航栏 / 移动菜单 / Hero 三处 Resume 按钮都不渲染。拿到外部托管的 PDF
-      链接后填进去即可自动出现（简历不放在 GitHub Pages 里）。
 - [ ] **Work authorization 表述**：暂不写。等 2027-12 毕业、正式开始找工作前再 finalize。
 - [ ] **Experience 卡片配图**：`components/experience.tsx` 的 `Role` 类型支持
       `images: [{ src, alt }]`，文件放 `public/` 下填路径即可。MES 那条留了注释掉的示例。

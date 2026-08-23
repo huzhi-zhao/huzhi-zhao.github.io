@@ -3,8 +3,7 @@
 import { motion } from "framer-motion";
 import { SpotlightNew } from "@/components/ui/spotlight-new";
 import { HeroTerminal } from "@/components/hero-terminal";
-import { LinkedInIcon, ArrowUpRight, DownloadIcon } from "@/components/icons";
-import { CV_HREF } from "@/components/site-navbar";
+import { LinkedInIcon, ArrowUpRight } from "@/components/icons";
 
 export function Hero() {
   return (
@@ -37,12 +36,6 @@ export function Hero() {
             <a href="#projects" className="btn-outline">
               See my work
             </a>
-            {CV_HREF && (
-              <a href={CV_HREF} target="_blank" rel="noopener" className="btn-outline">
-                <DownloadIcon className="text-muted" />
-                Resume
-              </a>
-            )}
             <a
               href="https://linkedin.com/in/huzhi"
               target="_blank"

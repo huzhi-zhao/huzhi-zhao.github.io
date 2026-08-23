@@ -24,8 +24,9 @@
       提议中 → 已接受 / 修改
 - [ ] 评审 [ADR-0014 docs 承担简历工作的范围](adr/0014-resume-scope-in-docs.md)，
       提议中 → 已接受 / 修改
-- [ ] 裁决 [设计文档 0002 §5](design/0002-privacy-and-resume-workbench.md) 的三个未决问题，
-      其中第 1 条（是否彻底删除简历下载入口）会改动 `components/`
+- [x] 裁决简历下载入口 —— **彻底删除**，FR-10 已实施
+- [ ] 裁决 [设计文档 0002 §5](design/0002-privacy-and-resume-workbench.md) 剩下两个未决问题
+      （简历产物目录约定、FR-12.2 入口指引写在哪）
 
 ## 1. 隐私边界（ADR-0013 → FR-9 / FR-10）
 
@@ -34,7 +35,7 @@
 - [ ] **FR-9.5 迁移 `TODO.md` 的事实不一致项**到 ToucanShelf `Career/Vault/`，仓库只留指针。
       这是当前仓库里唯一实际存在的暴露面，优先做。
 - [ ] FR-9.1 `.gitignore` 补简历产物排除规则
-- [ ] FR-10.1 删除 `CV_HREF` 及三处按钮分支（待 §0 第 3 条裁决）
+- [x] FR-10.1 删除 `CV_HREF` 及三处按钮分支（连带删除无引用的 `DownloadIcon`）
 - [ ] FR-9.2 ~ FR-9.4 敏感信息扫描脚本
 - [ ] FR-12.3 复核 ToucanShelf 凭证类文档的分享状态（不在本仓库，但同属"绝不可外流"层）
 
