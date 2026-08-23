@@ -11,7 +11,8 @@
 每轮上线实际做成什么样，写在 `docs/launch/` 的上线记录里。
 
 简历侧的方法论写在 `docs/resume/`（决策仍进本目录，见 ADR-0014）；
-与 ToucanShelf 知识库的分工写在 [`docs/collaboration/toucanshelf.md`](../collaboration/toucanshelf.md)。
+与 ToucanShelf 知识库的分工写在 [`docs/collaboration/toucanshelf.md`](../collaboration/toucanshelf.md)；
+还剩什么没做，见 [`docs/roadmap.md`](../roadmap.md)。
 
 ## 格式
 
