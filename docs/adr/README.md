@@ -37,7 +37,17 @@
 
 这批 ADR 来自两个输入：
 
-1. **DPS 51019 Resume Building and Job Search Techniques** 课程的内容——Developing a Personal Brand（Elevator Pitch 五段式、Dependable Strengths）、Labour Market Research、The Challenge Mindset，以及 Introduction to Resumes（master / targeted 之分，Chronological A/B、Functional、Combination 四种版式）。
+1. **DPS 51019 Resume Building and Job Search Techniques** 课程的内容：
+
+   - `1A Developing a Personal Brand`——personal brand 的定义、Elevator Pitch 五段式
+     （Introductory → Supporting 1/2/3 → Closing）、Dependable Strengths；
+   - `1C Introduction to Resumes`——master / targeted 之分；targeted 分
+     **Chronological、Functional、Combination 三类**（Chronological 另有 A / B 两种排版，
+     A/B 是同一类的版式变体，不是两个独立类型）；job ad 拆解；
+     简历陈述句的 `Verb + Details + Result`。
+   - Labour Market Research、The Challenge Mindset 来自课堂讲授，
+     **讲义 PDF 不在本仓库的引用范围内**，涉及这两处的 ADR 表述无法对着原文复核。
+
    注意：课件原文是英文；此前流传的中文解读是 LLM 的二手推论，**以英文原文为准**。
 2. 2026-08 对 Manitoba 本地岗位市场和开发者作品集实践的一轮调研，结论记录在 ADR-0003 和
    [设计文档 0001](../design/0001-brand-revamp.md) 的调研附录里。

@@ -20,7 +20,7 @@ ADR-0002 把 Experience 压成折叠列表，但没有回答一个问题：**是
 （HR 与 ATS 会核对连续性），**"给出证据"是品牌站的诉求**（ADR-0001）。
 用同一种卡片形态承载两者，结果是弱内容拉低了强内容的信噪比。
 
-课程 Resume Building 一节给的 **Chronological B** 模板正好把这两件事拆开了：
+课件 `1C Introduction to Resumes` 给的 **Chronological B** 模板正好把这两件事拆开了：
 `RELEVANT EXPERIENCE` 每段带成就条目，`ADDITIONAL EXPERIENCE` 每段只有
 职位 / 雇主 / 时间 / 地点一行，用途明写为 "Downplays additional experience /
 Accounts for all work history (no gaps)"。

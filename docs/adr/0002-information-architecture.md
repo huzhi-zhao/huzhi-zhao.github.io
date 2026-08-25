@@ -22,7 +22,8 @@ Hero → Experience → Projects → Skills → Contact
 2. Skills 是一份技术栈清单——按工具分类的人是"会用工具的人"，
    这和课程里 Challenge Mindset 想传达的"我要解决什么问题"是相反的语法。
 
-课程 Challenge Mindset 一节的核心：不要问 "what do you want to be when you grow up"
+课程 Challenge Mindset 一节（课堂讲授，讲义不在本仓库引用的 1A / 1C 两份 PDF 里）的核心：
+不要问 "what do you want to be when you grow up"
 （职位），要问你想解决什么问题。
 
 ## 决策

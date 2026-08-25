@@ -11,9 +11,16 @@
 `Improved query performance to support 500K+ QPS through Redis caching`。
 这类句子把作者定位成**技术执行者**——做了一件技术动作。
 
-课程的 Elevator Pitch 五段式（Introductory → Supporting 1/2/3 → Closing）要求每条支撑
-都是"技能 + 与目标岗位的匹配 + 具体实例"，收尾要落到"这件工作带来了什么结果"；
-Dependable Strengths 练习同样是从**具体成就**反推稳定能力。两者都要求"结果"必须出现。
+课程里有三处独立地要求"结果必须出现"：
+
+- **Elevator Pitch 五段式**（1A，Introductory → Supporting 1/2/3 → Closing）：每条支撑都是
+  "技能 + 与目标岗位/行业的匹配 + 具体实例"。注意 Closing 是**两件事**——
+  这份工作带来的好处（This helped customers… / It also helped the organization…）
+  **加上**这份工作让你什么感觉（Overall, I find this work ___ because ___）。
+  后半段属于口头 pitch 的收尾，**不进站点文案**：站点上写自己的感受，
+  正是 [ADR-0011](0011-about-page-scope.md) 约束 3 要删掉的那类零信息量句子。
+- **简历陈述句的结构**（1C）：`Verb + Details + Result`，Result 明写为"结果、产出或影响"。
+- **Dependable Strengths**（1A）：从**具体成就**反推稳定能力。
 
 ## 决策
 
@@ -22,6 +29,13 @@ Dependable Strengths 练习同样是从**具体成就**反推稳定能力。两�
 - **Challenge**：当时的业务困境（不是技术任务）
 - **Solution**：架构/方法上的选择，且要点出取舍
 - **Impact**：结果，尽量带可核验的量
+
+**出处**：CSI 不是自创的，它对应课件 1C 里 Functional 模板 Academic Projects 一栏的
+`Challenge / Action / Result`（CAR），也对应简历陈述句的 `Verb + Details + Result`。
+唯一的改动是把中间那段从 **Action**（我做了什么）收紧成 **Solution**（我在架构/方法上
+选了什么、放弃了什么）。这是有意加严：只写"做了什么"仍然是技术执行者的语法，
+点出取舍才说明是设计者。因此**凡是 Solution 段落写不出取舍的，视为不合格**，
+按 Action 的标准写出来不算过关。
 
 示例改写：
 
@@ -39,7 +53,12 @@ Hero 的 Elevator Pitch 里选定的关键词，必须原样出现在板块标�
 文章标题、Experience 的 Impact 句中。目标是访客滚完一屏、细节全忘光之后，
 脑子里仍残留同一个印象词（如 `operations` / `reliable`）。
 
-关键词的选取以本地 JD 的高频动词为准（Labour Market Research），不靠拍脑袋。
+关键词的选取以本地 JD 的高频词为准（Labour Market Research），不靠拍脑袋。
+统计范围是**名词和动词两类**——课件 1C 对 keyword 的定义原文是
+"nouns and verbs used to describe the position"，并要求 "use vocabulary (keywords)
+from the posting and the industry"。只统计动词会漏掉能力域这一侧的词，
+而 [ADR-0003](0003-problem-domain-abstraction.md) 的标签集本身就是名词短语
+（`Operational Data Platforms` 等），按只统计动词的口径根本无法定稿。
 
 ### 3. 板块标题用问句或动词短语，不用分类名词
 

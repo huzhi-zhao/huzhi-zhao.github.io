@@ -12,6 +12,12 @@
       是一段**近两年的空白**。站点时间线已补齐，CV 没有——而 CV 才是真正投出去的那份。
 - [ ] **CV 缺 career break 说明**：`Mar 2025 – Dec 2025` 的 relocation + IBM AI 证书 + 图标
       AI 项目，站点有，CV 没有。
+
+  > 上面两条**怎么补**：按课件 1C 的 Chronological B 模板，补进 `ADDITIONAL EXPERIENCE`
+  > 一节即可——每段只有职位 / 雇主 / 时间 / 地点一行，不写成就条目。这一层在模板里的用途
+  > 明写为 "Accounts for all work history (no gaps)"，目的就是填时间线，不是给证据。
+  > 和站点的分层一一对应，判据见 [ADR-0012](docs/adr/0012-experience-two-tiers.md)：
+  > 拿得出带 Impact 的成就才进 Relevant，拿不出就走 Additional，别硬凑。
 - [ ] **任职时间 LinkedIn 与离职证明不符**（以离职证明 / CV 为准，LinkedIn 要改）：
   | 公司 | 离职证明 / CV（正确） | LinkedIn（待改） |
   | --- | --- | --- |
