@@ -10,6 +10,10 @@
 纯实现细节（用哪个动画库、某个间距取多少）不写 ADR，写在 `docs/design/` 的设计文档里；
 每轮上线实际做成什么样，写在 `docs/launch/` 的上线记录里。
 
+简历侧的方法论写在 `docs/resume/`（决策仍进本目录，见 ADR-0014）；
+与 ToucanShelf 知识库的分工写在 [`docs/collaboration/toucanshelf.md`](../collaboration/toucanshelf.md)；
+还剩什么没做，见 [`docs/roadmap.md`](../roadmap.md)。
+
 ## 格式
 
 每篇包含：状态 / 背景 / 决策 / 理由 / 约束（对后续工作的硬性限制）/ 后果 / 复审条件。
@@ -32,6 +36,8 @@
 | [0010](0010-ai-assisted-writing.md) | AI 辅助写作的边界与定稿标准 | 已接受 |
 | [0011](0011-about-page-scope.md) | About 页的职责边界：只做人味，不做求职诉求 | 已接受 |
 | [0012](0012-experience-two-tiers.md) | Experience 分两层：给证据的和只补时间线的 | 已接受 |
+| [0013](0013-public-repo-privacy-boundary.md) | 公开仓库的隐私边界 | 提议中 |
+| [0014](0014-resume-scope-in-docs.md) | docs 承担简历工作的范围，以及为什么不拆桶 | 提议中 |
 
 ## 背景来源
 

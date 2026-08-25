@@ -53,7 +53,9 @@
 - **FR-1.3** 终端脚本从简历字段改为定位展开：输出问题域与三根技术支柱
   （Distributed Backend & Infrastructure / Data Engineering & Lakehouse / Applied AI）。
 - **FR-1.4** `status` 一行保持泛化表述，不写具体岗位或地域（ADR-0008）。
-- **FR-1.5** Resume 按钮维持现有 `CV_HREF` 空值即隐藏的机制，本次不动。
+- **FR-1.5** ~~Resume 按钮维持现有 `CV_HREF` 空值即隐藏的机制，本次不动。~~
+  **已被 [设计文档 0002](0002-privacy-and-resume-workbench.md) 的 FR-10 取代**：
+  按 ADR-0013 约束 3，站点不提供简历下载入口，`CV_HREF` 及三处按钮已删除。
 
 ### FR-2 信息架构调整
 
