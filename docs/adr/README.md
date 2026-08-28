@@ -12,7 +12,7 @@
 
 简历侧的方法论写在 `docs/resume/`（决策仍进本目录，见 ADR-0014）；
 与 ToucanShelf 知识库的分工写在 [`docs/collaboration/toucanshelf.md`](../collaboration/toucanshelf.md)；
-还剩什么没做，见 [`docs/roadmap.md`](../roadmap.md)。
+还剩什么没做，见 [`TODO.md`](../../TODO.md)。
 
 ## 格式
 
@@ -38,6 +38,7 @@
 | [0012](0012-experience-two-tiers.md) | Experience 分两层：给证据的和只补时间线的 | 已接受 |
 | [0013](0013-public-repo-privacy-boundary.md) | 公开仓库的隐私边界 | 提议中 |
 | [0014](0014-resume-scope-in-docs.md) | docs 承担简历工作的范围，以及为什么不拆桶 | 提议中 |
+| [0015](0015-education-section.md) | Education 自成一层，Career break 降入 Additional | 已接受 |
 
 ## 背景来源
 

@@ -60,48 +60,6 @@ export type RoleGroup = { title: string; roles: Role[] };
  */
 export const EXPERIENCE: RoleGroup[] = [
   {
-    title: "2026 —",
-    roles: [
-      {
-        company: "University of Winnipeg",
-        role: "Post-Graduate Diplomas — Applied Artificial Intelligence · Business Analysis & Transformation",
-        period: "Jan 2026 — graduating Dec 2027",
-        location: "Winnipeg, MB, Canada",
-        kind: "study",
-        headline: "Formalising the shift from backend engineering into data engineering and applied AI.",
-        points: [
-          "Formalising the shift from backend engineering into data engineering and applied AI, alongside continued hands-on platform work.",
-        ],
-        tech: ["Machine Learning", "Data Engineering", "Business Analysis"],
-        logo: {
-          src: "https://www.uwinnipeg.ca/_files/images/redesign-2020/uwinnipeg-logo-black-4x.png",
-          alt: "University of Winnipeg",
-          width: 1200,
-          height: 300,
-          href: "https://www.uwinnipeg.ca/",
-          invert: true,
-        },
-      },
-    ],
-  },
-  {
-    title: "2025",
-    roles: [
-      {
-        company: "Career break — relocation to Canada",
-        role: "Self-directed study, Hangzhou → Winnipeg",
-        period: "Mar 2025 — Dec 2025",
-        location: "Hangzhou, China",
-        kind: "break",
-        headline: "IBM AI Engineering certificate, plus a macOS app over a {{10,000+}} image dataset.",
-        points: [
-          "Used the relocation period to pivot toward AI: completed the **IBM AI Engineering Professional Certificate** and built a macOS icon-management app on a {{10,000+}} image dataset using CLIP, BLIP, and a fine-tuned VGG16 model.",
-        ],
-        tech: ["PyTorch", "CLIP / BLIP", "Computer Vision", "TypeScript"],
-      },
-    ],
-  },
-  {
     title: "2024 — 25",
     roles: [
       {
@@ -210,6 +168,12 @@ export type AdditionalRole = {
 
 export const ADDITIONAL: AdditionalRole[] = [
   {
+    role: "Career break — relocation to Canada",
+    company: "Self-directed study (IBM AI Engineering certificate)",
+    period: "Mar 2025 — Dec 2025",
+    location: "Hangzhou, China",
+  },
+  {
     role: "Java Developer",
     company: "Hangzhou Tanhua E-commerce",
     period: "Dec 2023 — Jun 2024",
@@ -226,6 +190,52 @@ export const ADDITIONAL: AdditionalRole[] = [
     company: "Zhejiang Yonyou Software",
     period: "Jan 2016 — Mar 2017",
     location: "Hangzhou, China",
+  },
+];
+
+/**
+ * Education 单独成层（2026-08-28）。在读学历不是 experience：
+ * 它拿不出带 Impact 的成就，按 ADR-0012 判据本就不该占 Relevant 卡；
+ * 但它也不属于 Additional 那层（那层的语义是"降级、只补时间线"，
+ * 且约束 1 不许带 logo / 标签，而本地学历恰恰是北美读者会主动去找的信息）。
+ *
+ * 两个 diploma **合并成一条**，不平铺并列 —— 并列会让读者自己去猜两者的关系
+ * （素材见 ToucanShelf `Research/BAT 第二个 diploma 的定位与解释话术` §4）。
+ */
+export type EducationEntry = {
+  school: string;
+  /** 学位/文凭行；两个 diploma 用 " · " 连成一行。 */
+  credential: string;
+  period: string;
+  location?: string;
+  /** 一行说明这段学历补的是哪块能力，可省。 */
+  focus?: string;
+  logo?: Role["logo"];
+};
+
+export const EDUCATION: EducationEntry[] = [
+  {
+    school: "University of Winnipeg (PACE)",
+    credential:
+      "Post-Graduate Diploma, Applied Artificial Intelligence · Post-Degree Diploma, Business Analysis & Transformation",
+    period: "Jan 2026 — Dec 2027",
+    location: "Winnipeg, MB, Canada",
+    focus:
+      "End-to-end delivery: business problem framing, data pipelines, and ML engineering.",
+    logo: {
+      src: "https://www.uwinnipeg.ca/_files/images/redesign-2020/uwinnipeg-logo-black-4x.png",
+      alt: "University of Winnipeg",
+      width: 1200,
+      height: 300,
+      href: "https://www.uwinnipeg.ca/",
+      invert: true,
+    },
+  },
+  {
+    school: "Henan University of Engineering",
+    credential: "BEng, Mechanical Design, Manufacturing and Automation",
+    period: "Sep 2010 — Jun 2014",
+    location: "Henan, China",
   },
 ];
 

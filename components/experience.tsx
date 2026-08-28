@@ -5,7 +5,7 @@ import { Timeline, type TimelineEntry } from "@/components/ui/timeline";
 import { SectionHeading } from "@/components/section-heading";
 import { Rich } from "@/components/rich-text";
 import { ArrowUpRight } from "@/components/icons";
-import { EXPERIENCE, ADDITIONAL, type Role } from "@/lib/content/experience";
+import { EXPERIENCE, ADDITIONAL, EDUCATION, type Role } from "@/lib/content/experience";
 
 const KIND_BADGE: Record<NonNullable<Role["kind"]>, string> = {
   work: "border-white/[0.16] text-muted",
@@ -205,6 +205,48 @@ const ENTRIES: TimelineEntry[] = EXPERIENCE.map((group) => ({
   ),
 }));
 
+/**
+ * Education 自成一层，排在时间线之前：Experience 最新一条止于 2025-02，
+ * 在读学历必须先出现，否则页面读起来像最近一年半是空的。
+ */
+function Education() {
+  return (
+    <div className="container-x mb-14 max-w-[900px]">
+      <h3 className="mb-5 border-b border-white/[0.08] pb-3 font-mono text-[11px] uppercase tracking-[1.5px] text-faint">
+        Education
+      </h3>
+      <ul className="flex flex-col">
+        {EDUCATION.map((e) => (
+          <li
+            key={e.school + e.period}
+            className="border-b border-white/[0.04] py-4 last:border-0"
+          >
+            <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
+              <span className="flex items-center gap-2.5">
+                {e.logo && <CompanyLogo logo={e.logo} />}
+                <span className="text-[15px] font-medium text-white/[0.9]">{e.school}</span>
+              </span>
+              <span className="font-mono text-[12.5px] text-faint">
+                {e.period}
+                {e.location && (
+                  <>
+                    <span aria-hidden className="mx-2 text-white/[0.16]">
+                      ·
+                    </span>
+                    {e.location}
+                  </>
+                )}
+              </span>
+            </div>
+            <p className="mt-1.5 text-[14px] leading-relaxed text-white/[0.72]">{e.credential}</p>
+            {e.focus && <p className="mt-1 text-[13.5px] text-muted">{e.focus}</p>}
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+}
+
 /** Chronological B 的 "Additional Experience"：一行一条，不给成就、不可展开。 */
 function AdditionalExperience() {
   return (
@@ -251,6 +293,7 @@ export function Experience() {
         title="Where I've Worked."
         subtitle="Nine years of backend engineering across e-commerce, SaaS, and manufacturing — now moving into data and AI."
       />
+      <Education />
       <div className="container-x">
         <Timeline data={ENTRIES} />
       </div>
