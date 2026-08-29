@@ -241,7 +241,8 @@ export const EDUCATION: EducationEntry[] = [
   },
   {
     school: "Henan University of Engineering",
-    credential: "BEng, Mechanical Design, Manufacturing and Automation",
+    credential:
+      "Bachelor of Engineering, Mechanical Design, Manufacturing and Automation",
     period: "Sep 2010 — Jun 2014",
     location: "Henan, China",
     logo: {
