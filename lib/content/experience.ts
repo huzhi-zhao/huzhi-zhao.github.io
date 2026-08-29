@@ -244,6 +244,12 @@ export const EDUCATION: EducationEntry[] = [
     credential: "BEng, Mechanical Design, Manufacturing and Automation",
     period: "Sep 2010 — Jun 2014",
     location: "Henan, China",
+    logo: {
+      src: "/logos/henan-uoe.svg",
+      alt: "Henan University of Engineering",
+      width: 289,
+      height: 75,
+    },
   },
 ];
 
