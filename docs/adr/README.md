@@ -36,8 +36,8 @@
 | [0010](0010-ai-assisted-writing.md) | AI 辅助写作的边界与定稿标准 | 已接受 |
 | [0011](0011-about-page-scope.md) | About 页的职责边界：只做人味，不做求职诉求 | 已接受 |
 | [0012](0012-experience-two-tiers.md) | Experience 分两层：给证据的和只补时间线的 | 已接受 |
-| [0013](0013-public-repo-privacy-boundary.md) | 公开仓库的隐私边界 | 提议中 |
-| [0014](0014-resume-scope-in-docs.md) | docs 承担简历工作的范围，以及为什么不拆桶 | 提议中 |
+| [0013](0013-public-repo-privacy-boundary.md) | 公开仓库的隐私边界 | 已接受 |
+| [0014](0014-resume-scope-in-docs.md) | docs 承担简历工作的范围，以及为什么不拆桶 | 已接受 |
 | [0015](0015-education-section.md) | Education 自成一层，Career break 降入 Additional | 已接受 |
 
 ## 背景来源
