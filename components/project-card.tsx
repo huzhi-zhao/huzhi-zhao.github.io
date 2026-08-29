@@ -119,7 +119,13 @@ export function ProjectCard({ project }: { project: Project }) {
 
         {status && <StatusBadge text={status.text} accent={status.accent} dot={status.dot} />}
 
-        <div className="card-repos absolute bottom-3.5 right-3.5 z-20 items-center gap-2">
+        {/* hover 时右上角压一层暗角，仓库图标叠在上面 —— 角标退到暗角之下。 */}
+        <div className="card-repos absolute right-0 top-0 z-20 h-20 w-52 items-start justify-end">
+          <span
+            aria-hidden
+            className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(0,0,0,0.72)_0%,rgba(0,0,0,0.42)_50%,transparent_78%)]"
+          />
+          <div className="relative m-3.5 flex items-center gap-2">
           {repos.length === 0 && (
             <span
               title="Closed source — client-owned repository"
@@ -141,6 +147,7 @@ export function ProjectCard({ project }: { project: Project }) {
               <GithubMark />
             </a>
           ))}
+          </div>
         </div>
 
         {/* 触屏设备上这一层永不出现 —— 比宽度断点准确，覆盖触屏笔记本。 */}
