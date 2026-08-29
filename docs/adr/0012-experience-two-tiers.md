@@ -1,6 +1,6 @@
 # ADR-0012 Experience 分两层：给证据的和只补时间线的
 
-- 状态：已接受
+- 状态：已接受（约束 1 于 2026-08-28 被 [ADR-0015](0015-education-section.md) 部分修订）
 - 日期：2026-08-21
 - 依赖：[ADR-0001](0001-site-positioning.md)、[ADR-0002](0002-information-architecture.md)、[ADR-0007](0007-copy-conventions.md)
 

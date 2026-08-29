@@ -1,0 +1,120 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" width="1200" height="675" role="img" aria-label="Icon annotation pipeline: scraped images filtered by a CNN, described by CLIP and BLIP, then renamed after their own tags">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#121a1d"/>
+      <stop offset="1" stop-color="#101314"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#4db8d8" stop-opacity="0.13"/>
+      <stop offset="1" stop-color="#4db8d8" stop-opacity="0"/>
+    </radialGradient>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M40 0H0V40" fill="none" stroke="#ffffff" stroke-opacity="0.03" stroke-width="1"/>
+    </pattern>
+    <marker id="tip" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M0 0.5 L9 5 L0 9.5" fill="none" stroke="#4db8d8" stroke-opacity="0.6" stroke-width="1.4"/>
+    </marker>
+  </defs>
+
+  <rect width="1200" height="675" fill="url(#bg)"/>
+  <rect width="1200" height="675" fill="url(#grid)"/>
+  <ellipse cx="640" cy="400" rx="560" ry="230" fill="url(#glow)"/>
+
+  <!-- wordmark -->
+  <g font-family="ui-monospace,SFMono-Regular,Menlo,monospace">
+    <text x="88" y="116" font-size="54" font-weight="700" letter-spacing="1" fill="#e7ebe9">Icons In,</text>
+    <text x="88" y="182" font-size="54" font-weight="700" letter-spacing="1" fill="#4db8d8">Keywords Out</text>
+    <path d="M92 210 H620" stroke="#4db8d8" stroke-opacity="0.3" stroke-width="3"/>
+    <text x="92" y="246" font-size="21" letter-spacing="1.2" fill="#7d8985">1,783 Icons Described By Vision Models</text>
+  </g>
+
+  <!-- scraped images -->
+  <g>
+    <g stroke="#8e9c97" stroke-opacity="0.45" stroke-width="2" fill="#ffffff" fill-opacity="0.04">
+      <rect x="88" y="308" width="34" height="34" rx="5" transform="rotate(-7 105 325)"/>
+      <rect x="140" y="300" width="34" height="34" rx="5" transform="rotate(5 157 317)"/>
+      <rect x="194" y="312" width="34" height="34" rx="5" transform="rotate(-3 211 329)"/>
+      <rect x="96" y="364" width="34" height="34" rx="5" transform="rotate(4 113 381)"/>
+      <rect x="150" y="356" width="34" height="34" rx="5" transform="rotate(-6 167 373)"/>
+      <rect x="204" y="368" width="34" height="34" rx="5" transform="rotate(8 221 385)"/>
+      <rect x="90" y="420" width="34" height="34" rx="5" transform="rotate(-4 107 437)"/>
+      <rect x="144" y="412" width="34" height="34" rx="5" transform="rotate(6 161 429)"/>
+      <rect x="198" y="424" width="34" height="34" rx="5" transform="rotate(-8 215 441)"/>
+    </g>
+    <text x="88" y="500" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="19" letter-spacing="1.2" fill="#7d8985">Scraped Images</text>
+  </g>
+
+  <!-- CNN filter funnel -->
+  <g>
+    <path d="M262 300 L344 372 M262 458 L344 402" fill="none" stroke="#4db8d8" stroke-opacity="0.45" stroke-width="2"/>
+    <text x="268" y="286" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="19" letter-spacing="1.2" fill="#9aa5a1">CNN Filter</text>
+    <!-- rejects -->
+    <g stroke="#8e9c97" stroke-opacity="0.22" stroke-width="2" fill="none">
+      <rect x="286" y="486" width="26" height="26" rx="4" transform="rotate(14 299 499)"/>
+      <rect x="326" y="508" width="26" height="26" rx="4" transform="rotate(-10 339 521)"/>
+      <path d="M296 476 L262 470" stroke-dasharray="4 5"/>
+    </g>
+    <text x="286" y="556" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="17" fill="#5d6764">Not Icons</text>
+  </g>
+
+  <!-- model stage -->
+  <g font-family="ui-monospace,SFMono-Regular,Menlo,monospace">
+    <path d="M344 387 H392" stroke="#4db8d8" stroke-opacity="0.45" stroke-width="2"/>
+    <path d="M392 323 V451" stroke="#4db8d8" stroke-opacity="0.3" stroke-width="2"/>
+    <path d="M392 323 H420 M392 405 H420" stroke="#4db8d8" stroke-opacity="0.45" stroke-width="2"/>
+    <path d="M392 451 V487 H420" fill="none" stroke="#8e9c97" stroke-opacity="0.3" stroke-width="2" stroke-dasharray="6 5"/>
+    <g>
+      <rect x="420" y="290" width="268" height="66" rx="10" fill="#4db8d8" fill-opacity="0.06" stroke="#4db8d8" stroke-opacity="0.55" stroke-width="2"/>
+      <text x="442" y="322" font-size="26" font-weight="700" fill="#e7ebe9">CLIP</text>
+      <text x="442" y="344" font-size="16" fill="#7d8985">Zero-Shot Attributes</text>
+    </g>
+    <g>
+      <rect x="420" y="372" width="268" height="66" rx="10" fill="#4db8d8" fill-opacity="0.06" stroke="#4db8d8" stroke-opacity="0.55" stroke-width="2"/>
+      <text x="442" y="404" font-size="26" font-weight="700" fill="#e7ebe9">BLIP</text>
+      <text x="442" y="426" font-size="16" fill="#7d8985">On-Icon Text</text>
+    </g>
+    <g>
+      <rect x="420" y="454" width="268" height="66" rx="10" fill="none" stroke="#8e9c97" stroke-opacity="0.4" stroke-width="2" stroke-dasharray="7 6"/>
+      <text x="442" y="486" font-size="24" fill="#9aa5a1">Gemini</text>
+      <text x="442" y="508" font-size="16" fill="#5d6764">Optional Hosted Backend</text>
+    </g>
+    <path d="M688 323 C 726 323, 730 387, 764 387 M688 405 C 726 405, 736 387, 764 387" fill="none" stroke="#4db8d8" stroke-opacity="0.4" stroke-width="2"/>
+    <path d="M688 487 C 736 487, 742 387, 764 387" fill="none" stroke="#8e9c97" stroke-opacity="0.25" stroke-width="2" stroke-dasharray="6 5"/>
+    <path d="M764 387 H812" stroke="#4db8d8" stroke-opacity="0.6" stroke-width="2" marker-end="url(#tip)" fill="none"/>
+  </g>
+
+  <!-- tagged output -->
+  <g font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="16">
+    <g>
+      <rect x="846" y="292" width="34" height="34" rx="6" fill="#4db8d8" fill-opacity="0.85"/>
+      <rect x="896" y="299" width="60" height="24" rx="12" fill="none" stroke="#4db8d8" stroke-opacity="0.45"/><text x="908" y="316" fill="#9aa5a1">blue</text>
+      <rect x="966" y="299" width="60" height="24" rx="12" fill="none" stroke="#4db8d8" stroke-opacity="0.45"/><text x="978" y="316" fill="#9aa5a1">book</text>
+      <rect x="1036" y="299" width="76" height="24" rx="12" fill="none" stroke="#4db8d8" stroke-opacity="0.45"/><text x="1048" y="316" fill="#9aa5a1">glossy</text>
+    </g>
+    <g>
+      <rect x="846" y="352" width="34" height="34" rx="6" fill="#4db8d8" fill-opacity="0.55"/>
+      <rect x="896" y="359" width="76" height="24" rx="12" fill="none" stroke="#4db8d8" stroke-opacity="0.45"/><text x="908" y="376" fill="#9aa5a1">green</text>
+      <rect x="982" y="359" width="76" height="24" rx="12" fill="none" stroke="#4db8d8" stroke-opacity="0.45"/><text x="994" y="376" fill="#9aa5a1">music</text>
+    </g>
+    <g>
+      <rect x="846" y="412" width="34" height="34" rx="6" fill="#4db8d8" fill-opacity="0.3"/>
+      <rect x="896" y="419" width="60" height="24" rx="12" fill="none" stroke="#4db8d8" stroke-opacity="0.45"/><text x="908" y="436" fill="#9aa5a1">dark</text>
+      <rect x="966" y="419" width="86" height="24" rx="12" fill="none" stroke="#4db8d8" stroke-opacity="0.45"/><text x="978" y="436" fill="#9aa5a1">rounded</text>
+    </g>
+  </g>
+
+  <!-- filename payoff -->
+  <g font-family="ui-monospace,SFMono-Regular,Menlo,monospace">
+    <path d="M846 472 H1128" stroke="#4db8d8" stroke-opacity="0.25" stroke-width="1.5" stroke-dasharray="5 5"/>
+    <text x="846" y="508" font-size="22" fill="#4db8d8">blue_book_glossy.png</text>
+    <text x="846" y="538" font-size="17" letter-spacing="1.2" fill="#7d8985">Tags Become The Filename</text>
+  </g>
+
+  <!-- stage strip -->
+  <g font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="18" letter-spacing="1.4" fill="#5d6764">
+    <path d="M88 600 H248" stroke="#ffffff" stroke-opacity="0.09" stroke-width="2"/><text x="88" y="632">Crawl</text>
+    <path d="M268 600 H400" stroke="#ffffff" stroke-opacity="0.09" stroke-width="2"/><text x="268" y="632">Classify</text>
+    <path d="M420 600 H688" stroke="#ffffff" stroke-opacity="0.09" stroke-width="2"/><text x="420" y="632">Tag</text>
+    <path d="M846 600 H1128" stroke="#4db8d8" stroke-opacity="0.28" stroke-width="2"/><text x="846" y="632" fill="#6d8a95">Rename</text>
+  </g>
+</svg>

@@ -22,14 +22,30 @@ export function Hero() {
             Open to new opportunities
           </span>
 
-          <h1 className="mb-5 font-heading text-[clamp(36px,5vw,52px)] font-light leading-[1.1] tracking-[-0.5px]">
-            Senior Backend &amp; Data Engineer.
+          <h1 className="mb-3 font-heading text-[clamp(30px,3.6vw,42px)] font-light leading-[1.15] tracking-[-0.5px]">
+            Senior Backend Engineer
           </h1>
 
+          <p className="mb-6 font-heading text-[clamp(18px,2vw,22px)] font-light leading-[1.3] tracking-[-0.2px] text-white/90">
+            expanding into Data &amp; AI
+          </p>
+
+          <p className="mb-4 max-w-[540px] text-[17px] tracking-[0.1px] text-muted">
+            Hi, I&apos;m James — a backend engineer with{" "}
+            <strong className="font-medium text-white/90">9 years</strong> of experience
+            building distributed systems where{" "}
+            <strong className="font-medium text-white/90">
+              scale, performance, and data reliability
+            </strong>{" "}
+            matter.
+          </p>
+
           <p className="mb-8 max-w-[540px] text-[17px] tracking-[0.1px] text-muted">
-            Hi, I&apos;m James — a backend engineer with 9 years building large-scale
-            distributed systems and data-intensive platforms. Now expanding into Data
-            Engineering and AI through post-graduate study in Winnipeg, Canada.
+            Now based in Winnipeg, I&apos;m extending that experience into{" "}
+            <strong className="font-medium text-white/90">
+              Data Engineering and Applied AI
+            </strong>{" "}
+            through post-graduate study and hands-on platform projects.
           </p>
 
           <div className="mb-9 flex flex-wrap gap-3.5">

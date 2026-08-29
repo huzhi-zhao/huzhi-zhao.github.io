@@ -26,7 +26,8 @@ function CompanyLogo({ logo }: { logo: NonNullable<Role["logo"]> }) {
       width={logo.width}
       height={logo.height}
       /* 统一按 20px 高、宽度等比 —— 所有 logo 视觉高度一致。 */
-      className={`h-5 w-auto shrink-0 object-contain${logo.invert ? " invert" : ""}`}
+      /* mono：brightness-0 先压成纯黑再反相成纯白，避免直接 invert 把彩色标反成补色。 */
+      className={`h-5 w-auto shrink-0 object-contain${logo.mono ? " brightness-0 invert" : ""}`}
     />
   );
 
@@ -257,27 +258,36 @@ function AdditionalExperience() {
       <ul className="flex flex-col">
         {ADDITIONAL.map((r) => (
           <li
-            key={r.company + r.period}
-            className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1 border-b border-white/[0.04] py-3 last:border-0"
+            key={r.role + r.period}
+            className="border-b border-white/[0.04] py-4 last:border-0"
           >
-            <span className="text-[14.5px] text-white/[0.82]">
-              {r.role}
-              <span aria-hidden className="mx-2 text-white/[0.16]">
-                ·
+            <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
+              <span className="text-[14.5px] text-white/[0.82]">
+                {r.role}
+                {r.company && (
+                  <>
+                    <span aria-hidden className="mx-2 text-white/[0.16]">
+                      ·
+                    </span>
+                    <span className="text-muted">{r.company}</span>
+                  </>
+                )}
               </span>
-              <span className="text-muted">{r.company}</span>
-            </span>
-            <span className="font-mono text-[12.5px] text-faint">
-              {r.period}
-              {r.location && (
-                <>
-                  <span aria-hidden className="mx-2 text-white/[0.16]">
-                    ·
-                  </span>
-                  {r.location}
-                </>
-              )}
-            </span>
+              <span className="font-mono text-[12.5px] text-faint">
+                {r.period}
+                {r.location && (
+                  <>
+                    <span aria-hidden className="mx-2 text-white/[0.16]">
+                      ·
+                    </span>
+                    {r.location}
+                  </>
+                )}
+              </span>
+            </div>
+            {r.scope && (
+              <p className="mt-1.5 text-[13.5px] text-muted">{r.scope}</p>
+            )}
           </li>
         ))}
       </ul>

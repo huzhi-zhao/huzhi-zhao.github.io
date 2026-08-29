@@ -18,9 +18,9 @@ const jetbrains = JetBrains_Mono({
   variable: "--font-mono",
 });
 
-const title = "Huzhi (James) Zhao — Senior Backend & Data Engineer";
+const title = "Huzhi (James) Zhao — Senior Backend Engineer";
 const description =
-  "Huzhi (James) Zhao — Senior Backend & Data Engineer with 9 years building large-scale distributed systems, now expanding into data engineering and AI.";
+  "Huzhi (James) Zhao — Senior Backend Engineer with 9 years building distributed systems where scale, performance and data reliability matter, now extending into Data Engineering and Applied AI.";
 
 export const metadata: Metadata = {
   title,
@@ -28,7 +28,7 @@ export const metadata: Metadata = {
   openGraph: {
     title,
     description:
-      "9 years building large-scale distributed systems and data-intensive platforms. Now expanding into Data Engineering and AI.",
+      "9 years building distributed systems where scale, performance and data reliability matter. Now extending into Data Engineering and Applied AI.",
     type: "website",
   },
   icons: {

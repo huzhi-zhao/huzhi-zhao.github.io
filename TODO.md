@@ -57,6 +57,13 @@
   > 明写为 "Accounts for all work history (no gaps)"，目的就是填时间线，不是给证据。
   > 和站点的分层一一对应，判据见 [ADR-0012](docs/adr/0012-experience-two-tiers.md)：
   > 拿得出带 Impact 的成就才进 Relevant，拿不出就走 Additional，别硬凑。
+- [ ] **Yonyou / Sendinfo 起止月份待核实**（2026-08-28 记）：Yonyou 站点写 `Jan 2016`、
+      LinkedIn 写 `Feb 2016`；Sendinfo 站点写 `Mar 2017`、LinkedIn 写 `May 2017`。
+      James 记不清，会找离职证明 / 社保记录核实。**在核实前站点保持现值不动**——
+      ADR-0012 约束 3 要求这一层与 CV / LinkedIn 完全一致，改错比不改更糟。
+      同批待确认的还有职位名：Tanhua（Java Developer / Senior Java Developer）、
+      Sendinfo（Junior Developer / Java Software Engineer，差一档职级）、
+      Yonyou 公司全名（Zhejiang Yonyou Software / yonyou Network Technology）。
 - [ ] **任职时间 LinkedIn 与离职证明不符**（以离职证明 / CV 为准，LinkedIn 要改）：
   | 公司 | 离职证明 / CV（正确） | LinkedIn（待改） |
   | --- | --- | --- |

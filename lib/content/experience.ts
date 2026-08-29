@@ -40,8 +40,8 @@ export type Role = {
     width: number;
     height: number;
     href?: string;
-    /** 深色卡片上反色显示（给本身是黑色单色标的 logo 用）。 */
-    invert?: boolean;
+    /** 深色卡片上转成纯白单色显示（给深色/彩色原标用）。 */
+    mono?: boolean;
   };
   /** 折叠区默认展开（当前只给 Weimob，见 2026-08-22）。 */
   defaultOpen?: boolean;
@@ -110,9 +110,8 @@ export const EXPERIENCE: RoleGroup[] = [
           "**Search reconciliation platform.** Built a distributed reconciliation system from scratch keeping MySQL and Elasticsearch near real-time consistent — a {{3-level}} diff engine (field, scope, and document count), a pluggable rule engine, non-blocking multi-source loaders over Dubbo, self-healing repair with exponential-backoff retries, and full audit logging with message replay.",
         ],
         tech: ["Java", "Elasticsearch", "Kafka", "Redis", "MySQL", "Dubbo"],
-        // TODO 这是 favicon 尺寸的长方形 logo，先占位；拿到正规 logo 资产后替换。
         logo: {
-          src: "https://cdn2.weimob.com/saas/@assets/saas-fe-group-web-stc/img/weimobLogo.png?v=100",
+          src: "/logos/weimob.svg",
           alt: "Weimob",
           width: 96,
           height: 24,
@@ -161,35 +160,45 @@ export const EXPERIENCE: RoleGroup[] = [
  */
 export type AdditionalRole = {
   role: string;
-  company: string;
+  /** 可省：career break 没有雇主，硬填一个反而是编事实。 */
+  company?: string;
   period: string;
   location?: string;
+  /**
+   * 一行范围描述：说清"做的是什么系统"，**不给结果**，且必须真的只占一行（ADR-0015 修订了
+   * ADR-0012 约束 1，见 0015 的"修订"一节）。带指标或成果的句子写在这里
+   * 就意味着它该升回 Relevant 层。
+   */
+  scope?: string;
 };
 
 export const ADDITIONAL: AdditionalRole[] = [
   {
     role: "Career break — relocation to Canada",
-    company: "Self-directed study (IBM AI Engineering certificate)",
     period: "Mar 2025 — Dec 2025",
     location: "Hangzhou, China",
+    scope: "Self-directed study — IBM AI Engineering Professional Certificate.",
   },
   {
     role: "Java Developer",
     company: "Hangzhou Tanhua E-commerce",
     period: "Dec 2023 — Jun 2024",
     location: "Hangzhou, China",
+    scope: "Supply-chain and ERP maintenance, standalone-site integration, marketing automation.",
   },
   {
     role: "Junior Developer",
     company: "Zhejiang Sendinfo Technology",
     period: "Mar 2017 — Mar 2019",
     location: "Hangzhou, China",
+    scope: "B2C ticketing SaaS — ordering, refunds, validation, payments — and a group-tour ERP.",
   },
   {
     role: "Junior Developer",
     company: "Zhejiang Yonyou Software",
     period: "Jan 2016 — Mar 2017",
     location: "Hangzhou, China",
+    scope: "Points-based loyalty malls, and mobile field-data apps for infrastructure contractors.",
   },
 ];
 
@@ -223,12 +232,11 @@ export const EDUCATION: EducationEntry[] = [
     focus:
       "End-to-end delivery: business problem framing, data pipelines, and ML engineering.",
     logo: {
-      src: "https://www.uwinnipeg.ca/_files/images/redesign-2020/uwinnipeg-logo-black-4x.png",
+      src: "/logos/uwinnipeg.svg",
       alt: "University of Winnipeg",
       width: 1200,
       height: 300,
       href: "https://www.uwinnipeg.ca/",
-      invert: true,
     },
   },
   {

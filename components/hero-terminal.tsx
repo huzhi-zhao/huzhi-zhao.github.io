@@ -4,16 +4,62 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import { CardBody, CardContainer, CardItem } from "@/components/ui/3d-card";
 
 type Line = { text: string; accent?: boolean };
-type Block = { cmd: string; out: Line[] };
+/**
+ * 极克制的高亮：只给「可验证的事实」上色 —— 指标数字与机构名，
+ * 其余保持终端灰。命令名走近白，模拟 Ubuntu 里输入行比输出行亮一档。
+ */
+const NUMERIC = "text-[#7fc8e6]";
+const NAMED = "text-[#e7ebe9]";
+/** 输出行内按子串上色；未命中的部分保持默认灰。 */
+function paint(text: string, marks: { s: string; cls: string }[]) {
+  const parts: { t: string; cls?: string }[] = [{ t: text }];
+  for (const m of marks) {
+    for (let i = 0; i < parts.length; i++) {
+      const p = parts[i];
+      if (p.cls) continue;
+      const at = p.t.indexOf(m.s);
+      if (at === -1) continue;
+      const next = [
+        { t: p.t.slice(0, at) },
+        { t: m.s, cls: m.cls },
+        { t: p.t.slice(at + m.s.length) },
+      ].filter((x) => x.t.length > 0);
+      parts.splice(i, 1, ...next);
+      i += next.length - 1;
+    }
+  }
+  return parts;
+}
+/** `tight` suppresses the blank line that otherwise follows a block, so the
+ *  four commands read as three groups: identity / substance / current state. */
+type Block = { cmd: string; out: Line[]; tight?: boolean };
 
 const SCRIPT: Block[] = [
-  { cmd: "whoami", out: [{ text: "huzhi.zhao — backend & data engineer" }] },
-  { cmd: "years_experience", out: [{ text: "9" }] },
+  { cmd: "whoami", out: [{ text: "huzhi.zhao — senior backend engineer" }] },
+  {
+    cmd: "focus",
+    out: [{ text: "large-scale data search · distributed systems" }],
+  },
+  {
+    cmd: "scale",
+    out: [{ text: "20K brands · 65M+ SKUs · 32-node ES · 500K+ peak QPS" }],
+  },
   {
     cmd: "currently",
-    out: [{ text: "Post-Grad AI Diploma @ University" }, { text: "of Winnipeg" }],
+    out: [{ text: "Post-Grad AI @ University of Winnipeg" }],
+    tight: true,
   },
   { cmd: "status", out: [{ text: "Open to new opportunities", accent: true }] },
+];
+
+/** 高亮词表：一处声明，Blocks 里按子串套用。 */
+const MARKS = [
+  { s: "huzhi.zhao", cls: NAMED },
+  { s: "20K", cls: NUMERIC },
+  { s: "65M+", cls: NUMERIC },
+  { s: "32-node", cls: NUMERIC },
+  { s: "500K+", cls: NUMERIC },
+  { s: "University of Winnipeg", cls: NAMED },
 ];
 
 const TYPING_SPEED = 28;
@@ -83,22 +129,28 @@ function useKeyClicks() {
  * the caret stays on the last line instead of dropping to an empty one — and
  * the invisible sizing copy reserves exactly the height the finished copy needs.
  */
-function Blocks({ blocks }: { blocks: { cmd: string; out: Line[] }[] }) {
+function Blocks({ blocks }: { blocks: Block[] }) {
   return (
     <>
       {blocks.map((b, i) => {
         const lastBlock = i === blocks.length - 1;
         return (
           <span key={i}>
-            <span className="text-faint">$</span> {b.cmd}
+            <span className="text-faint">$</span> <span className="text-[#e7ebe9]">{b.cmd}</span>
             {(b.out.length > 0 || !lastBlock) && "\n"}
             {b.out.map((o, j) => (
               <span key={j} className={o.accent ? "text-accent" : undefined}>
-                {o.text}
+                {o.accent
+                  ? o.text
+                  : paint(o.text, MARKS).map((p, k) => (
+                      <span key={k} className={p.cls}>
+                        {p.t}
+                      </span>
+                    ))}
                 {(j < b.out.length - 1 || !lastBlock) && "\n"}
               </span>
             ))}
-            {!lastBlock && "\n"}
+            {!lastBlock && !b.tight && "\n"}
           </span>
         );
       })}
@@ -170,10 +222,10 @@ export function HeroTerminal() {
   }, [started, done, block, chars, outs]);
 
   const rendered = SCRIPT.flatMap((b, i) => {
-    if (done) return [{ cmd: b.cmd, out: b.out }];
+    if (done) return [b];
     if (i > block) return [];
-    if (i < block) return [{ cmd: b.cmd, out: b.out }];
-    return [{ cmd: b.cmd.slice(0, chars), out: b.out.slice(0, outs) }];
+    if (i < block) return [b];
+    return [{ ...b, cmd: b.cmd.slice(0, chars), out: b.out.slice(0, outs) }];
   });
 
   return (
@@ -196,7 +248,7 @@ export function HeroTerminal() {
 
           {/* Both copies share one grid cell: the invisible full script reserves
               the final height so the hero never reflows while typing. */}
-          <div className="grid px-6 py-7 font-mono text-[13.5px] leading-[1.9] text-[#d6d6d6]">
+          <div className="grid px-6 py-6 font-mono text-[13.5px] leading-[1.6] text-[#d6d6d6]">
             <pre
               aria-hidden
               className="invisible col-start-1 row-start-1 overflow-x-auto whitespace-pre-wrap"

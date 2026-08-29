@@ -48,8 +48,9 @@ Post-Degree Diploma, Business Analysis & Transformation
 （这条判断的完整论证属于素材，按 [ADR-0013](0013-public-repo-privacy-boundary.md)
 留在 ToucanShelf `Research/BAT 第二个 diploma 的定位与解释话术`。）
 
-**3. Career break 降入 `ADDITIONAL`**，保留一行：
-`Career break — relocation to Canada · Self-directed study (IBM AI Engineering certificate)`。
+**3. Career break 降入 `ADDITIONAL`**，标题行只写
+`Career break — relocation to Canada`，IBM 证书那句放第二行的 `scope` 里。
+`AdditionalRole.company` 因此改成可选——这一段没有雇主，硬填一个反而是编事实。
 降的是形态，不是事实。
 
 ## 理由
@@ -71,6 +72,22 @@ Post-Degree Diploma, Business Analysis & Transformation
    CV 与 LinkedIn 必须同步（ADR-0001 约束 3）。
 3. **Career break 一旦在 Additional 层，就不许再加技术标签或链接**——
    ADR-0012 约束 1 同样适用。想升回 Relevant，先拿出带 Impact 的成就。
+
+## 修订：ADR-0012 约束 1 放宽一行（2026-08-28 追加）
+
+Additional 层原本只有"职位 · 雇主 · 时间 · 地点"一行。实测下来这一层信息量太低——
+读者看到 `Junior Developer · Zhejiang Yonyou Software` 无从判断那是什么工种，
+而这一层的三段加起来覆盖了将近四年，全都读不出内容。
+
+因此给 `AdditionalRole` 加一个可选的 `scope` 字段：**一句话说清做的是什么系统，
+不给任何结果**。ADR-0012 约束 1 相应改为：
+
+> Additional 层不允许出现**带 Impact 的成就条目**、标签、配图、外链，
+> 但允许一行不含结果的范围描述（`scope`）。
+
+判据没变，只是把"不许写任何东西"收紧成"不许写结果"：
+一旦某条 `scope` 里出现了指标或成果，就说明它该升回 Relevant 层，而不是留在这里。
+版式上三条与 Career break 统一为两行（标题行 / 时间地点行）加一行描述。
 
 ## 后果
 
