@@ -1,0 +1,125 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" width="1200" height="675" role="img" aria-label="Factory MES: steel plate feeds a 24-stage pipe production line and leaves as a finished pipe">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#151a19"/>
+      <stop offset="1" stop-color="#0f1211"/>
+    </linearGradient>
+    <linearGradient id="rail" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#1dbf73" stop-opacity="0.10"/>
+      <stop offset="0.45" stop-color="#1dbf73" stop-opacity="0.55"/>
+      <stop offset="1" stop-color="#1dbf73" stop-opacity="0.22"/>
+    </linearGradient>
+    <linearGradient id="steel" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#2b3331"/>
+      <stop offset="0.45" stop-color="#151a19"/>
+      <stop offset="1" stop-color="#232a28"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#1dbf73" stop-opacity="0.16"/>
+      <stop offset="1" stop-color="#1dbf73" stop-opacity="0"/>
+    </radialGradient>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M40 0H0V40" fill="none" stroke="#ffffff" stroke-opacity="0.03" stroke-width="1"/>
+    </pattern>
+    <marker id="tip" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M0 0.5 L9 5 L0 9.5" fill="none" stroke="#1dbf73" stroke-opacity="0.5" stroke-width="1.4"/>
+    </marker>
+  </defs>
+
+  <rect width="1200" height="675" fill="url(#bg)"/>
+  <rect width="1200" height="675" fill="url(#grid)"/>
+  <ellipse cx="620" cy="400" rx="540" ry="220" fill="url(#glow)"/>
+
+  <!-- wordmark -->
+  <g transform="translate(0,-40)">
+    <text x="86" y="200" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="112" font-weight="700" letter-spacing="8" fill="#1dbf73">MES</text>
+    <path d="M92 228 H332" stroke="#1dbf73" stroke-opacity="0.45" stroke-width="3"/>
+    <text x="92" y="266" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="23" letter-spacing="2.5" fill="#7d8985">24 Stages · One System</text>
+  </g>
+
+  <!-- incoming steel plate -->
+  <g transform="translate(0,-10)">
+    <path d="M64 372 H176 L196 384 H84 Z" fill="url(#steel)" stroke="#8e9c97" stroke-opacity="0.5" stroke-width="1.6"/>
+    <path d="M64 396 H176 L196 408 H84 Z" fill="url(#steel)" stroke="#8e9c97" stroke-opacity="0.35" stroke-width="1.6"/>
+    <text x="64" y="452" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="18" letter-spacing="1.5" fill="#5d6764">Plate</text>
+  </g>
+
+  <!-- process rail + weak direction arrow -->
+  <path transform="translate(0,-10)" d="M212 400 H970" stroke="url(#rail)" stroke-width="3"/>
+  <path transform="translate(0,-10)" d="M212 400 H992" stroke="#1dbf73" stroke-opacity="0.5" stroke-width="1.5" marker-end="url(#tip)" fill="none"/>
+
+  <!-- minor stage ticks -->
+  <g transform="translate(0,-10)" stroke="#ffffff" stroke-opacity="0.18" stroke-width="2">
+    <path d="M270 390v20M390 390v20M510 390v20M630 390v20M750 390v20M870 390v20
+             M300 392v16M360 392v16M420 392v16M480 392v16M540 392v16M600 392v16
+             M660 392v16M720 392v16M780 392v16M840 392v16M900 392v16M955 392v16"/>
+  </g>
+
+  <!-- fishbone key stages -->
+  <g transform="translate(0,-10)" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="22" letter-spacing="1.5">
+    <g>
+      <path d="M330 400 L372 332" stroke="#1dbf73" stroke-opacity="0.45" stroke-width="2"/>
+      <circle cx="330" cy="400" r="8.5" fill="#121615" stroke="#1dbf73" stroke-width="2.5"/>
+      <text x="382" y="326" fill="#e7ebe9">Feeding</text>
+    </g>
+    <g>
+      <path d="M450 400 L492 468" stroke="#1dbf73" stroke-opacity="0.45" stroke-width="2"/>
+      <circle cx="450" cy="400" r="8.5" fill="#121615" stroke="#1dbf73" stroke-width="2.5"/>
+      <text x="502" y="478" fill="#e7ebe9">Forming</text>
+    </g>
+    <g>
+      <path d="M570 400 L612 332" stroke="#1dbf73" stroke-opacity="0.45" stroke-width="2"/>
+      <circle cx="570" cy="400" r="8.5" fill="#121615" stroke="#1dbf73" stroke-width="2.5"/>
+      <text x="622" y="326" fill="#e7ebe9">Welding</text>
+    </g>
+    <g>
+      <path d="M690 400 L732 468" stroke="#1dbf73" stroke-opacity="0.45" stroke-width="2"/>
+      <circle cx="690" cy="400" r="8.5" fill="#121615" stroke="#1dbf73" stroke-width="2.5"/>
+      <text x="742" y="478" fill="#e7ebe9">Expanding</text>
+    </g>
+    <g>
+      <path d="M810 400 L852 332" stroke="#1dbf73" stroke-opacity="0.45" stroke-width="2"/>
+      <circle cx="810" cy="400" r="8.5" fill="#121615" stroke="#1dbf73" stroke-width="2.5"/>
+      <text x="862" y="326" fill="#e7ebe9">Inspection</text>
+    </g>
+    <g>
+      <path d="M930 400 L972 490" stroke="#1dbf73" stroke-opacity="0.45" stroke-width="2"/>
+      <circle cx="930" cy="400" r="8.5" fill="#121615" stroke="#1dbf73" stroke-width="2.5"/>
+      <text x="982" y="500" fill="#e7ebe9">Release</text>
+    </g>
+  </g>
+
+  <!-- finished pipe, outlined -->
+  <g transform="translate(0,-10)">
+    <path d="M1064 348 H1164" stroke="#8e9c97" stroke-opacity="0.55" stroke-width="2"/>
+    <path d="M1064 452 H1164" stroke="#8e9c97" stroke-opacity="0.55" stroke-width="2"/>
+    <path d="M1164 348 A20 52 0 0 1 1164 452" fill="none" stroke="#8e9c97" stroke-opacity="0.28" stroke-width="2"/>
+    <ellipse cx="1064" cy="400" rx="20" ry="52" fill="url(#steel)" stroke="#1dbf73" stroke-opacity="0.75" stroke-width="2.5"/>
+    <ellipse cx="1064" cy="400" rx="11" ry="34" fill="#0d100f" stroke="#8e9c97" stroke-opacity="0.55" stroke-width="1.8"/>
+    <path d="M1064 348 V296 M1064 452 V504" stroke="#1dbf73" stroke-opacity="0.25" stroke-width="1.5" stroke-dasharray="4 5"/>
+    <text x="1024" y="278" text-anchor="middle" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="18" letter-spacing="1.5" fill="#5d6764">Steel Pipe</text>
+  </g>
+
+  <!-- platform modules -->
+  <g transform="translate(0,-26)">
+    <path d="M92 552 H1108" stroke="#ffffff" stroke-opacity="0.07" stroke-width="1.5"/>
+    <g font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="17" letter-spacing="1.8" fill="#7d8985">
+      <g transform="translate(92,588)">
+        <g><rect x="0" y="0" width="15" height="15" rx="2.5" fill="#1dbf73"/><rect x="21" y="0" width="15" height="15" rx="2.5" fill="#1dbf73"/><rect x="0" y="21" width="15" height="15" rx="2.5" fill="#1dbf73"/><rect x="21" y="21" width="15" height="15" rx="2.5" fill="none" stroke="#8e9c97" stroke-opacity="0.45" stroke-width="1.8"/></g>
+        <text x="0" y="66">Dashboard</text>
+      </g>
+      <g transform="translate(346,588)">
+        <g><rect x="21" y="0" width="15" height="15" rx="2.5" fill="#1dbf73"/><rect x="0" y="21" width="15" height="15" rx="2.5" fill="none" stroke="#8e9c97" stroke-opacity="0.45" stroke-width="1.8"/><rect x="21" y="21" width="15" height="15" rx="2.5" fill="none" stroke="#8e9c97" stroke-opacity="0.45" stroke-width="1.8"/><rect x="42" y="21" width="15" height="15" rx="2.5" fill="none" stroke="#8e9c97" stroke-opacity="0.45" stroke-width="1.8"/></g>
+        <text x="0" y="66">Alerts</text>
+      </g>
+      <g transform="translate(600,588)">
+        <g><rect x="0" y="0" width="15" height="15" rx="2.5" fill="#1dbf73"/><rect x="21" y="0" width="15" height="15" rx="2.5" fill="none" stroke="#8e9c97" stroke-opacity="0.45" stroke-width="1.8"/><rect x="0" y="21" width="15" height="15" rx="2.5" fill="none" stroke="#8e9c97" stroke-opacity="0.45" stroke-width="1.8"/><rect x="21" y="21" width="15" height="15" rx="2.5" fill="#1dbf73"/><rect x="42" y="21" width="15" height="15" rx="2.5" fill="#1dbf73"/></g>
+        <text x="0" y="66">Reports</text>
+      </g>
+      <g transform="translate(854,588)">
+        <g><rect x="0" y="0" width="15" height="15" rx="2.5" fill="none" stroke="#8e9c97" stroke-opacity="0.45" stroke-width="1.8"/><rect x="42" y="0" width="15" height="15" rx="2.5" fill="none" stroke="#8e9c97" stroke-opacity="0.45" stroke-width="1.8"/><rect x="0" y="21" width="15" height="15" rx="2.5" fill="#1dbf73"/><rect x="21" y="21" width="15" height="15" rx="2.5" fill="#1dbf73"/><rect x="42" y="21" width="15" height="15" rx="2.5" fill="#1dbf73"/></g>
+        <text x="0" y="66">Shift · ERP</text>
+      </g>
+    </g>
+  </g>
+</svg>
