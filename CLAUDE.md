@@ -56,11 +56,27 @@ huzhi.dev 个人站点。这份文件是**每次会话自动加载**的最小前
 ```
 
 **仓库不产出任何简历文件**，也不约定输出目录。排版和导出是本人的活。
-写 ToucanShelf 前先读 `docs/collaboration/toucanshelf.md`——
-`memo_update_memo` 是整篇替换、无并发检查、不可回滚，改前必须先 get 全文；
-新建文档或重构级改写要先对齐范围再动笔。
 
-## 四、工程注意事项
+**master resume 就是 huzhi.dev 站点本身**，没有第二份主简历。
+ToucanShelf `Career/Vault/` 里只有针对具体投递裁剪出来的稿子。
+
+## 四、和 ToucanShelf 怎么配合
+
+细则在 [`docs/collaboration/toucanshelf.md`](docs/collaboration/toucanshelf.md)，
+动手写对面之前先读。最少要知道这几条：
+
+- **分工一句话**：仓库放**结论与可公开事实**，ToucanShelf 放**素材、过程与敏感信息**。
+  职业规划的决策在 `Career/decisions/`；简历怎么写的决策在本仓库 `docs/adr/`。
+- **Career 的目录结构以它自己的 `README` 为准**，本仓库不再维护第二份目录地图
+  （维护过，三方打架，坏指针一堆）。
+- **读和小修用 MCP**：`memo_update_memo` 是整篇替换、无并发检查、不可回滚，
+  改前必须先 get 全文。
+- **结构性大改用 memogit**（本地检出在 `~/Workspace/MemoBase/`），
+  先读 `MemoBase/.memogit/toucanshelf-guide.md`。文件末尾的 `memogit-id` 和
+  `<!-- END memogit -->` 都不能碰。
+- **新建文档或重构级改写要先对齐范围再动笔**，不要直接开写。
+
+## 五、工程注意事项
 
 - **不要在 dev server 运行时跑 `next build`。** 它会把 CSS 打 404，预览变成白屏。
   要构建先停 dev server。
