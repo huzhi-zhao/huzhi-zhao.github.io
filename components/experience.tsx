@@ -84,7 +84,17 @@ function RoleCard({ role }: { role: Role }) {
                 {role.kind === "study" ? "Studying" : "Career break"}
               </span>
             )}
-            <span className="font-mono text-[12px] text-faint">{role.period}</span>
+            <span className="font-mono text-[12px] text-faint">
+              {role.period}
+              {role.location && (
+                <>
+                  <span aria-hidden className="px-2 text-white/[0.16]">
+                    ·
+                  </span>
+                  {role.location}
+                </>
+              )}
+            </span>
           </div>
           <p className="text-[14px] leading-[1.6] text-muted">
             <Rich text={role.headline} />
@@ -110,26 +120,30 @@ function RoleCard({ role }: { role: Role }) {
       <div className="px-5 pb-6 md:px-6">
         <p className="mb-4 text-[14px] text-white/[0.82]">{role.role}</p>
 
-        <div className="mb-5 flex flex-wrap items-center gap-x-3 gap-y-1 font-mono text-[12.5px] text-faint">
-          <span>{role.period}</span>
-          {role.location && (
-            <>
-              <span aria-hidden className="text-white/[0.16]">
-                ·
-              </span>
-              <span>{role.location}</span>
-            </>
-          )}
-        </div>
-
         {role.blurb && (
           <p className="mb-5 border-l-2 border-white/[0.08] pl-4 text-[14px] leading-[1.6] text-faint">
             {role.blurb}
           </p>
         )}
 
-        {/* CSI 三段式是目标形态；points 是尚未迁移的过渡形态（见 lib/content/experience.ts）。 */}
-        {role.achievements?.length ? (
+        {/* 小标题 + 叙述段（2026-09-21 本人定的形态）；其次 CSI 三段；points 是过渡形态。 */}
+        {role.highlights?.length ? (
+          <div className="flex flex-col gap-5">
+            <p className="font-mono text-[11px] uppercase tracking-[1.5px] text-faint">
+              Selected engineering work
+            </p>
+            {role.highlights.map((h) => (
+              <div key={h.title} className="flex flex-col gap-1.5">
+                <h5 className="text-[14.5px] font-medium leading-snug text-white/[0.92]">
+                  {h.title}
+                </h5>
+                <p className="text-[14.5px] leading-[1.7] text-muted">
+                  <Rich text={h.body} />
+                </p>
+              </div>
+            ))}
+          </div>
+        ) : role.achievements?.length ? (
           <div className="flex flex-col gap-5">
             {role.achievements.map((a, i) => (
               <div key={i} className="flex flex-col gap-1.5 text-[14.5px] leading-[1.65]">

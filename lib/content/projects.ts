@@ -37,7 +37,9 @@ export const PROJECTS: Project[] = [
     year: "2026",
     domain: "operational",
     status: "conference",
-    destination: { href: LINKS.uoipRepo.href, kind: "repo" },
+    destination: { href: LINKS.uoipSite.href, kind: "wiki" },
+    // destination 不再是 repo，GitHub 角标要显式声明才不会消失。
+    repos: [{ href: LINKS.uoipRepo.href, label: "GitHub repo" }],
     image: {
       src: "/projects/urban-ops.svg",
       alt: "UOIP 示意图：311 报告、排班表与气象数据合流，按降雪事件切分，输出各分区的运行负载排名",
