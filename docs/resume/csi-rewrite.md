@@ -1,6 +1,6 @@
 # CSI 改写规范
 
-- 依据：[ADR-0007](../adr/0007-copy-conventions.md)（决策与出处）、[ADR-0010](../adr/0010-ai-assisted-writing.md)（定稿标准）
+- 依据：[ADR-0007](../adr/0007-copy-conventions.md)（决策与出处）、[ADR-0010](../adr/0010-ai-assisted-writing.md)（定稿标准）、[ADR-0016](../adr/0016-course-conventions-scope.md)（长度上限与压缩顺序，提议中）
 - 适用：Experience 每条、项目卡片、L2/L3 文档开头、简历 bullet
 
 ## 结论
@@ -79,7 +79,24 @@
 - **事实只有一份**。简历 bullet 引用的事实以 `lib/content/` 为准；
   发现不一致时先查证再改，**未核实的时间不要擅自改站点**（`TODO.md` §2）。
 - **折叠态与展开态**：站点上 Experience 折叠时只放 Challenge→Impact 的一句缩写，
-  完整 CSI 在展开态（ADR-0007 后果第 2 条）。简历没有折叠态，所以要更狠地压缩。
+  完整 CSI 在展开态（ADR-0007 后果第 2 条）。简历没有折叠态，**硬上限是 1-2 行**。
+
+## 超长怎么压
+
+课程三节都写了 "Statements should be 1-2 lines long"。CSI 的天然倾向是越写越长，
+所以压缩不是可选项。顺序固定，从上往下取，先能压的先压
+（完整论证见 [ADR-0016](../adr/0016-course-conventions-scope.md) §3）：
+
+1. 把 Challenge 写成从句，不单独占一个分句；
+2. 删掉不承载取舍的技术细节（组件名、版本号、非关键中间步骤）；
+3. Impact 只留最强的一个量，不并列三个数字；
+4. 仍然超长 → 这条素材含两件事，**拆成两条**，别继续砍。
+
+**不许压掉取舍。** 压掉它这条就退回 Action 的标准，等于不合格（ADR-0007 §1）。
+压到最后取舍放不下的，换素材，不是降标准。
+
+Professional Profile 段的条目要比 Experience 里更短：
+同一条素材在 profile 里是结论，在 Experience 里才是完整 CSI。
 
 ## 待补
 

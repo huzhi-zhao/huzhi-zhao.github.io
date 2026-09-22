@@ -40,13 +40,18 @@ export function validateExperience(groups: RoleGroup[]) {
     for (const r of group.roles) {
       if (!r.headline.trim()) fail(`${r.company} 缺 headline（FR-4.1）`);
 
+      // highlights 是小标题 + 叙述段的形态：CSI 三段写在段落里，这里只拦空值。
+      for (const h of r.highlights ?? []) {
+        if (!h.title.trim() || !h.body.trim()) fail(`${r.company} 的 highlight 缺标题或正文`);
+      }
+
       // achievements 一旦出现，三段必须齐全 —— "缺 Impact" 在这里被拦住（ADR-0007 约束 1）。
       for (const a of r.achievements ?? []) {
         if (!a.challenge.trim() || !a.solution.trim() || !a.impact.trim()) {
           fail(`${r.company} 有成就条目三段不齐（ADR-0007 约束 1）`);
         }
       }
-      if (!r.achievements?.length && !r.points?.length) {
+      if (!r.highlights?.length && !r.achievements?.length && !r.points?.length) {
         fail(`${r.company} 展开态没有任何内容；不该出现在 EXPERIENCE，应移入 ADDITIONAL`);
       }
     }

@@ -1,6 +1,8 @@
 # ADR-0012 Experience 分两层：给证据的和只补时间线的
 
 - 状态：已接受（约束 1 于 2026-08-28 被 [ADR-0015](0015-education-section.md) 部分修订）
+- 作用域：约束 2 的归属判据**只在站点侧生效**，简历侧按与 JD 的相关性分层——
+  见 [ADR-0016](0016-course-conventions-scope.md)（提议中）
 - 日期：2026-08-21
 - 依赖：[ADR-0001](0001-site-positioning.md)、[ADR-0002](0002-information-architecture.md)、[ADR-0007](0007-copy-conventions.md)
 

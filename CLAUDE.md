@@ -69,11 +69,13 @@ ToucanShelf `Career/Vault/` 里只有针对具体投递裁剪出来的稿子。
   职业规划的决策在 `Career/decisions/`；简历怎么写的决策在本仓库 `docs/adr/`。
 - **Career 的目录结构以它自己的 `README` 为准**，本仓库不再维护第二份目录地图
   （维护过，三方打架，坏指针一堆）。
-- **读和小修用 MCP**：`memo_update_memo` 是整篇替换、无并发检查、不可回滚，
-  改前必须先 get 全文。
-- **结构性大改用 memogit**（本地检出在 `~/Workspace/MemoBase/`），
-  先读 `MemoBase/.memogit/toucanshelf-guide.md`。文件末尾的 `memogit-id` 和
-  `<!-- END memogit -->` 都不能碰。
+- **一律优先走 memogit 本地检出**（在 `~/Workspace/MemoBase/`），读、改、新建都用
+  普通文件工具，改完 `memogit push --dry-run` 预演再 `memogit push`。
+  动手前读 `MemoBase/.memogit/toucanshelf-guide.md`。文件末尾的 `memogit-id` 和
+  `<!-- END memogit -->` 都不能碰；移动改名用 `mv`，不要复制加删除。
+- **MCP 只做兜底**：本地检出里没有的东西（跨 workspace 检索、刚在 Web UI 建的文档）
+  才用 `memo_*` / `rag_search`。`memo_update_memo` 是整篇替换、无并发检查、不可回滚，
+  真要用必须先 get 全文。
 - **新建文档或重构级改写要先对齐范围再动笔**，不要直接开写。
 
 ## 五、工程注意事项

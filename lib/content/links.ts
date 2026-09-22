@@ -11,6 +11,7 @@ export const LINKS = {
   linkedin: { href: "https://linkedin.com/in/huzhi", visibility: "public" },
   github: { href: "https://github.com/huzhi-zhao", visibility: "public" },
 
+  uoipSite: { href: "https://uoip.huzhi.dev", visibility: "public" },
   uoipRepo: {
     href: "https://github.com/huzhi-zhao/urban-ops-intelligence-platform",
     visibility: "public",

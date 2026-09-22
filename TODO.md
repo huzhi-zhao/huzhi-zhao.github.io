@@ -1,6 +1,6 @@
 # TODO — 待办总表
 
-- 更新日期：2026-08-29
+- 更新日期：2026-09-21
 - 定位：**汇总当前所有未完成的事**，一页看完。每条只写"是什么、依据哪条、卡在哪"，
   展开细节回到对应的 ADR / 设计文档 / 上线记录。
 
@@ -13,7 +13,60 @@
 | `docs/launch/` | 实际做成了什么 |
 | **本文** | **还剩什么没做，按什么顺序做** |
 
-## 0. 阻塞项：已解除
+## P0 · 截止 2026-09-18（下周五）
+
+**作业要交一份简历优化版本。** 交付物是简历稿本身，不是方法论文档。
+卡在同一个地方：**大搜车这段的素材颗粒度远低于微盟**，现在写不出合格的 CSI 条目。
+
+微盟那段的形态是标杆——`项目全景`（正文 + 数据量/踩坑两份原文附录）+ `代码考古-两个仓库`，
+优化的时间顺序、瓶颈、事故、提交占比都落到了纸面。大搜车目前只有 `项目全景`
++ `证据提取-2020年汇报PPT与压测报告`，缺的都是 Impact 段要用的东西。
+
+必须补齐的（本人回忆，助手不得推测补全——ADR-0010）：
+
+1. **车辆中台出过什么事故** —— PPT 那 6 个隐患里疑似有 3 个属于这条线，
+   事故是 Challenge 段最硬的料。见第 3 节同名条目
+2. **car-api 之外的上下游、团队规模与交接状态** —— 决定这段能不能写出规模感
+3. **产品级 Impact 的口径** —— 「需求交付从半年至一两年变成配完即上线」是最强的一条，
+   但「半年至一两年」纯靠回忆、无度量支撑，**写进简历前先想好被追问怎么答**
+4. **若干技术确认** —— 凤凰平台的规则匹配与脚本技术、Seata 是否落地、
+   被删掉的「本地词库 / 索引优化」是不是 ES（若是，可与微盟 ES 线接上）、
+   用户升级「7 个人天」的口径、PPT 那组 3.75s/0.8s 的统计口径。详见第 3 节
+5. **在职起始月份**（2019 年 3 月还是 5 月）—— 未核实前站点 / CV / LinkedIn 都不动
+
+补完之后才是简历侧的活：按 CSI 改写 → 写进 ToucanShelf `Career/Vault/` →
+本人排版导出 → 文案交回核对（链路见 `CLAUDE.md` 第三节）。
+
+**素材实在补不齐时的备选**：UWinnipeg 的课程项目可以当成就素材，
+判据见 [ADR-0017](docs/adr/0017-qualifications-scope.md)（**提议中，用之前先评审**）——
+CSI 照常适用、Impact 按 ADR-0007 第 5 节降级为交付事实、且必须与职业经历分节标清楚。
+这是备选不是首选：大搜车那段补齐了就不用它。
+
+**改写时的两条新规**（均在 [ADR-0016](docs/adr/0016-course-conventions-scope.md)，提议中）：
+简历侧用**本次 JD 的原词**而不是站点那套关键词；bullet **硬上限 1-2 行**，
+压缩顺序见 [`csi-rewrite.md`](docs/resume/csi-rewrite.md) 的"超长怎么压"。
+
+**不进这一轮**：站点文案（第 4 节）、扫描脚本（第 1 节）、`ats-tradeoffs.md` 等
+方法论文档（第 3 节）。作业只要简历稿，别顺手扩摊子。
+
+## 0. 阻塞项
+
+### 待评审（2026-09-11 新增）
+
+两篇 ADR 由 `Highlighting Your Qualifications` / `Highlighting Your Experience` /
+`Developing a Professional Profile` 三节课与既有 ADR 的比对得出，均为**提议中**，
+评审通过前不要据此改站点：
+
+- [ ] 评审 [ADR-0016 课程规范的作用域](docs/adr/0016-course-conventions-scope.md)
+      —— 解三处冲突：Relevant/Additional 的判据两侧不同（站点看 Impact，简历看相关性）、
+      关键词两侧不同源且简历换词不触发全站同步、简历 bullet 硬上限 1-2 行及压缩顺序。
+      另记一条从未写下的结论：**Profile 段在站点没有对应物，Hero 不改**。
+- [ ] 评审 [ADR-0017 资历类信息的归属](docs/adr/0017-qualifications-scope.md)
+      —— 裁三件事：课程项目可进简历不进站点 Experience、站点不加证书板块、
+      **未做 WES/IQAS 认证前任何材料都不写等效结论且 AI 不得补全**。
+      第一条直接影响上面 P0 的素材来源。
+
+### 已解除
 
 - [x] 评审 [ADR-0013 公开仓库的隐私边界](docs/adr/0013-public-repo-privacy-boundary.md)
       —— **已接受（有修改）**，2026-08-29。边界改为两问制：与简历无关的不进仓库；
@@ -50,11 +103,12 @@ ADR-0013 定稿后这一组大幅收缩，只剩产物排除与扫描脚本。
 站点内容已经按核对过离职证明的版本更新了，但 **CV PDF 和 LinkedIn 上还有几处表述误差没改**。
 下次开工时提醒 James 处理这几条：
 
-- [ ] **年限**：CV 的 Professional Summary 写的是 `10+ years of experience`，实际连续工作经历是
-      2016-01 到 2025-02，约 **9 年**。站点已改为 9。两份材料对外同时可见，需要统一。
-- [ ] **CV 缺 MES 那段**：`Jul 2024 – Feb 2025` 的 Shanghai Zhongyou Tipo 自由职业 MES 项目
-      在 CV 的 Experience 里完全没有。导致 PDF 上从 Tanhua 结束（2024-06）到入学（2026-01）
-      是一段**近两年的空白**。站点时间线已补齐，CV 没有——而 CV 才是真正投出去的那份。
+- [x] **年限**（2026-09-21 消解）：旧 CV 写 `10+ years of experience`，实际连续工作经历是
+      2016-01 到 2025-02，约 **9 年**。**新版 CV 的 Summary 已是 `9 years`**，与站点一致。
+      LinkedIn 那侧还没核。
+- [x] **CV 缺 MES 那段**（2026-09-21 消解）：新版 CV 已有
+      `Full-Stack Developer (Contract) | Jul 2024 - Feb 2025`，而且写得比站点那条厚
+      （24 道工序、约 70 名一线工人、日产 1000 支）。**反过来轮到站点偏薄了**，见下面新增那条。
 - [x] **CV 缺 career break 说明**（2026-08-28 已补）：`Mar 2025 – Dec 2025` 补进了 CV 的
       `ADDITIONAL EXPERIENCE` 一行。站点这一段同时从 Experience 卡降入 Additional
       （[ADR-0015](docs/adr/0015-education-section.md)），两边形态现在一致。
@@ -80,6 +134,38 @@ ADR-0013 定稿后这一组大幅收缩，只剩产物排除与扫描脚本。
       `Jan 2026 — Dec 2027`，两个 diploma 合并成一行、不拆分各自毕业时间
       （[ADR-0015](docs/adr/0015-education-section.md) 约束 2）。
       **LinkedIn 的学历段还没改，仍需同步。**
+- [x] **两个 diploma 的官方全名已核**（2026-09-11，对着 PACE 官网两个项目页）：
+      官方项目名是 `Artificial Intelligence Post-Degree Diploma` 与
+      `Business Analysis & Transformation Post-Degree Program`；
+      完成后拿到的凭据分别是 `Artificial Intelligence Diploma` 与 `Business Analysis Diploma`。
+      **对外用项目名**（凭据名丢掉 Transformation）。站点已改
+      （[`experience.ts`](lib/content/experience.ts)）。
+      官网链接存在 ToucanShelf `Career/Vault/Baseline`。
+- [ ] **CV 与 LinkedIn 的专业名称要跟着改**（ADR-0007 约束 4）：两处目前是
+      `Post-Graduate Diploma in Applied AI` 一类写法，**两个错**——
+      Post-Graduate 应为 Post-Degree（在加拿大是不同的东西），官方名里没有 Applied。
+- [ ] **CV 与 LinkedIn 的学院名要写全称**
+      `Professional, Applied and Continuing Education, The University of Winnipeg`，
+      目前是缩写形态。站点维持短名 `University of Winnipeg (PACE)` 不变
+      （2026-09-11 决定，站点不是简历）。
+- [ ] **BAT 附带两张证书要不要写进简历**（2026-09-11 发现）：官网写明 Business Intelligence
+      Certificate 与 Leading Change Management Certificate 随项目完成取得、不额外收费
+      （Lean Yellow / Green Belt 要另交钱考试，不是白得）。
+      按 [ADR-0017](docs/adr/0017-qualifications-scope.md) 它们属于 Credentials 一档，
+      **但要到 2027-12 才真正到手，在此之前不写**。BI 那张与 Career 库 C01 的 Plan B 方向对得上。
+- [x] **简历 Education 块的起止怎么写**（2026-09-12 已定）：**合并成一段 `Jan 2026 — Dec 2027`**，
+      两个项目缩进挂在机构下面、各自不带日期，与站点 / CV 口径一致（ADR-0015 约束 2）。
+      排法见 [`format-selection.md`](docs/resume/format-selection.md)"Education 区块怎么排"。
+- [ ] **要不要做 WES / IQAS 学历认证**（2026-09-11 记）：课程建议国际背景申请人在简历里
+      附加拿大等效结论。这是时间与费用的取舍，由本人定。
+      **在拿到认证报告之前，站点 / CV / LinkedIn 一律不出现等效说法**，
+      助手也不得依据公开对照表补全（[ADR-0017](docs/adr/0017-qualifications-scope.md) 约束 4）。
+- [x] **钢管厂公司名不用改**（2026-09-21 查官网定）：官网英文名就是
+      `Shanghai ZHONGYOU TIPO Steel Pipe Co., Ltd`，**站点是对的**；新 CV 里的
+      `Tianbao Basheng` 是中译英机翻出来的（中文全称含「天宝巴圣」）。CV 那份是课程作业，本轮不动。
+- [ ] **新 CV 的两处缺漏属 CV 侧，本轮不处理**（2026-09-21）：career break 那一行又没了
+      （PDF 上 2025-02 → 2026-01 约 11 个月空白）、`(Contract)` vs 站点 `(Freelance)`。
+      新 CV 是课程作业稿、版面有限，取舍是本人做的；真正投递前再回到这一节核。
 - [ ] **图标 AI 项目的技术栈说法不一致**：LinkedIn 的 career break 描述里是
       CLIP / BLIP / VGG16；站点 Projects 卡片里写的是 Gemini API 编排。可能是两个 repo 的
       不同阶段，但对外读起来像是同一个项目的两套说法。需要确认后统一口径。
@@ -89,12 +175,20 @@ ADR-0013 定稿后这一组大幅收缩，只剩产物排除与扫描脚本。
 - [x] FR-11.1 `docs/resume/README.md`（2026-08-29）
 - [x] FR-11.2 `format-selection.md` — 版式选型判据 + 本人当前该选哪种（2026-08-29 初稿，
       结论是 Combination；末尾留了一条待核对：Chronological A/B 的确切差异是从模板推断的）
-- [x] FR-11.2 `csi-rewrite.md` — CSI 改写规范（2026-08-29 初稿，示例全为虚构）
+- [x] FR-11.2 `csi-rewrite.md` — CSI 改写规范（2026-08-29 初稿，示例全为虚构；
+      2026-09-11 补"超长怎么压"一节，依据 ADR-0016 §3）
+- [x] FR-11.2 `ats-tradeoffs.md` — 2026-09-11 写了**已定的两条**（单栏 vs 双栏的 ATS 取舍、
+      1-2 页的预算与信息权重），其余明写留白，等真实投递后拿结果补
+- [x] FR-11.2 `references-page.md` — 推荐人页规范（2026-09-11）。
+      核心是一条隐私结论：**推荐人的姓名与联系方式永远不进本仓库**
+      （ADR-0013 约束 1），名单留 ToucanShelf `Career/Contacts/People/`，成稿只在本地
+- [x] FR-11.2 `cover-letter.md` — 三种求职信 + 四段结构（2026-09-11）
 - [ ] FR-11.2 `review-checklist.md` — 投递前自查，含三处事实交叉核对
-- [ ] FR-11.2 `ats-tradeoffs.md`
 - [ ] FR-11.2 `master-vs-targeted.md`（按 ADR-0014 §1.1：站点是名片不随 JD 变，
       针对性只发生在简历侧。**站点即 master resume**，见 ADR-0014 约束 6——
-      这篇要写的是"怎么从站点裁剪出针对稿"，不是"怎么维护主简历"）
+      这篇要写的是"怎么从站点裁剪出针对稿"，不是"怎么维护主简历"。
+      地基已由 [ADR-0016](docs/adr/0016-course-conventions-scope.md) 的作用域表给出，
+      这篇只需写"怎么做"）
 
 顺序理由见设计文档 0002 §3.3：前两篇产出后即可开始实际改写。
 
@@ -161,7 +255,31 @@ ADR-0013 定稿后这一组大幅收缩，只剩产物排除与扫描脚本。
 - [ ] Weimob `项目全景` 附录 B 的 18 条 ES 踩坑**只有标题没有内容**，需本人回忆补写
       （ADR-0010：数字与专有名词不得由助手推测补全）
 
+### 简历侧还没做的事（2026-09-11 从 Module 3 课件抽出）
+
+- [ ] **列 3-5 名推荐人并逐个征得同意**。九年经历全在中国，推荐人也在中国——
+      课上确认国际推荐人成立，但要预判时差与语言，写清偏好联系方式与时段。
+      名单进 ToucanShelf `Career/Contacts/People/`，规范见
+      [`references-page.md`](docs/resume/references-page.md)
+- [ ] **定一套四份文件共用的版式**（简历 / 求职信 / 推荐人页 / 感谢信）。
+      课件原话是 "Extend formatting across all self-marketing materials"。
+      排版是本人的活（CLAUDE.md 第三节），这里只记它是个待办
+- [ ] **找人校对**：课上建议家人、同学、行业人士、HR 或就业顾问各找一个。
+      PACE Career Services 的 resume review 是免费的，现在就能约
+
 ## 4. 站点文案（设计文档 0001 的 P2，最大的一块）
+
+> **2026-09-21 新增**：PACE 课程那版新 CV 与站点的事实口径对不上（Weimob 那块尤其严重），
+> 对比与改法写在 [设计文档 0003](docs/design/0003-site-copy-vs-cv-alignment.md)（FR-15.1 ~ FR-15.6，提议中）。
+> 那篇的结论是：**Hero 本轮不动，Weimob 卡片必须改**，其中三处属事实错误、一条建议删除。
+
+- [ ] **改 [`csi-rewrite.md`](docs/resume/csi-rewrite.md) 的「反例 4：数字不可核验」**——
+      ADR-0007 约束 2 已于 2026-09-21 修订（判据改为"不编造、不夸大"，不是"拿得出文件"，
+      见该 ADR 第 6 节），那条反例按旧判据写的，现在是错的
+- [ ] FR-15.7 MES 卡片补规模数字：站点现在写 `20+ manufacturing stages`，
+      素材（ToucanShelf `Career/Experience/tianbao/项目全景` §一、§八）给得出准数——
+      **24 道工序 / 约 70 名一线用户 / 日均 1000 根**。注意口径：1000 根是**设计目标**，
+      不是实测产量（素材原文是"设计目标日均 1000 根钢管"），写的时候别写成已达成的产能。
 
 上线记录 2026-08-21 里所有标"属文案，留 P2"的需求都在这里。
 按 ADR-0010，这块工作量主要落在本人身上，不是助手能代劳的。
@@ -182,6 +300,8 @@ ADR-0013 定稿后这一组大幅收缩，只剩产物排除与扫描脚本。
 
 ## 5. 资产与工程债
 
+- [x] UOIP 项目卡的主点击目标改为 https://uoip.huzhi.dev（2026-09-21，`kind: "wiki"`，
+      GitHub 角标改为显式声明的 `repos`，否则会随 `kind` 一起消失）
 - [ ] 项目卡三张占位外链图（写在 `lib/content/projects.ts`）换成真图并挪进 `/public`；
       同步删掉 `next.config.mjs` 里为此加的 `remotePatterns`
 - [ ] Experience 卡片配图：`components/experience.tsx` 的 `Role` 类型已支持

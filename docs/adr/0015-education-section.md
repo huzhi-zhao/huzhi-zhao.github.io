@@ -3,6 +3,8 @@
 - 状态：已接受
 - 日期：2026-08-28
 - 依赖：[ADR-0001](0001-site-positioning.md)、[ADR-0012](0012-experience-two-tiers.md)
+- 相关：[ADR-0017](0017-qualifications-scope.md)（提议中）补齐本 ADR 未覆盖的三类资历信息：
+  课程项目、证书与培训、国际学历等效
 
 ## 背景
 

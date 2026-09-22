@@ -6,6 +6,13 @@ import { validateExperience } from "./validate";
  */
 export type Achievement = { challenge: string; solution: string; impact: string };
 
+/**
+ * 展开态的另一种形态（2026-09-21 本人定）：小标题 + 一段叙述。
+ * CSI 仍然是内容检查表（ADR-0007 约束 1）—— 三段都在段落里，只是不再拆成三行标签。
+ * 理由：三行标签的版本一条要占七八行，整张卡没人读得完。
+ */
+export type Highlight = { title: string; body: string };
+
 export type Role = {
   company: string;
   role: string;
@@ -29,6 +36,8 @@ export type Role = {
    * P2 定稿后此字段应全部消失。
    */
   points?: string[];
+  /** 展开态主体：小标题 + 叙述段。优先级高于 achievements / points。 */
+  highlights?: Highlight[];
   tech?: string[];
   /**
    * 标题行的公司 logo（<img>，不走 next/image：静态导出下没必要为一个小图配 remotePatterns）。
@@ -69,10 +78,10 @@ export const EXPERIENCE: RoleGroup[] = [
         period: "Jul 2024 — Feb 2025",
         location: "Remote, from Hangzhou, China",
         kind: "work",
-        headline: "Sole developer on a production MES covering {{20+}} manufacturing stages.",
+        headline: "Sole developer on a production MES covering {{24}} manufacturing stages.",
         points: [
           "Designed, built, and deployed a production-grade MES from scratch as the **sole developer** — architecture, backend, frontend, database, mobile, deployment, and production support.",
-          "Modelled complex manufacturing workflows across {{20+}} production stages, translating shop-floor processes into scalable software.",
+          "Modelled complex manufacturing workflows across {{24}} production stages, translating shop-floor processes into scalable software.",
           "Architected backend services in Go with relational data models covering production tracking, quality control, inventory, and manufacturing traceability.",
           "Designed RBAC authorization and workshop-based data partitioning to enforce operational security and process ownership.",
           "Delivered web admin portals, operational dashboards, reporting, and Android shop-floor apps, with real-time KPI monitoring, defect analysis, and equipment status reporting.",
@@ -101,13 +110,29 @@ export const EXPERIENCE: RoleGroup[] = [
         location: "Hangzhou, China",
         kind: "work",
         headline:
-          "Search platform for {{20K+}} merchants — {{60M+}} SKUs, {{500K+ QPS}}, lag cut to under {{30 minutes}}.",
-        points: [
-          "**Search & promotion platform.** Co-architected a distributed Elasticsearch platform indexing {{60M+}} SKUs across multiple indices on a {{32-node}} cluster serving {{20K+}} merchants.",
-          "Scaled write throughput to {{~10K writes/sec}} from Kafka consumers via asynchronous batch commits, shard-level parallelism, and optimized indexing pipelines — cutting data lag from {{1–2 hours}} to under {{30 minutes}} during Double 11 and 618 peak campaigns.",
-          "Sustained {{500K+ QPS}} on the read path through hot/cold data separation, `index_sort`, filter-only queries, and dynamic replica scaling up to {{128 replicas}}.",
-          "Resolved critical write failures caused by the {{2.1B}} doc-per-node limit via routing redesign, and enforced cluster guardrails plus nightly `force_merge`.",
-          "**Search reconciliation platform.** Built a distributed reconciliation system from scratch keeping MySQL and Elasticsearch near real-time consistent — a {{3-level}} diff engine (field, scope, and document count), a pluggable rule engine, non-blocking multi-source loaders over Dubbo, self-healing repair with exponential-backoff retries, and full audit logging with message replay.",
+          "Owned the Elasticsearch write path, migration tooling, and data-reliability controls for a search and promotion platform serving {{20,000+}} merchants — upstream quota {{3,000 → 10,000 QPS}}, publish latency {{30+ → <10 min}}.",
+        /**
+         * 2026-09-21：本人给的结构（小标题 + 一段叙述），替换掉助手那版三行标签式 CSI ——
+         * 那版一条占七八行，整张卡读不完。数字按 ToucanShelf 附录 A 核过：
+         * 6500 万/9000 万是**商品分配到门店后的 doc 数**，不是 SKU。
+         */
+        highlights: [
+          {
+            title: "Scaled million-message promotion updates",
+            body: "A large campaign could fan out into millions of activity-by-store updates, while an upstream product service initially limited the pipeline to {{3,000 QPS}}. I split update events by change type, isolated oversized workloads into dedicated processing paths, and negotiated a quota increase to {{10,000 QPS}} after reducing unnecessary upstream reads. End-to-end publish latency fell from more than {{30 minutes}} to under {{10}}.",
+          },
+          {
+            title: "Rebuilt the index topology during a live migration",
+            body: "During a seven-month backfill, a data-heavy account representing more than a third of indexed data pushed one node past Lucene's {{2.1-billion}}-document ceiling and stopped writes. I helped separate large accounts into a dedicated cluster and redesign routing and query paths while the legacy system continued serving customers. Writes recovered during the migration, and the platform grew from roughly {{65M}} to {{90M}} indexed product records across {{32}} data nodes; hot/cold separation, filter-only queries, and index sorting kept query latency stable without adding nodes.",
+          },
+          {
+            title: "Turned migration jobs into an operations platform",
+            body: "Backfill, reindex, and repair jobs ran for months against the same clusters and upstream quota as live traffic. I built a distributed task platform with {{five}} priority queues, backpressure, lock-based idempotency, emergency stops, alert controls, and dead-letter replay. It remained in use after the migration as the team's shared platform for backfill, repair, and index operations.",
+          },
+          {
+            title: "Made silent data divergence detectable",
+            body: "MySQL and Elasticsearch could drift apart without warning, so the first signal sometimes came from a customer. I built a configuration-driven, multi-tenant reconciliation service that compared data by field, scope, and document count, then supported alerts, retries, repair, and an audit trail. The work turned silent divergence into a detectable and recoverable condition, and was later incorporated into a company-wide reconciliation platform used by multiple internal teams.",
+          },
         ],
         tech: ["Java", "Elasticsearch", "Kafka", "Redis", "MySQL", "Dubbo"],
         logo: {
@@ -226,7 +251,7 @@ export const EDUCATION: EducationEntry[] = [
   {
     school: "University of Winnipeg (PACE)",
     credential:
-      "Post-Graduate Diploma, Applied Artificial Intelligence · Post-Degree Diploma, Business Analysis & Transformation",
+      "Artificial Intelligence Post-Degree Diploma · Business Analysis & Transformation Post-Degree Program",
     period: "Jan 2026 — Dec 2027",
     location: "Winnipeg, MB, Canada",
     focus:

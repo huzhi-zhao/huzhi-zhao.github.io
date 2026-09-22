@@ -39,6 +39,8 @@
 | [0013](0013-public-repo-privacy-boundary.md) | 公开仓库的隐私边界 | 已接受 |
 | [0014](0014-resume-scope-in-docs.md) | docs 承担简历工作的范围，以及为什么不拆桶 | 已接受 |
 | [0015](0015-education-section.md) | Education 自成一层，Career break 降入 Additional | 已接受 |
+| [0016](0016-course-conventions-scope.md) | 课程规范的作用域：站点侧与简历侧分开适用 | 提议中 |
+| [0017](0017-qualifications-scope.md) | 资历类信息的归属：课程项目、证书、学历等效 | 提议中 |
 
 ## 背景来源
 
@@ -52,6 +54,17 @@
      **Chronological、Functional、Combination 三类**（Chronological 另有 A / B 两种排版，
      A/B 是同一类的版式变体，不是两个独立类型）；job ad 拆解；
      简历陈述句的 `Verb + Details + Result`。
+   - `Highlighting Your Qualifications`——资历板块的分节方式（Education / Training and
+     Development / Credentials）、国际学历与在读项目的写法、WES 与 IQAS 等效工具、
+     把学术成果写成 accomplishment statements；
+   - `Highlighting Your Experience`——Experience 是第二重要板块；条目数随时间递减
+     （近期 5-8 条、久远 0-4 条）；按 JD 要求逐条找实例；
+     `RELEVANT` / `ADDITIONAL` 两节按**相关性**拆分；
+   - `Developing a Professional Profile`——最顶上的 5-7 条（定位句 + 五条对应 JD 主要
+     要求的成就句 + 学历收尾）；"5-10 秒"的阅读预算；Objective 不能替代 Profile。
+     这三节的规范与既有 ADR 的作用域冲突，由 [ADR-0016](0016-course-conventions-scope.md)
+     与 [ADR-0017](0017-qualifications-scope.md) 处理。
+     **这三份讲义的 Module 编号未核实**，此处按标题引用。
    - Labour Market Research、The Challenge Mindset 来自课堂讲授，
      **讲义 PDF 不在本仓库的引用范围内**，涉及这两处的 ADR 表述无法对着原文复核。
 

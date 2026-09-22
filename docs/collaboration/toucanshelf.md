@@ -1,7 +1,7 @@
 # ToucanShelf 协作约定
 
 - 状态：已生效
-- 日期：2026-08-23（初稿）／ 2026-08-29（Career 结构调整后重写）
+- 日期：2026-08-23（初稿）／ 2026-08-29（Career 结构调整后重写）／ 2026-09-09（改为 memogit 优先）
 - 依赖：[ADR-0005](../adr/0005-content-tiers-and-hosting.md)、[ADR-0013](../adr/0013-public-repo-privacy-boundary.md)、[ADR-0014](../adr/0014-resume-scope-in-docs.md)
 
 这份文档回答一个问题：**一段内容该写进 `docs/`，还是写进 ToucanShelf？**
@@ -15,9 +15,33 @@ ToucanShelf 是本人的开源知识库项目（见 SideProjects/toucan-shelf）
 结构是 **workspace → 文件夹树 → 文档**。文档在 API 里叫 `memo`，是完整文档不是便签。
 文件夹是路径前缀，写入一个不存在的路径即自动出现，没有建文件夹这一步。
 
-### MCP 接入
+### 默认走 memogit 本地检出
 
-助手通过 ToucanShelf MCP server 直接读写，可用工具：
+ToucanShelf 数据库在本地有一份投影，在 `~/Workspace/MemoBase/`（CLI 在
+`/usr/local/bin/memogit`）。**读、改、新建一律先走这里**，用普通文件工具操作：
+
+```
+memogit status → 改文件 → memogit push --dry-run → memogit push
+```
+
+这么定的理由：本地检出可以 grep、可以 diff、可以 `push --dry-run` 预演，
+而 MCP 的 `memo_update_memo` 是整篇替换、无并发检查、不可回滚，错一次就是静默覆盖。
+
+关键规矩（完整版见 `MemoBase/.memogit/toucanshelf-guide.md`，动手前必读）：
+
+- 文件末尾的 `<!-- memogit-id: memos/xxx -->` **绝不能碰**；新文件不要手写 ID。
+- `AGENTS.md` / `CLAUDE.md` 末尾的 `<!-- END memogit -->` 同样不能删——
+  那是 memogit 的本地脚手架，push 时系统会自行拆除。
+- 移动/改名用 `mv`，**不要复制+删除**——后者会丢历史、评论和 ID。
+- 删除等于归档（可恢复），但**归档后的 `(路径, 标题)` 仍被占用**，同名新建会失败。
+- 标题里不能有标点（slug 锚点）。
+- 少用 ToucanShelf 方言（callout、`==` 高亮、```kanban / ```calendar / ```grid、
+  `.view.json`）——除非确有需要，写标准 Markdown。
+
+### MCP 只做兜底
+
+本地检出拿不到的东西才用 MCP：跨 workspace 的语义检索、刚在 Web UI 建还没同步下来的
+文档、只想确认一下线上现值。可用工具：
 
 | 工具 | 用途 |
 | --- | --- |
@@ -32,29 +56,9 @@ ToucanShelf 是本人的开源知识库项目（见 SideProjects/toucan-shelf）
 
 - workspace 必须用 uid 寻址，显示名（"Career"）只是标题，先 list 再用。
 - `title` 不带扩展名——传 `plan`，不是 `plan.md`。
-- `memo_update_memo` 是**整篇替换**，不是增量补丁。永远先 get、在完整文本上改、再写回。
-- **没有并发检查**：读和写之间若有人在 Web UI 编辑，会被静默覆盖。长文档改动前先确认没人在编。
+- `memo_update_memo` 是**整篇替换**，不是增量补丁。真要用必须先 get、在完整文本上改、再写回。
+- **没有并发检查**：读和写之间若有人在 Web UI 编辑，会被静默覆盖。
 - 没有删除工具，`state` 归档是最接近的操作，且可逆。
-
-### memogit：大改走本地检出
-
-MCP 适合读和小修。**结构性改动（大批移动、多篇同时改写）走 memogit**——
-ToucanShelf 数据库的本地投影在 `~/Workspace/MemoBase/`，用普通文件操作改完再 `push`：
-
-```
-memogit status → 改文件 → memogit push --dry-run → memogit push
-```
-
-关键规矩（完整版见 `MemoBase/.memogit/toucanshelf-guide.md`，动手前必读）：
-
-- 文件末尾的 `<!-- memogit-id: memos/xxx -->` **绝不能碰**；新文件不要手写 ID。
-- `AGENTS.md` / `CLAUDE.md` 末尾的 `<!-- END memogit -->` 同样不能删——
-  那是 memogit 的本地脚手架，push 时系统会自行拆除。
-- 移动/改名用 `mv`，**不要复制+删除**——后者会丢历史、评论和 ID。
-- 删除等于归档（可恢复），但**归档后的 `(路径, 标题)` 仍被占用**，同名新建会失败。
-- 标题里不能有标点（slug 锚点）。
-- 少用 ToucanShelf 方言（callout、`==` 高亮、```kanban / ```calendar / ```grid、
-  `.view.json`）——除非确有需要，写标准 Markdown。
 
 ### 文档引用语法
 
@@ -78,7 +82,7 @@ memogit status → 改文件 → memogit push --dry-run → memogit push
 Career 的一级轴（只为理解分工，细节以对面为准）：
 `decisions/`（职业规划决策）· `Vault/`（个人基线 + 投递用简历稿）·
 `Experience/`（工作经历素材）· `Campaigns/`（有时间线的行动）·
-`Contacts/`（人与公司）· `Inputs/`（课程、调研、方法）。
+`Contacts/`（人与公司）· `Research/`（专题调研，长期更新）· `Inputs/`（课程、方法）。
 
 `SideProjects/` 是站点 L2/L3 外链的内容源（ADR-0005），其中 `UOIP/report/`
 是主要外链目标。
@@ -96,7 +100,8 @@ Career 的一级轴（只为理解分工，细节以对面为准）：
 | 敏感字段（住址、电话、第三方联系方式） | `Career/`，**永不进仓库** | ADR-0013 约束 1 |
 | 工作经历的原始素材（项目细节、职责、取舍） | `Career/Experience/` | 仓库只放压缩后的结论 |
 | 针对具体投递裁剪的简历文本稿 | `Career/Vault/` | ADR-0013「简历的生成链路」第 2 步 |
-| 课程原文、调研原始材料、过程笔记 | `Career/Inputs/` | 仓库只放推导出的结论 |
+| 课程原文、过程笔记 | `Career/Inputs/` | 仓库只放推导出的结论 |
+| 专题调研（市场核查、定位论证） | `Career/Research/` | 同上；2026-09-15 从 `Inputs/` 提到一级 |
 | 项目自身文档、跨项目方法论（L2/L3） | `SideProjects/{project}/` | ADR-0005 约束 1 |
 | 身份、移民、语言、家庭 | **MPNP 库**，两边都不放 | 与求职无关 |
 
