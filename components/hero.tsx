@@ -45,7 +45,7 @@ export function Hero() {
             <strong className="font-medium text-white/90">
               Data Engineering and Applied AI
             </strong>{" "}
-            through post-graduate study and hands-on platform projects.
+            through post-degree study and hands-on platform projects.
           </p>
 
           <div className="mb-9 flex flex-wrap gap-3.5">

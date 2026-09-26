@@ -105,7 +105,7 @@ ADR-0013 定稿后这一组大幅收缩，只剩产物排除与扫描脚本。
 
 - [x] **年限**（2026-09-21 消解）：旧 CV 写 `10+ years of experience`，实际连续工作经历是
       2016-01 到 2025-02，约 **9 年**。**新版 CV 的 Summary 已是 `9 years`**，与站点一致。
-      LinkedIn 那侧还没核。
+      LinkedIn About 也已改为 `9 years`（2026-09-26）。
 - [x] **CV 缺 MES 那段**（2026-09-21 消解）：新版 CV 已有
       `Full-Stack Developer (Contract) | Jul 2024 - Feb 2025`，而且写得比站点那条厚
       （24 道工序、约 70 名一线工人、日产 1000 支）。**反过来轮到站点偏薄了**，见下面新增那条。
@@ -125,7 +125,7 @@ ADR-0013 定稿后这一组大幅收缩，只剩产物排除与扫描脚本。
       同批待确认的还有职位名：Tanhua（Java Developer / Senior Java Developer）、
       Sendinfo（Junior Developer / Java Software Engineer，差一档职级）、
       Yonyou 公司全名（Zhejiang Yonyou Software / yonyou Network Technology）。
-- [ ] **任职时间 LinkedIn 与离职证明不符**（以离职证明 / CV 为准，LinkedIn 要改）：
+- [x] **任职时间 LinkedIn 与离职证明不符**（2026-09-26 LinkedIn 已按下表改正）：
   | 公司 | 离职证明 / CV（正确） | LinkedIn（待改） |
   | --- | --- | --- |
   | Weimob | May 2021 – Nov 2023 | Mar 2021 – Nov 2023 |
@@ -133,7 +133,7 @@ ADR-0013 定稿后这一组大幅收缩，只剩产物排除与扫描脚本。
 - [x] **CV 的 Education 毕业时间**（2026-08-28 已改）：CV 与站点现在都写
       `Jan 2026 — Dec 2027`，两个 diploma 合并成一行、不拆分各自毕业时间
       （[ADR-0015](docs/adr/0015-education-section.md) 约束 2）。
-      **LinkedIn 的学历段还没改，仍需同步。**
+      LinkedIn 学历段 2026-09-26 已同步：`Jan 2026 – Dec 2027`，描述里列两个项目名。
 - [x] **两个 diploma 的官方全名已核**（2026-09-11，对着 PACE 官网两个项目页）：
       官方项目名是 `Artificial Intelligence Post-Degree Diploma` 与
       `Business Analysis & Transformation Post-Degree Program`；
@@ -141,13 +141,15 @@ ADR-0013 定稿后这一组大幅收缩，只剩产物排除与扫描脚本。
       **对外用项目名**（凭据名丢掉 Transformation）。站点已改
       （[`experience.ts`](lib/content/experience.ts)）。
       官网链接存在 ToucanShelf `Career/Vault/Baseline`。
-- [ ] **CV 与 LinkedIn 的专业名称要跟着改**（ADR-0007 约束 4）：两处目前是
+- [x] **CV 与 LinkedIn 的专业名称要跟着改**（ADR-0007 约束 4）：两处目前是
       `Post-Graduate Diploma in Applied AI` 一类写法，**两个错**——
       Post-Graduate 应为 Post-Degree（在加拿大是不同的东西），官方名里没有 Applied。
-- [ ] **CV 与 LinkedIn 的学院名要写全称**
+      **CV 侧已改**（2026-09-26，Gov MB / PSD 那版）；站点 hero 的 `post-graduate` 同日改为
+      `post-degree`。LinkedIn 同日改完（Degree `Post-Degree Diploma` / Field `Artificial Intelligence`，About 同改）。
+- [x] **CV 与 LinkedIn 的学院名要写全称**
       `Professional, Applied and Continuing Education, The University of Winnipeg`，
       目前是缩写形态。站点维持短名 `University of Winnipeg (PACE)` 不变
-      （2026-09-11 决定，站点不是简历）。
+      （2026-09-11 决定，站点不是简历）。**CV 侧已改**（2026-09-26）；LinkedIn 学校字段是 The University of Winnipeg，全称写进描述首行，同日改完。
 - [ ] **BAT 附带两张证书要不要写进简历**（2026-09-11 发现）：官网写明 Business Intelligence
       Certificate 与 Leading Change Management Certificate 随项目完成取得、不额外收费
       （Lean Yellow / Green Belt 要另交钱考试，不是白得）。
@@ -163,12 +165,46 @@ ADR-0013 定稿后这一组大幅收缩，只剩产物排除与扫描脚本。
 - [x] **钢管厂公司名不用改**（2026-09-21 查官网定）：官网英文名就是
       `Shanghai ZHONGYOU TIPO Steel Pipe Co., Ltd`，**站点是对的**；新 CV 里的
       `Tianbao Basheng` 是中译英机翻出来的（中文全称含「天宝巴圣」）。CV 那份是课程作业，本轮不动。
+      **2026-09-26 补**：Gov MB / PSD 那版 CV 已改成官网名；站点原先写成
+      `Zhongyou Tipo`，已改回官网大小写 `ZHONGYOU TIPO`，logo alt 同步。
 - [ ] **新 CV 的两处缺漏属 CV 侧，本轮不处理**（2026-09-21）：career break 那一行又没了
       （PDF 上 2025-02 → 2026-01 约 11 个月空白）、`(Contract)` vs 站点 `(Freelance)`。
       新 CV 是课程作业稿、版面有限，取舍是本人做的；真正投递前再回到这一节核。
+      **2026-09-26**：职位名那半条已消解——站点改为 `Full-Stack Developer (Contract)`，与 CV 一致。
+      career break 那半条未动。
+- [x] **站点对准 Gov MB / PSD 版 CV 校准数字与用语**（2026-09-26）：不改篇幅与核心叙事，只校准：
+      - Weimob 规模起点统一为 **65M**（依据 ToucanShelf Weimob 项目全景「分配到门店后 6500 万」）。
+        站点原本就是 65M，CV 由 60M 改 65M；
+        `Career/Vault/Baseline` 那句同步为 6500 万。
+      - hero 终端的对象名从 brands / SKUs 改为 **merchants / records**，与 CV 一致。
+      - Weimob 迁移事故那句改用 **restored writes**（与 CV 同口径）。
+      - MES 项目卡问题句 `20+` 改为 **24** production stages。
+- [ ] **`500K+ peak QPS` 仍未核实**（2026-09-26 记）：站点 hero 终端保留，CV 里没有这个数。
+      本轮投递方不关心，先不动；下次核 Weimob 素材时确认出处，查不到就从站点拿掉。
+      LinkedIn Weimob 的 `Read Performance` 条也保留了它，同条还有 `up to 128 replicas`，
+      CV / 站点都没有，出处一起核。
+- [x] **LinkedIn 整体对准当前 CV**（2026-09-26 本人改完）：只校准数字与用语，不加内容。
+      - About：`10+` → `9 years`，`post-graduate` → `post-degree`。
+      - TIPO：职位 `Full-Stack Developer (Contract)`、雇佣类型 Contract；描述 `20+` → `24` stages，
+        `serving` → `built for`（系统验收后弃用，不能说在用）。
+      - Weimob：职位 `Senior Java Software Engineer`、`May 2021` 起；`60M+ SKUs` →
+        `65M+ store-level product records`；首句按 CV 用 `Owned`；常规发布（30 → <10 分钟）与
+        高峰积压（Double 11 / 618，1–2 小时 → <30 分钟）拆成两条，删掉把上游配额误当写入吞吐的
+        `High-Concurrent Scaling`；`Cluster Stability` 改成先止血（大账号挪专用集群）再重排 routing；
+        删掉 `100% traceability / zero-loss` 的绝对化说法。
+      - Souche：职位 `Senior Java Software Engineer`、止于 `May 2021`；描述不动。
+      - Education：UWinnipeg 如上；河南改 `Bachelor of Engineering`。
+- [ ] **LinkedIn 这轮留下的尾巴**（2026-09-26 记）：
+      - 高峰积压「降到 30 分钟以内」是按 LinkedIn 原文保留的，CV / 站点没有对应数字，本人确认过再说。
+      - Tanhua / Souche 的雇佣类型写的是 `Contract Full-time`，北美读起来是合同工；
+        当时若是正式员工应改 Full-time。
+      - Souche 描述全是职责、没有成果。站点 DaSouChe 卡已有定稿事实（40,000+ 汽车商户、
+        Vehicle Product Center、规则引擎），以后可以照搬，不用重新回忆。
+      - Tanhua / Sendinfo / Yonyou 的职位、公司名、起止月份仍按上面那条等离职证明核实。
 - [ ] **图标 AI 项目的技术栈说法不一致**：LinkedIn 的 career break 描述里是
       CLIP / BLIP / VGG16；站点 Projects 卡片里写的是 Gemini API 编排。可能是两个 repo 的
       不同阶段，但对外读起来像是同一个项目的两套说法。需要确认后统一口径。
+      同一段里 LinkedIn 写 `10,000+ icons`、站点写 `1,783`，可能是爬取量与筛后量，一并确认。
 
 ## 3. 简历工作台（ADR-0014 → FR-11）
 

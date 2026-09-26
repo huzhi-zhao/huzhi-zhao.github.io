@@ -72,8 +72,8 @@ export const EXPERIENCE: RoleGroup[] = [
     title: "2024 — 25",
     roles: [
       {
-        company: "Shanghai Zhongyou Tipo Steel Pipe Co., Ltd.",
-        role: "Full-Stack Developer (Freelance) — Manufacturing Execution System",
+        company: "Shanghai ZHONGYOU TIPO Steel Pipe Co., Ltd.",
+        role: "Full-Stack Developer (Contract) — Manufacturing Execution System",
         blurb: "Steel pipe manufacturer. Sole developer on a greenfield MES, end to end.",
         period: "Jul 2024 — Feb 2025",
         location: "Remote, from Hangzhou, China",
@@ -89,7 +89,7 @@ export const EXPERIENCE: RoleGroup[] = [
         tech: ["Golang", "Vue.js", "MySQL", "Android", "RBAC"],
         logo: {
           src: "/logos/tipo.svg",
-          alt: "Shanghai Zhongyou Tipo Steel Pipe",
+          alt: "Shanghai ZHONGYOU TIPO Steel Pipe",
           width: 102,
           height: 41,
           href: "http://www.shtipo.com/en/",
@@ -123,7 +123,7 @@ export const EXPERIENCE: RoleGroup[] = [
           },
           {
             title: "Rebuilt the index topology during a live migration",
-            body: "During a seven-month backfill, a data-heavy account representing more than a third of indexed data pushed one node past Lucene's {{2.1-billion}}-document ceiling and stopped writes. I helped separate large accounts into a dedicated cluster and redesign routing and query paths while the legacy system continued serving customers. Writes recovered during the migration, and the platform grew from roughly {{65M}} to {{90M}} indexed product records across {{32}} data nodes; hot/cold separation, filter-only queries, and index sorting kept query latency stable without adding nodes.",
+            body: "During a seven-month backfill, a data-heavy account representing more than a third of indexed data pushed one node past Lucene's {{2.1-billion}}-document ceiling and stopped writes. I restored writes by separating large accounts into a dedicated cluster, then redesigned routing and query paths while the legacy system continued serving customers. The platform grew from roughly {{65M}} to {{90M}} indexed product records across {{32}} data nodes; hot/cold separation, filter-only queries, and index sorting kept query latency stable without adding nodes.",
           },
           {
             title: "Turned migration jobs into an operations platform",

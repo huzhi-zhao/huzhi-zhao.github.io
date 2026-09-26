@@ -42,11 +42,11 @@ const SCRIPT: Block[] = [
   },
   {
     cmd: "scale",
-    out: [{ text: "20K brands · 65M+ SKUs · 32-node ES · 500K+ peak QPS" }],
+    out: [{ text: "20K merchants · 65M+ records · 32-node ES · 500K+ peak QPS" }],
   },
   {
     cmd: "currently",
-    out: [{ text: "Post-Grad AI @ University of Winnipeg" }],
+    out: [{ text: "Post-Degree AI @ University of Winnipeg" }],
     tight: true,
   },
   { cmd: "status", out: [{ text: "Open to new opportunities", accent: true }] },

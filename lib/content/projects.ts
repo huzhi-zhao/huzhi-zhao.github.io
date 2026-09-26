@@ -66,7 +66,7 @@ export const PROJECTS: Project[] = [
   {
     slug: "factory-mes",
     title: "Factory MES & Analytics Platform",
-    question: "How do you get 20+ production stages onto one system?",
+    question: "How do you get 24 production stages onto one system?",
     year: "2025",
     domain: "industrial",
     status: "production",
