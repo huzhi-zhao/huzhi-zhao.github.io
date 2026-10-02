@@ -26,7 +26,8 @@ Hero 终端的 `focus` 一行写的是 `large-scale data search · distributed s
    前两项对应 rank 1 与 rank 2；第三项是两条线共有的差异点
    （MySQL↔ES 对账、UOIP 的跨层质量审计），与左侧正文 "data reliability" 同词。
 2. 副标题改为 `expanding into Data Engineering`。
-3. `scale` 去掉 `500K+ peak QPS`，记录数按 Experience 改为 `65M→90M`。
+3. `scale` 去掉 `500K+ peak QPS`，记录数按 Experience 改为 `65M→90M product records`。
+   必须带 "product"：这是商品表（分配到门店后的商品记录），不是集群里最大的索引。
 
 ## 理由
 
