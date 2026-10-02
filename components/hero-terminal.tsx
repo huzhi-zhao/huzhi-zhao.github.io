@@ -42,7 +42,7 @@ const SCRIPT: Block[] = [
   },
   {
     cmd: "scale",
-    out: [{ text: "20K merchants · 65M→90M records · 32-node ES" }],
+    out: [{ text: "20K merchants · 65M→90M product records · 32-node ES" }],
   },
   {
     cmd: "currently",
