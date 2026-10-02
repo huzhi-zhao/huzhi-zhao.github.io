@@ -123,8 +123,15 @@ ADR-0013 定稿后这一组大幅收缩，只剩产物排除与扫描脚本。
       James 记不清，会找离职证明 / 社保记录核实。**在核实前站点保持现值不动**——
       ADR-0012 约束 3 要求这一层与 CV / LinkedIn 完全一致，改错比不改更糟。
       同批待确认的还有职位名：Tanhua（Java Developer / Senior Java Developer）、
-      Sendinfo（Junior Developer / Java Software Engineer，差一档职级）、
       Yonyou 公司全名（Zhejiang Yonyou Software / yonyou Network Technology）。
+- [ ] **Sendinfo / Yonyou 职位名去掉 Junior**（2026-10-01 本人定）：国内这两段的头衔
+      都没有 Junior，就是 Java 工程师 / Java 开发。LinkedIn 取 `Java Software Engineer`
+      （Sendinfo）与 `Java Developer`（Yonyou）。**站点与 CV 仍写 `Junior Developer`，待同步**：
+      `lib/content/experience.ts` 的 `ADDITIONAL` 两条，ToucanShelf Vault 与 PACE 作业稿各一处。
+      已发出的 GovMB 版 CV 不动。
+- [ ] **LinkedIn 学历段实际未同步**（2026-10-01 查 LinkedIn 存档发现）：页面上仍是
+      `Jan 2026 – Dec 2026`、只列 AI 一个项目，与下面"2026-09-26 已同步"的记录不符。
+      本人决定 BAT（2027-01 开课）开课前不维护，暂不改。
 - [x] **任职时间 LinkedIn 与离职证明不符**（2026-09-26 LinkedIn 已按下表改正）：
   | 公司 | 离职证明 / CV（正确） | LinkedIn（待改） |
   | --- | --- | --- |
