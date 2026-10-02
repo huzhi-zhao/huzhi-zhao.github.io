@@ -9,7 +9,7 @@ import type { Project } from "@/lib/content/projects";
  */
 const STATUS: Record<NonNullable<Project["status"]>, { text: string; accent: string; dot?: boolean }> = {
   // 琥珀与 urban-ops.svg 的主色（#f5b942）同一支，角标不再像贴上去的另一套配色。
-  conference: { text: "Conference Talk", accent: "#f5b942" },
+  talk: { text: "Day of Data 2026", accent: "#f5b942" },
   production: { text: "Production", accent: "#1dbf73", dot: true },
   archived: { text: "Archived", accent: "#9aa5ad" },
 };
@@ -83,7 +83,7 @@ function ClosedSourceMark() {
 /** 用动效标签强调的问题域 —— 其余走静态 eyebrow。 */
 const EMPHASISED: ReadonlySet<Project["domain"]> = new Set(["operational", "industrial"]);
 
-/** 动效光点跟随该问题域角标的颜色 —— operational 走琥珀（conference），industrial 走绿（production）。 */
+/** 动效光点跟随该问题域角标的颜色 —— operational 走琥珀（talk），industrial 走绿（production）。 */
 const EMPHASIS_GLOW: Partial<Record<Project["domain"], string>> = {
   operational: "bg-[radial-gradient(#f5b942_40%,transparent_60%)]",
   industrial: "bg-[radial-gradient(var(--accent-green)_40%,transparent_60%)]",

@@ -27,7 +27,7 @@ export function Hero() {
           </h1>
 
           <p className="mb-6 font-heading text-[clamp(18px,2vw,22px)] font-light leading-[1.3] tracking-[-0.2px] text-white/90">
-            expanding into Data &amp; AI
+            expanding into Data Engineering
           </p>
 
           <p className="mb-4 max-w-[540px] text-[17px] tracking-[0.1px] text-muted">

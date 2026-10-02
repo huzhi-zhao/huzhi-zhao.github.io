@@ -12,9 +12,9 @@ export type Project = {
   year: string;
   /**
    * 角标只给「特别有代表性」的项目 —— 不是进度指示器，省略即不渲染。
-   * production = 有真实甲方的盈利性全栈项目；conference = 已被会议接收、要上台宣讲的研究型项目。
+   * production = 有真实甲方的盈利性全栈项目；talk = 已在公开活动上宣讲过的项目，角标写活动名而不是类别（不抬高规格）。
    */
-  status?: "conference" | "production" | "archived";
+  status?: "talk" | "production" | "archived";
   /** 唯一主点击目标（FR-3.3）。wiki 未就绪时退化为 repo / demo。 */
   destination: { href: string; kind: "wiki" | "demo" | "repo" };
   /**
@@ -36,7 +36,7 @@ export const PROJECTS: Project[] = [
     question: "How does a city know where to send its plows after a snowfall?",
     year: "2026",
     domain: "operational",
-    status: "conference",
+    status: "talk",
     destination: { href: LINKS.uoipSite.href, kind: "wiki" },
     // destination 不再是 repo，GitHub 角标要显式声明才不会消失。
     repos: [{ href: LINKS.uoipRepo.href, label: "GitHub repo" }],
