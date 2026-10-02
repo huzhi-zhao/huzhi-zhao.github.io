@@ -38,11 +38,11 @@ const SCRIPT: Block[] = [
   { cmd: "whoami", out: [{ text: "huzhi.zhao — senior backend engineer" }] },
   {
     cmd: "focus",
-    out: [{ text: "large-scale data search · distributed systems" }],
+    out: [{ text: "backend systems · data pipelines · data reliability" }],
   },
   {
     cmd: "scale",
-    out: [{ text: "20K merchants · 65M+ records · 32-node ES · 500K+ peak QPS" }],
+    out: [{ text: "20K merchants · 65M→90M records · 32-node ES" }],
   },
   {
     cmd: "currently",
@@ -56,9 +56,8 @@ const SCRIPT: Block[] = [
 const MARKS = [
   { s: "huzhi.zhao", cls: NAMED },
   { s: "20K", cls: NUMERIC },
-  { s: "65M+", cls: NUMERIC },
+  { s: "65M→90M", cls: NUMERIC },
   { s: "32-node", cls: NUMERIC },
-  { s: "500K+", cls: NUMERIC },
   { s: "University of Winnipeg", cls: NAMED },
 ];
 
