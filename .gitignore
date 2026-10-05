@@ -4,3 +4,6 @@ node_modules
 out
 next-env.d.ts
 *.tsbuildinfo
+
+# ToucanShelf memogit checkout (scripts/toucan.py); server is the source of truth, holds the PAT
+kb/

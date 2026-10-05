@@ -69,13 +69,17 @@ ToucanShelf `Career/Vault/` 里只有针对具体投递裁剪出来的稿子。
   职业规划的决策在 `Career/decisions/`；简历怎么写的决策在本仓库 `docs/adr/`。
 - **Career 的目录结构以它自己的 `README` 为准**，本仓库不再维护第二份目录地图
   （维护过，三方打架，坏指针一堆）。
-- **一律优先走 memogit 本地检出**（在 `~/Workspace/MemoBase/`），读、改、新建都用
-  普通文件工具，改完 `memogit push --dry-run` 预演再 `memogit push`。
-  动手前读 `MemoBase/.memogit/toucanshelf-guide.md`。文件末尾的 `memogit-id` 和
-  `<!-- END memogit -->` 都不能碰；移动改名用 `mv`，不要复制加删除。
-- **MCP 只做兜底**：本地检出里没有的东西（跨 workspace 检索、刚在 Web UI 建的文档）
-  才用 `memo_*` / `rag_search`。`memo_update_memo` 是整篇替换、无并发检查、不可回滚，
-  真要用必须先 get 全文。
+- **只走 memogit，不用 MCP。** 知识库检出在仓库内的 `kb/`（gitignored），
+  由 `scripts/toucan.py` 管理，库清单在 `scripts/toucan.json`（Career、SideProjects）。
+  凭据只来自环境变量 `TOUCANSHELF_PAT` / `TOUCANSHELF_SERVER`，本机与云端沙箱同名。
+- **会话开场先确认 `kb/` 就绪。** SessionStart hook 会跑 `toucan.py sync` 并把结果注入上下文。
+  看到"⛔ 知识库未就绪"或某库同步失败：**停下告诉用户**，不读写、不引用对面内容，
+  不凭记忆补，也不退回 MCP。没看到 hook 输出时手动跑 `python3 scripts/toucan.py sync`。
+- 读、改、新建都在 `kb/` 里用普通文件工具。动手前读 `kb/CLAUDE.md` 和
+  `kb/.memogit/skill/SKILL.md`。文件末尾的 `memogit-id` 和 `<!-- END memogit -->`
+  都不能碰；移动改名用 `mv`，不要复制加删除。每轮结束 Stop hook 自动 push，
+  手动用 `python3 scripts/toucan.py status` / `push`；冲突以 `.remote` 副本留下，合并后再 push。
+- **`kb/` 永不提交**，token 不写进任何被跟踪的文件（本仓库是 public）。
 - **新建文档或重构级改写要先对齐范围再动笔**，不要直接开写。
 
 ## 五、工程注意事项
