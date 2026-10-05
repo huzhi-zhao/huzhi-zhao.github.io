@@ -1,7 +1,7 @@
 # ToucanShelf 协作约定
 
 - 状态：已生效
-- 日期：2026-08-23（初稿）／ 2026-08-29（Career 结构调整后重写）／ 2026-09-09（改为 memogit 优先）
+- 日期：2026-08-23（初稿）／ 2026-08-29（Career 结构调整后重写）／ 2026-09-09（改为 memogit 优先）／ 2026-10-05（只走 memogit，检出挂进仓库 `kb/`，弃用 MCP）
 - 依赖：[ADR-0005](../adr/0005-content-tiers-and-hosting.md)、[ADR-0013](../adr/0013-public-repo-privacy-boundary.md)、[ADR-0014](../adr/0014-resume-scope-in-docs.md)
 
 这份文档回答一个问题：**一段内容该写进 `docs/`，还是写进 ToucanShelf？**
@@ -15,19 +15,39 @@ ToucanShelf 是本人的开源知识库项目（见 SideProjects/toucan-shelf）
 结构是 **workspace → 文件夹树 → 文档**。文档在 API 里叫 `memo`，是完整文档不是便签。
 文件夹是路径前缀，写入一个不存在的路径即自动出现，没有建文件夹这一步。
 
-### 默认走 memogit 本地检出
+### 只走 memogit，检出挂在仓库里
 
-ToucanShelf 数据库在本地有一份投影，在 `~/Workspace/MemoBase/`（CLI 在
-`/usr/local/bin/memogit`）。**读、改、新建一律先走这里**，用普通文件工具操作：
+2026-10-05 起，本仓库**自带**获取知识库的办法，不再依赖机器上另外维护的
+`~/Workspace/MemoBase/`，也不再用 MCP。做法参照 toucan-base 仓库：
 
-```
-memogit status → 改文件 → memogit push --dry-run → memogit push
-```
+| 部件 | 作用 |
+| --- | --- |
+| `kb/`（gitignored） | memogit 检出根，`kb/.memogit/` 一份凭据 + 同步状态，每个库落在 `kb/<库标题>/` |
+| `scripts/toucan.json` | 拉哪些库：Career、SideProjects（MPNP 按边界表两边都不放，不拉） |
+| `scripts/toucan.py` | `sync`（缺的 clone、有的 pull）/ `push` / `status` |
+| `.claude/settings.json` | SessionStart 跑 `sync`，Stop 跑 `push` |
 
-这么定的理由：本地检出可以 grep、可以 diff、可以 `push --dry-run` 预演，
+**凭据**只来自环境变量，本机和云端沙箱同名：
+
+- `TOUCANSHELF_PAT` — memos PAT；
+- `TOUCANSHELF_SERVER` — 服务地址，缺省时用 `toucan.json` 里的 `https://toucan.huzhi.dev`。
+
+首次 clone 后 memogit 会把两者存进 `kb/.memogit/config.yaml`，之后即使 hook 进程
+拿不到环境变量（桌面 App 启动的会话不读 `.zshrc`）也能 pull / push。
+所以**本机第一次**要在已导出变量的终端里跑一次 `python3 scripts/toucan.py sync`。
+
+**memogit 二进制**：本机用 PATH 上的；云端沙箱没有，`toucan.py` 从公开的
+toucan-shelf 源码现场 `go build`（需要沙箱能访问 github.com 和 Go 模块代理，
+另外网络白名单要放行 `toucan.huzhi.dev`）。不往本仓库提交二进制——仓库是 public 的站点仓库。
+
+**就绪是硬前提。** sync 失败时 hook 往上下文注入"⛔ 知识库未就绪"，
+此时助手必须停下告诉用户，不读写、不引用对面内容，不凭记忆补，也不退回 MCP。
+
+为什么只走 memogit：检出可以 grep、diff、冲突留 `.remote` 副本，
 而 MCP 的 `memo_update_memo` 是整篇替换、无并发检查、不可回滚，错一次就是静默覆盖。
+挂进仓库是为了让云端会话和本机会话走同一条路，不再出现"本机有检出、云端只能 MCP"的分叉。
 
-关键规矩（完整版见 `MemoBase/.memogit/toucanshelf-guide.md`，动手前必读）：
+关键规矩（完整版见 `kb/CLAUDE.md` 和 `kb/.memogit/skill/SKILL.md`，动手前必读）：
 
 - 文件末尾的 `<!-- memogit-id: memos/xxx -->` **绝不能碰**；新文件不要手写 ID。
 - `AGENTS.md` / `CLAUDE.md` 末尾的 `<!-- END memogit -->` 同样不能删——
@@ -38,27 +58,11 @@ memogit status → 改文件 → memogit push --dry-run → memogit push
 - 少用 ToucanShelf 方言（callout、`==` 高亮、```kanban / ```calendar / ```grid、
   `.view.json`）——除非确有需要，写标准 Markdown。
 
-### MCP 只做兜底
+### 不再使用 MCP
 
-本地检出拿不到的东西才用 MCP：跨 workspace 的语义检索、刚在 Web UI 建还没同步下来的
-文档、只想确认一下线上现值。可用工具：
-
-| 工具 | 用途 |
-| --- | --- |
-| `workspace_list_workspaces` | 列出所有 workspace，拿 `workspaces/{uid}` |
-| `workspace_get_workspace_tree` | 取某个 workspace 的完整目录树 |
-| `rag_search` | 只知道主题、不知道位置时的语义检索 |
-| `memo_get_memo` / `memo_list_memos` | 读文档 |
-| `memo_create_memo` | 新建（传 workspace / folder_path / title / content） |
-| `memo_update_memo` | 更新 |
-
-注意事项：
-
-- workspace 必须用 uid 寻址，显示名（"Career"）只是标题，先 list 再用。
-- `title` 不带扩展名——传 `plan`，不是 `plan.md`。
-- `memo_update_memo` 是**整篇替换**，不是增量补丁。真要用必须先 get、在完整文本上改、再写回。
-- **没有并发检查**：读和写之间若有人在 Web UI 编辑，会被静默覆盖。
-- 没有删除工具，`state` 归档是最接近的操作，且可逆。
+ToucanShelf 的 MCP 工具（`memo_*`、`rag_search`、`workspace_*`）在本仓库的会话里**不用**，
+包括"检出里找不到"的情况——那说明 `kb/` 没同步好或库清单缺了，先 `sync` 或改
+`scripts/toucan.json`，而不是绕过去。跨库语义检索改为在 `kb/` 里 grep。
 
 ### 文档引用语法
 
@@ -140,10 +144,10 @@ Career 的一级轴（只为理解分工，细节以对面为准）：
    否则半年后会被无意识地改回去（见 ADR README 的写作标准）。
 4. **外链前确认可匿名访问。** 站点引用的 L2/L3 文档必须是 public 分享状态（ADR-0005 约束 2）；
    反过来，`Career/` 下的一切默认不可外链。
-5. **改前先读。** 因为 `memo_update_memo` 整篇替换且无并发检查，任何更新都必须先 get 全文。
+5. **改前先 pull。** 动手前确认本轮 sync 成功（或手动 `toucan.py sync`），在最新文本上改。
 6. **大改先商量。** 新建文档，或对已有文档做重构级别的大幅改写（换结构、换定位、大段增删），
    都要先跟我对齐**写作范围和大体内容**——写哪个 workspace/路径、标题、分几节、每节大概讲什么——
-   得到确认后再动笔。原因有两个：`memo_update_memo` 整篇替换且不可回滚，写错了要人工救；
+   得到确认后再动笔。原因有两个：Stop hook 每轮自动 push，写错了会直接上服务器；
    而且知识库是长期资产，位置和结构定错了，后面引用它的地方全跟着错。
    错字、补一条事实、更新链接这类局部修补不受此限，直接改即可。
 
@@ -151,9 +155,10 @@ Career 的一级轴（只为理解分工，细节以对面为准）：
 
 助手在需要跨两边工作时（尤其是简历相关任务）：
 
-1. `workspace_list_workspaces` 拿到 Career / SideProjects 的 uid（uid 会变，不要硬编码）；
-2. 需要定位文档时用 `workspace_get_workspace_tree`，只知道主题时用 `rag_search`；
-   要了解 Career 的结构，读它自己的 `README`，不要依赖本文档的描述；
+1. 看 SessionStart hook 注入的知识库清单，确认 `kb/Career/`、`kb/SideProjects/` 都是 ok；
+   未就绪就停下告诉用户（见上文"就绪是硬前提"）；
+2. 定位文档在 `kb/` 里 grep / 读文件；要了解 Career 的结构，读 `kb/Career/README`，
+   不要依赖本文档的描述；
 3. 读 `docs/adr/` 里相关的约束条款再动手；
 4. 产出内容前，用上面的路由规则先决定写哪边。
 

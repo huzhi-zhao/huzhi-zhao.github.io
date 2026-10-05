@@ -1,0 +1,16 @@
+{
+  "server": "https://toucan.huzhi.dev",
+  "memogit_source": "https://github.com/huzhi-zhao/toucan-shelf.git",
+  "knowledge_bases": [
+    {
+      "name": "Career",
+      "desc": "职业规划、简历投递稿（Vault/）、工作经历素材（Experience/）",
+      "attachments": false
+    },
+    {
+      "name": "SideProjects",
+      "desc": "站点 L2/L3 外链的内容源，含 UOIP/report/",
+      "attachments": false
+    }
+  ]
+}
