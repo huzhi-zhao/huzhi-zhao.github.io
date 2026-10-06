@@ -70,15 +70,16 @@ ToucanShelf `Career/Vault/` 里只有针对具体投递裁剪出来的稿子。
 - **Career 的目录结构以它自己的 `README` 为准**，本仓库不再维护第二份目录地图
   （维护过，三方打架，坏指针一堆）。
 - **只走 memogit，不用 MCP。** 知识库检出在仓库内的 `kb/`（gitignored），
-  由 `scripts/toucan.py` 管理，库清单在 `scripts/toucan.json`（Career、SideProjects）。
+  库清单在根目录 `memogit.conf.yaml`（Career、SideProjects）。memogit 由服务器发布，
+  SessionStart hook 每次从服务器装好配套版本再同步，不在仓库里放二进制或同步脚本。
   凭据只来自环境变量 `TOUCANSHELF_PAT` / `TOUCANSHELF_SERVER`，本机与云端沙箱同名。
-- **会话开场先确认 `kb/` 就绪。** SessionStart hook 会跑 `toucan.py sync` 并把结果注入上下文。
-  看到"⛔ 知识库未就绪"或某库同步失败：**停下告诉用户**，不读写、不引用对面内容，
-  不凭记忆补，也不退回 MCP。没看到 hook 输出时手动跑 `python3 scripts/toucan.py sync`。
+- **会话开场先确认 `kb/` 就绪**，规则见文末「ToucanShelf 知识库」一段。
+  看到 ⛔ / ⚠ 或某库同步失败：**停下告诉用户**，不读写、不引用对面内容，
+  不凭记忆补，也不退回 MCP。
 - 读、改、新建都在 `kb/` 里用普通文件工具。动手前读 `kb/CLAUDE.md` 和
   `kb/.memogit/skill/SKILL.md`。文件末尾的 `memogit-id` 和 `<!-- END memogit -->`
   都不能碰；移动改名用 `mv`，不要复制加删除。每轮结束 Stop hook 自动 push，
-  手动用 `python3 scripts/toucan.py status` / `push`；冲突以 `.remote` 副本留下，合并后再 push。
+  手动在 `kb/` 里跑 `memogit status` / `memogit push`；冲突以 `.remote` 副本留下，合并后再 push。
 - **`kb/` 永不提交**，token 不写进任何被跟踪的文件（本仓库是 public）。
 - **新建文档或重构级改写要先对齐范围再动笔**，不要直接开写。
 
@@ -92,3 +93,13 @@ ToucanShelf `Career/Vault/` 里只有针对具体投递裁剪出来的稿子。
   （TODO FR-14.1 待清理）；新增 UI 前先确认现有的能不能用。
 - 部署：push `main` 触发 workflow 构建静态导出并推 `gh-pages`。
   **`gh-pages` 分支永不手改。**
+
+<!-- BEGIN toucanshelf -->
+## ToucanShelf 知识库
+
+本仓库通过 memogit 使用 ToucanShelf 知识库，检出在 `kb/`（不进 git）。会话开始时，SessionStart hook 会同步知识库，并输出一段以 `memogit:` 开头的状态。
+
+- 没看到这段状态，说明 hook 没运行或服务器连不上：停下来告诉用户，不要读写 `kb/`，也不要改用 MCP 等其他途径。
+- 状态以 ⛔ 或 ⚠ 开头时，照状态里的说明处理。
+- 接入和排查说明：https://toucan.huzhi.dev/memogit/bootstrap.md
+<!-- END toucanshelf -->
