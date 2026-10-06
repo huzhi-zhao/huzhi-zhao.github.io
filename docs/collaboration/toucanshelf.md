@@ -24,7 +24,7 @@ ToucanShelf 是本人的开源知识库项目（见 SideProjects/toucan-shelf）
 | 部件 | 作用 |
 | --- | --- |
 | `kb/`（gitignored） | memogit 检出根，`kb/.memogit/` 一份凭据 + 同步状态，每个库落在 `kb/<库标题>/` |
-| `memogit.conf.yaml` | 拉哪些库：Career、SideProjects（MPNP 按边界表两边都不放，不拉） |
+| `memogit.conf.yaml` | 拉哪些库：Career、SideProjects（个人身份类的库按边界表两边都不放，不拉） |
 | `.claude/settings.json` | SessionStart 从服务器装配套的 memogit 并 `memogit hook session-start`（缺的 clone、有的 pull）；Stop 跑 `memogit hook stop`（push） |
 | `CLAUDE.md` 末尾的 `toucanshelf` 段 | 服务器连不上、拿不到接入说明时，agent 唯一的指引 |
 

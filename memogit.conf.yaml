@@ -1,7 +1,7 @@
 # 本仓库要拉哪些 ToucanShelf 知识库。SessionStart hook（memogit hook session-start）
 # 读这份清单：没检出过的 clone，已有的 pull，检出在 kb/<库标题>/。
 # 接入说明：$TOUCANSHELF_SERVER/memogit/bootstrap.md
-# MPNP 按 docs/collaboration/toucanshelf.md 的边界表两边都不放，不拉。
+# 个人身份类的库按 docs/collaboration/toucanshelf.md 的边界表两边都不放，不拉。
 knowledge_bases:
   - name: Career
     desc: 职业规划、简历投递稿（Vault/）、工作经历素材（Experience/）
