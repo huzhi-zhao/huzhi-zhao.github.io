@@ -2,7 +2,7 @@
 
 - 状态：提议中（文案条目按 [ADR-0010](../adr/0010-ai-assisted-writing.md) 需本人定稿）
 - 日期：2026-09-21
-- 触发：PACE 课程产出的新版 CV（与 Manitoba Hydro `Data Developer` JD 一同提交的那份 PDF）
+- 触发：PACE 课程产出的新版 CV（随一次投递提交的那份 PDF）
 - 权威来源：ToucanShelf `Career/Experience/`，**不是 CV**（CV 只是探针，见第 1 节）
 - 对应决策：[ADR-0007](../adr/0007-copy-conventions.md) 约束 2 / 约束 4、
   [ADR-0010](../adr/0010-ai-assisted-writing.md)、[ADR-0012](../adr/0012-experience-two-tiers.md)、
@@ -45,7 +45,7 @@ CV 侧的缺漏（career break 那行、Freelance/Contract）留在 TODO 第 2 �
 | 4 | `Sustained 500K+ QPS`，`128 replicas` | 没有这条 | 附录 A：`副本最多可能最高有 128 个副本`、`我相信某些核心接口应该在百万以内 50 万以上，如果命中缓存`；本人补充（2026-09-21）：**128 是清晰印象**，也可能是 120 或 64，但这个量级肯定合理 | **保留，改口径**。2026-09-21 两次更正：先是本文错写成"无出处"，继而**按旧版约束 2 建议删除也不成立**——ADR-0007 约束 2 已修订（见该 ADR 第 6 节），判据是"不编造、不夸大"而非"拿得出文件"。改法：峰值写成 `peaked at 128 replicas`、`on the order of 500K+ QPS at peak with cache hits`，把不确定性写进句子。**仍待本人确认的是归属**：读侧优化主要是那位资深同事的战场 |
 | 5 | `Resolved critical write failures caused by the 2.1B doc-per-node limit via routing redesign` | 双集群 + `actId_orgid` 复合路由，**迁移当天**触顶、边迁边恢复写入 | §5.4.4 | 方向对，但太单薄：丢了"事故发生在迁移当天""在迁移过程中恢复写入"这两个最硬的细节 |
 | 6 | `Co-architected a distributed Elasticsearch platform` | 不用这个词 | §三：**ES 写平台是我主责**，读平台不是 | 写平台上 "co-architected" 是低估自己；读平台上"主导"又是高估。解法是**按平台分开写**，不是整段抬高或压低 |
-| 7 | （没有） | （也没有） | TODO §3：`mp-search-tasks` 是**自研分布式分片任务平台**，本人约 72% 提交，"比对账系统有价值得多，值得一条独立 bullet" | 建议新增一条，同时把对账那条压短 |
+| 7 | （没有） | （也没有） | `Career/Experience/Weimob` 代码考古：`mp-search-tasks` 是**自研分布式分片任务平台**，本人约 72% 提交，"比对账系统有价值得多，值得一条独立 bullet" | 建议新增一条，同时把对账那条压短 |
 | 8 | （没有） | （也没有） | `角色-PTL项目负责人`（2026-09-21 新建） | 值得进站点，但**先补齐"哪几次需求、跨哪些团队"**再写。口径红线见该文档第四节：不得写成管人 |
 | 9 | 折叠态 headline 的三个数字 | — | — | 里面两个数字（`60M+ SKUs`、`500K+ QPS`）按上面要改或要删，headline 必须跟着重写。这本来就是 FR-4.1 的待办 |
 
@@ -91,7 +91,7 @@ FR-1.1（Hero pitch 改为"我帮谁解决什么问题"）落地时可以参考�
 **第 3 条 · 新增：自研分片任务平台**（`mp-search-tasks`）
 
 口径待本人裁决（"72% 提交"这类内部数据要不要对外、怎么说），
-素材见 TODO §3 与 `代码考古-两个仓库`。**往"平台"写，不要往"脚本"写。**
+素材见 `Career/Experience/Weimob` 的 `代码考古-两个仓库`。**往"平台"写，不要往"脚本"写。**
 
 **第 4 条 · 压缩：DB↔ES 对账**
 
