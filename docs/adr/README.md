@@ -42,6 +42,7 @@
 | [0016](0016-course-conventions-scope.md) | 课程规范的作用域：站点侧与简历侧分开适用 | 提议中 |
 | [0017](0017-qualifications-scope.md) | 资历类信息的归属：课程项目、证书、学历等效 | 提议中 |
 | [0018](0018-hero-positioning-backend-and-data.md) | 首屏定位：后端 + 数据管线，不再是"搜索" | 已接受 |
+| [0019](0019-repo-as-job-search-hub.md) | 仓库转为求职协作入口，公开边界加第三问 | 提议中 |
 
 ## 背景来源
 
