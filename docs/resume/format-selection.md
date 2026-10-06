@@ -160,4 +160,4 @@ Henan University of Engineering                  Henan, China
 
 - [ ] 核对 DPS 51019 Module 1 讲义里 Chronological A 与 B 的确切差异——
       上表按"有无 Summary 开头"记，这是从模板结构推断的，**未与讲义逐字核对**。
-      讲义原文在 ToucanShelf `Career/Inputs/PaceResumeCourse/M1-PersonBrand_MarketSearch`。
+      讲义原文在 ToucanShelf `Career/PaceResumeCourse/M1-PersonBrand_MarketSearch`。

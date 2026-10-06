@@ -84,9 +84,10 @@ ToucanShelf 的 MCP 工具（`memo_*`、`rag_search`、`workspace_*`）在本仓
 - 本仓库只记录**两边的分工**（下一节），不记录对面有哪些文档。
 
 Career 的一级轴（只为理解分工，细节以对面为准）：
-`decisions/`（职业规划决策）· `Vault/`（个人基线 + 投递用简历稿）·
-`Experience/`（工作经历素材）· `Campaigns/`（有时间线的行动）·
-`Contacts/`（人与公司）· `Research/`（专题调研，长期更新）· `Inputs/`（课程、方法）。
+`decisions/`（职业规划决策）· `Vault/`（个人基线 + 投递用简历稿 + 求职方法笔记）·
+`Experience/`（工作经历素材）· `Campaigns/`（战略层面、有时间线的大事）·
+`Interview/`（面试与演讲的零件和每次准备）· `Contacts/`（人与活动）· `Employers/`（目标与在职雇主）·
+`Research/`（专题调研，长期更新）· `PaceResumeCourse/`（课程笔记与作业）。
 
 `SideProjects/` 是站点 L2/L3 外链的内容源（ADR-0005），其中 `UOIP/report/`
 是主要外链目标。
@@ -104,8 +105,8 @@ Career 的一级轴（只为理解分工，细节以对面为准）：
 | 敏感字段（住址、电话、第三方联系方式） | `Career/`，**永不进仓库** | ADR-0013 约束 1 |
 | 工作经历的原始素材（项目细节、职责、取舍） | `Career/Experience/` | 仓库只放压缩后的结论 |
 | 针对具体投递裁剪的简历文本稿 | `Career/Vault/` | ADR-0013「简历的生成链路」第 2 步 |
-| 课程原文、过程笔记 | `Career/Inputs/` | 仓库只放推导出的结论 |
-| 专题调研（市场核查、定位论证） | `Career/Research/` | 同上；2026-09-15 从 `Inputs/` 提到一级 |
+| 课程原文、过程笔记 | `Career/PaceResumeCourse/` 等 | 仓库只放推导出的结论 |
+| 专题调研（市场核查、定位论证） | `Career/Research/` | 同上 |
 | 项目自身文档、跨项目方法论（L2/L3） | `SideProjects/{project}/` | ADR-0005 约束 1 |
 | 模拟面试的题库、答案、复盘与反馈 | `Career/Interview/` | ADR-0019 §3 |
 | 活动巡检、投递、与雇主的往来 | `Career/Campaigns/`、`Career/Contacts/` | ADR-0019 §3 |

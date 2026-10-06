@@ -67,7 +67,7 @@ Career 内部怎么分子目录以 `kb/Career/README.md` 为准，下表只给�
 | 专业认证 | `Career/Campaigns/`（选型、进度） | 拿到后怎么写进简历 / 站点，看 [ADR-0017](docs/adr/0017-qualifications-scope.md)（提议中） |
 | 简历修改 | `Career/Vault/`（裁剪稿）、`Career/Experience/`（素材与缺口） | `docs/resume/`、`lib/content/`，链路见第四节 |
 | 求职项目 | 代码在各自的仓库；文档在 `SideProjects/{project}/`；动机与取舍在 `Career/` | 做成后按 ADR-0003 / 0005 上架 Projects |
-| 投递 | `Career/Campaigns/`、`Career/Contacts/Employers/` | 无 |
+| 投递 | `Career/Campaigns/`、`Career/Employers/` | 无 |
 
 职业规划的决策（方向、路线、岗位排序）在 `Career/decisions/`；
 简历和站点怎么写的决策在本仓库 `docs/adr/`。前者的内容不在后者里复述，只写"依据见 `Career/decisions/`"。

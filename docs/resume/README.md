@@ -21,7 +21,7 @@
 | 工作经历的原始素材（项目细节、职责、取舍） | ToucanShelf `Career/Experience/` |
 | 个人背景基线 | ToucanShelf `Career/Vault/Baseline` |
 | 针对具体投递的裁剪稿 | ToucanShelf `Career/Vault/` |
-| 课程原文与讲义 | ToucanShelf `Career/Inputs/PaceResumeCourse/` |
+| 课程原文与讲义 | ToucanShelf `Career/PaceResumeCourse/` |
 
 跨系统的分工细则见 [`docs/collaboration/toucanshelf.md`](../collaboration/toucanshelf.md)。
 

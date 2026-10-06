@@ -57,7 +57,7 @@ ADR-0013 否掉"渐进泄漏"时，假设的是陌生人拼画像；这里的威
 | 专业认证 | `Career/Campaigns/`（选型与进度） | 拿到之后怎么写，按资历归属的 ADR（ADR-0017，提议中） |
 | 简历修改 | `Career/Vault/`（裁剪稿）、`Career/Experience/`（素材） | `docs/resume/` 方法论、`lib/content/` 事实，链路不变 |
 | 求职项目 | 代码在各自的仓库；文档在 `SideProjects/{project}/`；为什么做、对准什么岗位在 `Career/` | 做成之后按 ADR-0003 / 0005 上架 Projects |
-| 投递 | `Career/Campaigns/`、`Career/Contacts/Employers/` | 无 |
+| 投递 | `Career/Campaigns/`、`Career/Employers/` | 无 |
 
 Career 内部怎么分子目录，以它自己的 `README` 为准。这张表只定"在仓库还是在知识库"。
 

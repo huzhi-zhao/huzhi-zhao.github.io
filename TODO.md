@@ -195,7 +195,7 @@ ADR-0013 定稿后这一组大幅收缩，只剩产物排除与扫描脚本。
       1-2 页的预算与信息权重），其余明写留白，等真实投递后拿结果补
 - [x] FR-11.2 `references-page.md` — 推荐人页规范（2026-09-11）。
       核心是一条隐私结论：**推荐人的姓名与联系方式永远不进本仓库**
-      （ADR-0013 约束 1），名单留 ToucanShelf `Career/Contacts/People/`，成稿只在本地
+      （ADR-0013 约束 1），名单留 ToucanShelf `Career/Contacts/`，成稿只在本地
 - [x] FR-11.2 `cover-letter.md` — 三种求职信 + 四段结构（2026-09-11）
 - [ ] FR-11.2 `review-checklist.md` — 投递前自查，含三处事实交叉核对
 - [ ] FR-11.2 `master-vs-targeted.md`（按 ADR-0014 §1.1：站点是名片不随 JD 变，
@@ -218,7 +218,7 @@ ADR-0013 定稿后这一组大幅收缩，只剩产物排除与扫描脚本。
 
 - [ ] **列 3-5 名推荐人并逐个征得同意**。九年经历全在中国，推荐人也在中国——
       课上确认国际推荐人成立，但要预判时差与语言，写清偏好联系方式与时段。
-      名单进 ToucanShelf `Career/Contacts/People/`，规范见
+      名单进 ToucanShelf `Career/Contacts/`，规范见
       [`references-page.md`](docs/resume/references-page.md)
 - [ ] **定一套四份文件共用的版式**（简历 / 求职信 / 推荐人页 / 感谢信）。
       课件原话是 "Extend formatting across all self-marketing materials"。
