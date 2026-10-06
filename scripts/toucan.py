@@ -196,7 +196,10 @@ def cmd_push():
         title, d = cloned[kb["name"].lower()]
         code, out = run(memogit, ["push", title])
         log(f"toucan: push {kb['name']} -> {'ok' if code == 0 else 'failed'}")
-        if code != 0 or "⚠" in out:
+        # ⚠ = conflict; "! " = a file push skipped (e.g. its memo looks archived on
+        # the server). Both leave local edits unsent, so neither may pass silently.
+        skipped = any(line.lstrip().startswith("! ") for line in out.splitlines())
+        if code != 0 or "⚠" in out or skipped:
             problems.append(f"kb/{d}:\n{out}")
     # Surface failures and conflicts to Claude once; never loop on them.
     if problems and not hook_input.get("stop_hook_active"):
