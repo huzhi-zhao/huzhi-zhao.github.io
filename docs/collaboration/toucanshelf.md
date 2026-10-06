@@ -1,7 +1,7 @@
 # ToucanShelf 协作约定
 
 - 状态：已生效
-- 日期：2026-08-23（初稿）／ 2026-08-29（Career 结构调整后重写）／ 2026-09-09（改为 memogit 优先）／ 2026-10-05（只走 memogit，检出挂进仓库 `kb/`，弃用 MCP）／ 2026-10-06（求职工作线入表，路由加第三问）
+- 日期：2026-08-23（初稿）／ 2026-08-29（Career 结构调整后重写）／ 2026-09-09（改为 memogit 优先）／ 2026-10-05（只走 memogit，检出挂进仓库 `kb/`，弃用 MCP）／ 2026-10-06（求职工作线入表，路由加第三问；memogit 改由服务器发布，删掉 `toucan.py`）
 - 依赖：[ADR-0005](../adr/0005-content-tiers-and-hosting.md)、[ADR-0013](../adr/0013-public-repo-privacy-boundary.md)、[ADR-0014](../adr/0014-resume-scope-in-docs.md)、[ADR-0019](../adr/0019-repo-as-job-search-hub.md)
 
 这份文档回答一个问题：**一段内容该写进 `docs/`，还是写进 ToucanShelf？**
@@ -18,30 +18,31 @@ ToucanShelf 是本人的开源知识库项目（见 SideProjects/toucan-shelf）
 ### 只走 memogit，检出挂在仓库里
 
 2026-10-05 起，本仓库**自带**获取知识库的办法，不再依赖机器上另外维护的
-`~/Workspace/MemoBase/`，也不再用 MCP。做法参照 toucan-base 仓库：
+`~/Workspace/MemoBase/`，也不再用 MCP。2026-10-06 起按 ToucanShelf 的统一接入方式
+（服务器上的 `/memogit/bootstrap.md`），不再维护自己的同步脚本：
 
 | 部件 | 作用 |
 | --- | --- |
 | `kb/`（gitignored） | memogit 检出根，`kb/.memogit/` 一份凭据 + 同步状态，每个库落在 `kb/<库标题>/` |
-| `scripts/toucan.json` | 拉哪些库：Career、SideProjects（个人身份类的库按边界表两边都不放，不拉） |
-| `scripts/toucan.py` | `sync`（缺的 clone、有的 pull）/ `push` / `status` |
-| `.claude/settings.json` | SessionStart 跑 `sync`，Stop 跑 `push` |
+| `memogit.conf.yaml` | 拉哪些库：Career、SideProjects（个人身份类的库按边界表两边都不放，不拉） |
+| `.claude/settings.json` | SessionStart 从服务器装配套的 memogit 并 `memogit hook session-start`（缺的 clone、有的 pull）；Stop 跑 `memogit hook stop`（push） |
+| `CLAUDE.md` 末尾的 `toucanshelf` 段 | 服务器连不上、拿不到接入说明时，agent 唯一的指引 |
 
 **凭据**只来自环境变量，本机和云端沙箱同名：
 
 - `TOUCANSHELF_PAT` — memos PAT；
-- `TOUCANSHELF_SERVER` — 服务地址，缺省时用 `toucan.json` 里的 `https://toucan.huzhi.dev`。
+- `TOUCANSHELF_SERVER` — 服务地址。没设时 hook 用 `https://toucan.huzhi.dev`。
 
 首次 clone 后 memogit 会把两者存进 `kb/.memogit/config.yaml`，之后即使 hook 进程
 拿不到环境变量（桌面 App 启动的会话不读 `.zshrc`）也能 pull / push。
-所以**本机第一次**要在已导出变量的终端里跑一次 `python3 scripts/toucan.py sync`。
 
-**memogit 二进制**：本机用 PATH 上的；云端沙箱没有，`toucan.py` 从公开的
-toucan-shelf 源码现场 `go build`（需要沙箱能访问 github.com 和 Go 模块代理，
-另外网络白名单要放行 `toucan.huzhi.dev`）。不往本仓库提交二进制——仓库是 public 的站点仓库。
+**memogit 二进制由服务器发布**：服务器部署哪个版本，就在 `/memogit/` 下发布同一版本编出来的
+memogit。每次会话开始，hook 对比本机版本，不一致就下载、校验后替换。本机手动升级用
+`memogit self-update`。不往本仓库提交二进制，也不现场编译。云端网络白名单要放行 `toucan.huzhi.dev`。
 
-**就绪是硬前提。** sync 失败时 hook 往上下文注入"⛔ 知识库未就绪"，
+**就绪是硬前提。** 同步失败时 hook 往上下文注入"⛔ memogit: 知识库未就绪"，
 此时助手必须停下告诉用户，不读写、不引用对面内容，不凭记忆补，也不退回 MCP。
+连 `memogit:` 状态都没有，说明 hook 没跑起来或服务器连不上，同样停下。
 
 为什么只走 memogit：检出可以 grep、diff、冲突留 `.remote` 副本，
 而 MCP 的 `memo_update_memo` 是整篇替换、无并发检查、不可回滚，错一次就是静默覆盖。
@@ -61,8 +62,8 @@ toucan-shelf 源码现场 `go build`（需要沙箱能访问 github.com 和 Go �
 ### 不再使用 MCP
 
 ToucanShelf 的 MCP 工具（`memo_*`、`rag_search`、`workspace_*`）在本仓库的会话里**不用**，
-包括"检出里找不到"的情况——那说明 `kb/` 没同步好或库清单缺了，先 `sync` 或改
-`scripts/toucan.json`，而不是绕过去。跨库语义检索改为在 `kb/` 里 grep。
+包括"检出里找不到"的情况——那说明 `kb/` 没同步好或库清单缺了，先在 `kb/` 里
+`memogit pull` 或改 `memogit.conf.yaml`，而不是绕过去。跨库语义检索改为在 `kb/` 里 grep。
 
 ### 文档引用语法
 
@@ -154,7 +155,7 @@ Career 的一级轴（只为理解分工，细节以对面为准）：
    否则半年后会被无意识地改回去（见 ADR README 的写作标准）。
 4. **外链前确认可匿名访问。** 站点引用的 L2/L3 文档必须是 public 分享状态（ADR-0005 约束 2）；
    反过来，`Career/` 下的一切默认不可外链。
-5. **改前先 pull。** 动手前确认本轮 sync 成功（或手动 `toucan.py sync`），在最新文本上改。
+5. **改前先 pull。** 动手前确认本轮 sync 成功（或手动在 `kb/` 里 `memogit pull`），在最新文本上改。
 6. **大改先商量。** 新建文档，或对已有文档做重构级别的大幅改写（换结构、换定位、大段增删），
    都要先跟我对齐**写作范围和大体内容**——写哪个 workspace/路径、标题、分几节、每节大概讲什么——
    得到确认后再动笔。原因有两个：Stop hook 每轮自动 push，写错了会直接上服务器；

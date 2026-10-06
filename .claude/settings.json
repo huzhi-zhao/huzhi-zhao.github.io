@@ -1,6 +1,6 @@
 {
   "hooks": {
-    "SessionStart": [{ "hooks": [{ "type": "command", "command": "python3 \"$CLAUDE_PROJECT_DIR/scripts/toucan.py\" sync", "timeout": 900 }] }],
-    "Stop": [{ "hooks": [{ "type": "command", "command": "python3 \"$CLAUDE_PROJECT_DIR/scripts/toucan.py\" push", "timeout": 300 }] }]
+    "SessionStart": [{ "hooks": [{ "type": "command", "command": "export TOUCANSHELF_SERVER=\"${TOUCANSHELF_SERVER:-https://toucan.huzhi.dev}\"; curl -fsSL \"$TOUCANSHELF_SERVER/memogit/install.sh\" | sh -s -- hook session-start", "timeout": 900 }] }],
+    "Stop": [{ "hooks": [{ "type": "command", "command": "memogit hook stop", "timeout": 300 }] }]
   }
 }
