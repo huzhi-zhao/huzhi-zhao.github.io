@@ -24,7 +24,7 @@ Broadcast **不附简历**这条容易做错。它的目的是建立关系不是
 变成"处理一份申请"。
 
 对我的节奏，Broadcast 是 2027 年之前唯一用得上的那一种
-（见 ToucanShelf `Career/Inputs/PaceResumeCourse/校友分享-毕业生求职复盘`：
+（见 ToucanShelf `Career/Vault/校友分享-毕业生求职复盘`：
 提前量本身不是优势，企业只为稀缺性等人）。
 
 ## 四段结构
